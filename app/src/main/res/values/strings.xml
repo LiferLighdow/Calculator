@@ -1,0 +1,128 @@
+<resources>
+    <string name="app_name">Calculator</string>
+
+    <!-- MainActivity -->
+    <string name="open_converter">Open Unit Converter</string>
+    <string name="open_special">Open Special Calculators</string>
+    <string name="open_geometry">Open Geometry Calculator</string>
+    <string name="open_math_notepad">Open Math Notepad</string>
+    <string name="advanced_math">Advanced Math Functions</string>
+    <string name="group_trig">Analysis / Trig / Hyperbolic</string>
+    <string name="group_const">Constants / Number Theory</string>
+
+    <!-- ConverterActivity -->
+    <string name="title_converter">Unit Converter</string>
+    <string name="cat_length">Length</string>
+    <string name="cat_currency">Currency</string>
+    <string name="cat_area">Area</string>
+    <string name="cat_angle">Angle</string>
+    <string name="cat_weight">Weight</string>
+    <string name="cat_temp">Temperature</string>
+    <string name="cat_pressure">Pressure</string>
+    <string name="cat_volume">Volume</string>
+    <string name="cat_speed">Speed</string>
+    <string name="cat_time">Time</string>
+    <string name="cat_storage">Storage</string>
+    <string name="cat_electric">Electric</string>
+    <string name="cat_force">Force</string>
+    <string name="cat_optics">Optics</string>
+    <string name="cat_energy">Energy</string>
+    <string name="hint_input_value">Enter value</string>
+    <string name="label_from">From</string>
+    <string name="label_to">To</string>
+    <string name="label_result_converter">Conversion Result</string>
+    <string name="update_info_connecting">Connecting...</string>
+    <string name="update_info_format">Rates updated: %1$s (USD Base)</string>
+    <string name="update_info_failed">Failed to fetch: %1$s</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">Celsius (°C)</string>
+    <string name="unit_fahrenheit">Fahrenheit (°F)</string>
+    <string name="unit_kelvin">Kelvin (°K)</string>
+
+    <!-- Geometry Calculator -->
+    <string name="title_geometry">Geometry Calculator</string>
+    <string name="shape_circle">Circle</string>
+    <string name="shape_square">Square</string>
+    <string name="shape_triangle">Triangle</string>
+    <string name="shape_rectangle">Rectangle</string>
+    <string name="shape_sphere">Sphere</string>
+    <string name="shape_cylinder">Cylinder</string>
+    <string name="shape_sector">Sector</string>
+    <string name="shape_pyramid">Pyramid</string>
+    <string name="shape_prism">Prism</string>
+    <string name="shape_cone">Cone</string>
+    <string name="shape_polygon">Regular Polygon</string>
+    <string name="label_radius">Radius</string>
+    <string name="label_side">Side</string>
+    <string name="label_sides_count">Number of Sides</string>
+    <string name="label_width">Width</string>
+    <string name="label_height">Height</string>
+    <string name="label_base">Base</string>
+    <string name="label_angle">Angle (°)</string>
+    <string name="label_arc_length">Arc Length</string>
+    <string name="label_area">Area</string>
+    <string name="label_perimeter">Perimeter</string>
+    <string name="label_volume">Volume</string>
+    <string name="label_surface_area">Surface Area</string>
+
+    <!-- SpecialCalculatorsActivity -->
+    <string name="title_special">Special Calculators</string>
+    <string name="chip_health">Health</string>
+    <string name="chip_world_clock">World Clock</string>
+    <string name="chip_unit_price">Unit Price</string>
+    <string name="chip_fuel">Fuel</string>
+    <string name="chip_base_converter">Base Converter</string>
+    <string name="chip_discount">Discount</string>
+    <string name="chip_loan">Loan</string>
+    <string name="chip_tip">Tip</string>
+    <string name="chip_sigma">Sigma (Σ)</string>
+    <string name="chip_perm_comb">P / C</string>
+    <string name="chip_num_info">Num Info</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="label_age">Age</string>
+    <string name="label_height_input">Height (cm)</string>
+    <string name="label_weight">Weight (kg)</string>
+    <string name="label_weight_input">Weight (kg)</string>
+    <string name="label_select_timezone">Select target timezone (from local)</string>
+    <string name="label_total_price">Total Price</string>
+    <string name="label_quantity">Quantity/Weight</string>
+    <string name="label_distance">Distance (km)</string>
+    <string name="label_fuel_consumed">Fuel Consumed (L)</string>
+    <string name="label_fuel_unit_price">Fuel Price (per L)</string>
+    <string name="label_decimal_input">Decimal Number</string>
+    <string name="label_original_price">Original Price</string>
+    <string name="label_discount_percent">Discount (%)</string>
+    <string name="label_loan_amount">Loan Amount</string>
+    <string name="label_interest_rate">Interest Rate (%)</string>
+    <string name="label_loan_term">Term (Months)</string>
+    <string name="label_bill_amount">Bill Amount</string>
+    <string name="label_tip_percent">Tip Percent (%)</string>
+    <string name="label_split_count">Split Count</string>
+    <string name="label_sigma_expression">Expression (use x)</string>
+    <string name="label_sigma_start">Start value (n)</string>
+    <string name="label_sigma_end">End value (m)</string>
+    <string name="label_sigma_detail_format">Σ from %1$d to %2$d</string>
+    <string name="label_n_input">n (Total items)</string>
+    <string name="label_r_input">r (Selected items)</string>
+    <string name="type_permutation">Permutation (P)</string>
+    <string name="type_combination">Combination (C)</string>
+    <string name="type_multiset_combination">Repetition Combination (H)</string>
+    <string name="label_num_info_input">Enter a number</string>
+    <string name="label_result_special">Result</string>
+    <string name="label_hex_prefix">HEX: %1$s</string>
+    <string name="label_bin_prefix">BIN: %1$s</string>
+    <string name="waiting_input">Waiting for input...</string>
+    <string name="bmi_underweight">Underweight</string>
+    <string name="bmi_normal">Normal</string>
+    <string name="bmi_overweight">Overweight</string>
+    <string name="bmi_obese">Obese</string>
+    <string name="bmr_status_format">BMR: %1$d kcal/day | BMI Status: %2$s</string>
+    <string name="timezone_format">Timezone: %1$s</string>
+    <string name="unit_price_detail">Price per unit</string>
+    <string name="fuel_detail_format">Total fuel cost: %1$d | Cost per km: %2$s</string>
+    <string name="loan_detail_format">Monthly payment | Total: %1$d</string>
+    <string name="tip_detail_format">Per person | Total: %1$d</string>
+    <string name="discount_saved_format">Saved: %1$s</string>
+</resources>

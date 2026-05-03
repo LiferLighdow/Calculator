@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">ক্যালকুলেটর</string>
+
+    <!-- MainActivity -->
+    <string name="open_converter">ইউনিট কনভার্টার খুলুন</string>
+    <string name="open_special">বিশেষ ক্যালকুলেটর খুলুন</string>
+    <string name="open_geometry">জ্যামিতি ক্যালকুলেটর খুলুন</string>
+    <string name="advanced_math">উন্নত গণিত ফাংশন</string>
+    <string name="group_trig">বিশ্লেষণ / ত্রিকোণমিতি / হাইপারবোলিক</string>
+    <string name="group_const">ধ্রুবক / সংখ্যা তত্ত্ব</string>
+
+    <!-- ConverterActivity -->
+    <string name="title_converter">ইউনিট কনভার্টার</string>
+    <string name="cat_length">দৈর্ঘ্য</string>
+    <string name="cat_currency">মুদ্রা</string>
+    <string name="cat_area">ক্ষেত্রফল</string>
+    <string name="cat_angle">কোণ</string>
+    <string name="cat_weight">ওজন</string>
+    <string name="cat_temp">তাপমাত্রা</string>
+    <string name="cat_pressure">চাপ</string>
+    <string name="cat_volume">আয়তন</string>
+    <string name="cat_speed">গতি</string>
+    <string name="cat_time">সময়</string>
+    <string name="cat_storage">স্টোরেজ</string>
+    <string name="cat_electric">বিদ্যুৎ</string>
+    <string name="cat_force">বল</string>
+    <string name="cat_optics">আলোকবিদ্যা</string>
+    <string name="cat_energy">শক্তি</string>
+    <string name="hint_input_value">মান লিখুন</string>
+    <string name="label_from">থেকে</string>
+    <string name="label_to">প্রতি</string>
+    <string name="label_result_converter">রূপান্তর ফলাফল</string>
+    <string name="update_info_connecting">সংযুক্ত হচ্ছে...</string>
+    <string name="update_info_format">রেট আপডেট করা হয়েছে: %1$s (USD বেস)</string>
+    <string name="update_info_failed">আনা সম্ভব হয়নি: %1$s</string>
+
+    <!-- Geometry Calculator -->
+    <string name="title_geometry">জ্যামিতি ক্যালকুলেটর</string>
+    <string name="shape_circle">বৃত্ত</string>
+    <string name="shape_square">বর্গক্ষেত্র</string>
+    <string name="shape_triangle">ত্রিভুজ</string>
+    <string name="shape_rectangle">আয়তক্ষেত্র</string>
+    <string name="shape_sphere">গোলক</string>
+    <string name="shape_cylinder">সিলিন্ডার</string>
+    <string name="label_radius">ব্যাসার্ধ</string>
+    <string name="label_side">বাহু</string>
+    <string name="label_width">প্রস্থ</string>
+    <string name="label_height">উচ্চতা</string>
+    <string name="label_base">ভূমি</string>
+    <string name="label_area">ক্ষেত্রফল</string>
+    <string name="label_perimeter">পরিসীমা</string>
+    <string name="label_volume">আয়তন</string>
+    <string name="label_surface_area">পৃষ্ঠতলের ক্ষেত্রফল</string>
+
+    <!-- SpecialCalculatorsActivity -->
+    <string name="title_special">বিশেষ ক্যালকুলেটর</string>
+    <string name="chip_health">স্বাস্থ্য</string>
+    <string name="chip_world_clock">বিশ্ব ঘড়ি</string>
+    <string name="chip_unit_price">ইউনিট মূল্য</string>
+    <string name="chip_fuel">জ্বালানি</string>
+    <string name="chip_base_converter">বেস কনভার্টার</string>
+    <string name="chip_discount">ছাড়</string>
+    <string name="chip_loan">ঋণ</string>
+    <string name="chip_tip">টিপ</string>
+    <string name="gender_male">পুরুষ</string>
+    <string name="gender_female">মহিলা</string>
+    <string name="label_age">বয়স</string>
+    <string name="label_height_input">উচ্চতা (সেমি)</string>
+    <string name="label_weight">ওজন (কেজি)</string>
+    <string name="label_weight_input">ওজন (কেজি)</string>
+    <string name="label_select_timezone">টাইম জোন নির্বাচন করুন</string>
+    <string name="label_total_price">মোট মূল্য</string>
+    <string name="label_quantity">পরিমাণ/ওজন</string>
+    <string name="label_distance">দূরত্ব (কিমি)</string>
+    <string name="label_fuel_consumed">ব্যবহৃত জ্বালানি (লিটার)</string>
+    <string name="label_fuel_unit_price">জ্বালানি মূল্য (প্রতি লিটার)</string>
+    <string name="label_decimal_input">দশমিক সংখ্যা</string>
+    <string name="label_original_price">আসল মূল্য</string>
+    <string name="label_discount_percent">ছাড় শতাংশ (%)</string>
+    <string name="label_loan_amount">ঋণের পরিমাণ</string>
+    <string name="label_interest_rate">সুদের হার (%)</string>
+    <string name="label_loan_term">মেয়াদ (মাস)</string>
+    <string name="label_bill_amount">বিলের পরিমাণ</string>
+    <string name="label_tip_percent">টিপ শতাংশ (%)</string>
+    <string name="label_split_count">বিভাজন সংখ্যা</string>
+    <string name="label_result_special">ফলাফল</string>
+    <string name="waiting_input">ইনপুটের জন্য অপেক্ষা করা হচ্ছে...</string>
+    <string name="bmi_underweight">কম ওজন</string>
+    <string name="bmi_normal">স্বাভাবিক</string>
+    <string name="bmi_overweight">অতিরিক্ত ওজন</string>
+    <string name="bmi_obese">স্থূলতা</string>
+    <string name="bmr_status_format">BMR: %1$d kcal/দিন | BMI অবস্থা: %2$s</string>
+    <string name="timezone_format">টাইম জোন: %1$s</string>
+    <string name="unit_price_detail">প্রতি ইউনিট মূল্য</string>
+    <string name="fuel_detail_format">মোট খরচ: %1$d | প্রতি কিমি খরচ: %2$s</string>
+    <string name="loan_detail_format">মাসিক কিস্তি | মোট: %1$d</string>
+    <string name="tip_detail_format">প্রতি ব্যক্তি | মোট: %1$d</string>
+    <string name="discount_saved_format">সাশ্রয়: %1$s</string>
+</resources>

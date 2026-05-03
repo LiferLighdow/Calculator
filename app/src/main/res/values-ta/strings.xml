@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">கால்குலேட்டர்</string>
+
+    <!-- MainActivity -->
+    <string name="open_converter">அலகு மாற்றியைத் திற</string>
+    <string name="open_special">சிறப்பு கால்குலேட்டர்களைத் திற</string>
+    <string name="open_geometry">வடிவியல் கால்குலேட்டரைத் திற</string>
+    <string name="advanced_math">மேம்பட்ட கணித செயல்பாடுகள்</string>
+    <string name="group_trig">பகுப்பாய்வு / முக்கோணவியல் / ஹைப்பர்போலிக்</string>
+    <string name="group_const">மாறிலிகள் / எண் கோட்பாடு</string>
+
+    <!-- ConverterActivity -->
+    <string name="title_converter">அலகு மாற்றி</string>
+    <string name="cat_length">நீளம்</string>
+    <string name="cat_currency">நாணயம்</string>
+    <string name="cat_area">பரப்பளவு</string>
+    <string name="cat_angle">கோணம்</string>
+    <string name="cat_weight">எடை</string>
+    <string name="cat_temp">வெப்பநிலை</string>
+    <string name="cat_pressure">அழுத்தம்</string>
+    <string name="cat_volume">கன அளவு</string>
+    <string name="cat_speed">வேகம்</string>
+    <string name="cat_time">நேரம்</string>
+    <string name="cat_storage">சேமிப்பு</string>
+    <string name="cat_electric">மின்சாரம்</string>
+    <string name="cat_force">விசை</string>
+    <string name="cat_optics">ஒளியியல்</string>
+    <string name="cat_energy">ஆற்றல்</string>
+    <string name="hint_input_value">மதிப்பை உள்ளிடவும்</string>
+    <string name="label_from">இருந்து</string>
+    <string name="label_to">க்கு</string>
+    <string name="label_result_converter">மாற்றப்பட்ட முடிவு</string>
+    <string name="update_info_connecting">இணைக்கிறது...</string>
+    <string name="update_info_format">விகிதங்கள் புதுப்பிக்கப்பட்டன: %1$s (USD அடிப்படை)</string>
+    <string name="update_info_failed">பெற முடியவில்லை: %1$s</string>
+
+    <!-- Geometry Calculator -->
+    <string name="title_geometry">வடிவியல் கால்குலேட்டர்</string>
+    <string name="shape_circle">வட்டம்</string>
+    <string name="shape_square">சதுரம்</string>
+    <string name="shape_triangle">முக்கோணம்</string>
+    <string name="shape_rectangle">செவ்வகம்</string>
+    <string name="shape_sphere">கோளம்</string>
+    <string name="shape_cylinder">உருளை</string>
+    <string name="label_radius">ஆரம்</string>
+    <string name="label_side">பக்கம்</string>
+    <string name="label_width">அகலம்</string>
+    <string name="label_height">உயரம்</string>
+    <string name="label_base">அடிப்பகுதி</string>
+    <string name="label_area">பரப்பளவு</string>
+    <string name="label_perimeter">சுற்றளவு</string>
+    <string name="label_volume">கன அளவு</string>
+    <string name="label_surface_area">மேற்பரப்பு பரப்பளவு</string>
+
+    <!-- SpecialCalculatorsActivity -->
+    <string name="title_special">சிறப்பு கால்குலேட்டர்கள்</string>
+    <string name="chip_health">ஆரோக்கியம்</string>
+    <string name="chip_world_clock">உலகக் கடிகாரம்</string>
+    <string name="chip_unit_price">அலகு விலை</string>
+    <string name="chip_fuel">எரிபொருள்</string>
+    <string name="chip_base_converter">அடிப்படை மாற்றி</string>
+    <string name="chip_discount">தள்ளுபடி</string>
+    <string name="chip_loan">கடன்</string>
+    <string name="chip_tip">டிப்</string>
+    <string name="gender_male">ஆண்</string>
+    <string name="gender_female">பெண்</string>
+    <string name="label_age">வயது</string>
+    <string name="label_height_input">உயரம் (செ.மீ)</string>
+    <string name="label_weight">எடை (கி.கி)</string>
+    <string name="label_weight_input">எடை (கி.கி)</string>
+    <string name="label_select_timezone">நேர மண்டலத்தைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="label_total_price">மொத்த விலை</string>
+    <string name="label_quantity">அளவு/எடை</string>
+    <string name="label_distance">தூரம் (கி.மீ)</string>
+    <string name="label_fuel_consumed">எரிபொருள் நுகர்வு (லிட்டர்)</string>
+    <string name="label_fuel_unit_price">எரிபொருள் விலை (ஒரு லிட்டருக்கு)</string>
+    <string name="label_decimal_input">தசம எண்</string>
+    <string name="label_original_price">அசல் விலை</string>
+    <string name="label_discount_percent">தள்ளுபடி சதவீதம் (%)</string>
+    <string name="label_loan_amount">கடன் தொகை</string>
+    <string name="label_interest_rate">வட்டி விகிதம் (%)</string>
+    <string name="label_loan_term">காலம் (மாதங்கள்)</string>
+    <string name="label_bill_amount">பில் தொகை</string>
+    <string name="label_tip_percent">டிப் சதவீதம் (%)</string>
+    <string name="label_split_count">பிரிப்பு எண்ணிக்கை</string>
+    <string name="label_result_special">முடிவு</string>
+    <string name="waiting_input">உள்ளீட்டிற்காகக் காத்திருக்கிறது...</string>
+    <string name="bmi_underweight">குறைந்த எடை</string>
+    <string name="bmi_normal">சாதாரணமானது</string>
+    <string name="bmi_overweight">அதிக எடை</string>
+    <string name="bmi_obese">உடல் பருமன்</string>
+    <string name="bmr_status_format">BMR: %1$d kcal/நாள் | BMI நிலை: %2$s</string>
+    <string name="timezone_format">நேர மண்டலம்: %1$s</string>
+    <string name="unit_price_detail">அலகு விலை</string>
+    <string name="fuel_detail_format">மொத்த எரிபொருள் செலவு: %1$d | கி.மீ.க்கு செலவு: %2$s</string>
+    <string name="loan_detail_format">மாதாந்திர கட்டணம் | மொத்தம்: %1$d</string>
+    <string name="tip_detail_format">ஒருவருக்கு | மொத்தம்: %1$d</string>
+    <string name="discount_saved_format">சேமிப்பு: %1$s</string>
+</resources>

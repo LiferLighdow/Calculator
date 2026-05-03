@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="12dp"
+        android:alpha="0.3"
+        android:src="@android:drawable/ic_menu_edit"
+        tools:ignore="ContentDescription" />
+
+    <EditText
+        android:id="@+id/etExpression"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@null"
+        android:hint="Expression"
+        android:importantForAutofill="no"
+        android:inputType="textNoSuggestions"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvLineResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:alpha="0.6"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        tools:text="= 42" />
+
+</LinearLayout>

@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">క్యాలిక్యులేటర్</string>
+
+    <!-- MainActivity -->
+    <string name="open_converter">యూనిట్ కన్వర్టర్ తెరువు</string>
+    <string name="open_special">ప్రత్యేక క్యాలిక్యులేటర్లు తెరువు</string>
+    <string name="open_geometry">జ్యామితి క్యాలిక్యులేటర్ తెరువు</string>
+    <string name="advanced_math">అధునాతన గణిత విధులు</string>
+    <string name="group_trig">విశ్లేషణ / త్రికోణమితి / హైపర్బోలిక్</string>
+    <string name="group_const">స్థిరాంకాలు / సంఖ్యా సిద్ధాంతం</string>
+
+    <!-- ConverterActivity -->
+    <string name="title_converter">యూనిట్ కన్వర్టర్</string>
+    <string name="cat_length">పొడవు</string>
+    <string name="cat_currency">కరెన్సీ</string>
+    <string name="cat_area">వైశాల్యం</string>
+    <string name="cat_angle">కోణం</string>
+    <string name="cat_weight">బరువు</string>
+    <string name="cat_temp">ఉష్ణోగ్రత</string>
+    <string name="cat_pressure">పీడనం</string>
+    <string name="cat_volume">పరిమాణం</string>
+    <string name="cat_speed">వేగం</string>
+    <string name="cat_time">సమయం</string>
+    <string name="cat_storage">స్టోరేజ్</string>
+    <string name="cat_electric">విద్యుత్</string>
+    <string name="cat_force">బలం</string>
+    <string name="cat_optics">ఆప్టిక్స్</string>
+    <string name="cat_energy">శక్తి</string>
+    <string name="hint_input_value">విలువను నమోదు చేయండి</string>
+    <string name="label_from">నుండి</string>
+    <string name="label_to">కు</string>
+    <string name="label_result_converter">మార్పిడి ఫలితం</string>
+    <string name="update_info_connecting">కనెక్ట్ అవుతోంది...</string>
+    <string name="update_info_format">రేట్లు అప్‌డేట్ చేయబడ్డాయి: %1$s (USD బేస్)</string>
+    <string name="update_info_failed">పొందడంలో విఫలమైంది: %1$s</string>
+
+    <!-- Geometry Calculator -->
+    <string name="title_geometry">జ్యామితి క్యాలిక్యులేటర్</string>
+    <string name="shape_circle">వృత్తం</string>
+    <string name="shape_square">చతురస్రం</string>
+    <string name="shape_triangle">త్రిభుజం</string>
+    <string name="shape_rectangle">దీర్ఘచతురస్రం</string>
+    <string name="shape_sphere">గోళం</string>
+    <string name="shape_cylinder">సిలిండర్</string>
+    <string name="label_radius">వ్యాసార్థం</string>
+    <string name="label_side">భుజం</string>
+    <string name="label_width">వెడల్పు</string>
+    <string name="label_height">ఎత్తు</string>
+    <string name="label_base">ఆధారం</string>
+    <string name="label_area">వైశాల్యం</string>
+    <string name="label_perimeter">చుట్టుకొలత</string>
+    <string name="label_volume">పరిమాణం</string>
+    <string name="label_surface_area">ఉపరితల వైశాల్యం</string>
+
+    <!-- SpecialCalculatorsActivity -->
+    <string name="title_special">ప్రత్యేక క్యాలిక్యులేటర్లు</string>
+    <string name="chip_health">ఆరోగ్యం</string>
+    <string name="chip_world_clock">ప్రపంచ గడియారం</string>
+    <string name="chip_unit_price">యూనిట్ ధర</string>
+    <string name="chip_fuel">ఇంధనం</string>
+    <string name="chip_base_converter">బేస్ కన్వర్టర్</string>
+    <string name="chip_discount">డిస్కౌంట్</string>
+    <string name="chip_loan">లోన్</string>
+    <string name="chip_tip">చిట్కా</string>
+    <string name="gender_male">పురుషుడు</string>
+    <string name="gender_female">స్త్రీ</string>
+    <string name="label_age">వయస్సు</string>
+    <string name="label_height_input">ఎత్తు (సెం.మీ.)</string>
+    <string name="label_weight">బరువు (కిలోలు)</string>
+    <string name="label_weight_input">బరువు (కిలోలు)</string>
+    <string name="label_select_timezone">సమయ మండలిని ఎంచుకోండి</string>
+    <string name="label_total_price">మొత్తం ధర</string>
+    <string name="label_quantity">పరిమాణం/బరువు</string>
+    <string name="label_distance">దూరం (కి.మీ.)</string>
+    <string name="label_fuel_consumed">ఖర్చయిన ఇంధనం (లీటర్లు)</string>
+    <string name="label_fuel_unit_price">ఇంధన ధర (లీటరుకు)</string>
+    <string name="label_decimal_input">దశాంశ సంఖ్య</string>
+    <string name="label_original_price">అసలు ధర</string>
+    <string name="label_discount_percent">డిస్కౌంట్ శాతం (%)</string>
+    <string name="label_loan_amount">లోన్ మొత్తం</string>
+    <string name="label_interest_rate">వడ్డీ రేటు (%)</string>
+    <string name="label_loan_term">వ్యవధి (నెలలు)</string>
+    <string name="label_bill_amount">బిల్లు మొత్తం</string>
+    <string name="label_tip_percent">చిట్కా శాతం (%)</string>
+    <string name="label_split_count">విభజన సంఖ్య</string>
+    <string name="label_result_special">ఫలితం</string>
+    <string name="waiting_input">ఇన్‌పుట్ కోసం వేచి ఉంది...</string>
+    <string name="bmi_underweight">తక్కువ బరువు</string>
+    <string name="bmi_normal">సాధారణం</string>
+    <string name="bmi_overweight">అధిక బరువు</string>
+    <string name="bmi_obese">స్థూలకాయం</string>
+    <string name="bmr_status_format">BMR: %1$d kcal/రోజు | BMI స్థితి: %2$s</string>
+    <string name="timezone_format">సమయ మండలి: %1$s</string>
+    <string name="unit_price_detail">యూనిట్ ధర</string>
+    <string name="fuel_detail_format">మొత్తం ఇంధన ఖర్చు: %1$d | కి.మీ.కు ఖర్చు: %2$s</string>
+    <string name="loan_detail_format">నెలవారీ చెల్లింపు | మొత్తం: %1$d</string>
+    <string name="tip_detail_format">ఒకరికి | మొత్తం: %1$d</string>
+    <string name="discount_saved_format">పొదుపు: %1$s</string>
+</resources>

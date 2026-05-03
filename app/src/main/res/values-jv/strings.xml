@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">Kalkulator</string>
+
+    <!-- MainActivity -->
+    <string name="open_converter">Bukak konverter unit</string>
+    <string name="open_special">Bukak kalkulator khusus</string>
+    <string name="open_geometry">Bukak kalkulator geometri</string>
+    <string name="advanced_math">Fungsi matematika canggih</string>
+    <string name="group_trig">Analisis / Trig / Hiperbolik</string>
+    <string name="group_const">Konstanta / Teori angka</string>
+
+    <!-- ConverterActivity -->
+    <string name="title_converter">Konverter Unit</string>
+    <string name="cat_length">Dawa</string>
+    <string name="cat_currency">Mata uang</string>
+    <string name="cat_area">Jembar</string>
+    <string name="cat_angle">Sudut</string>
+    <string name="cat_weight">Bobot</string>
+    <string name="cat_temp">Suhu</string>
+    <string name="cat_pressure">Tekanan</string>
+    <string name="cat_volume">Volume</string>
+    <string name="cat_speed">Kacepetan</string>
+    <string name="cat_time">Wektu</string>
+    <string name="cat_storage">Panyimpenan</string>
+    <string name="cat_electric">Listrik</string>
+    <string name="cat_force">Gaya</string>
+    <string name="cat_optics">Optik</string>
+    <string name="cat_energy">Energi</string>
+    <string name="hint_input_value">Lebokake nilai</string>
+    <string name="label_from">Saka</string>
+    <string name="label_to">Menyang</string>
+    <string name="label_result_converter">Hasil konversi</string>
+    <string name="update_info_connecting">Nyambung...</string>
+    <string name="update_info_format">Kurs dianyari: %1$s (USD)</string>
+    <string name="update_info_failed">Gagal njupuk: %1$s</string>
+
+    <!-- Geometry Calculator -->
+    <string name="title_geometry">Kalkulator Geometri</string>
+    <string name="shape_circle">Bunderan</string>
+    <string name="shape_square">Kotak</string>
+    <string name="shape_triangle">Segitiga</string>
+    <string name="shape_rectangle">Persegi dawa</string>
+    <string name="shape_sphere">Bal</string>
+    <string name="shape_cylinder">Silinder</string>
+    <string name="label_radius">Jari-jari</string>
+    <string name="label_side">Sisi</string>
+    <string name="label_width">Amba</string>
+    <string name="label_height">Dhuwur</string>
+    <string name="label_base">Alas</string>
+    <string name="label_area">Jembar</string>
+    <string name="label_perimeter">Keliling</string>
+    <string name="label_volume">Volume</string>
+    <string name="label_surface_area">Jembar permukaan</string>
+
+    <!-- SpecialCalculatorsActivity -->
+    <string name="title_special">Kalkulator Khusus</string>
+    <string name="chip_health">Kesehatan</string>
+    <string name="chip_world_clock">Jam donya</string>
+    <string name="chip_unit_price">Harga unit</string>
+    <string name="chip_fuel">Bahan bakar</string>
+    <string name="chip_base_converter">Konverter basis</string>
+    <string name="chip_discount">Diskon</string>
+    <string name="chip_loan">Pinjaman</string>
+    <string name="chip_tip">Tip</string>
+    <string name="gender_male">Lanang</string>
+    <string name="gender_female">Wadon</string>
+    <string name="label_age">Umur</string>
+    <string name="label_height_input">Dhuwur (cm)</string>
+    <string name="label_weight">Bobot (kg)</string>
+    <string name="label_weight_input">Bobot (kg)</string>
+    <string name="label_select_timezone">Pilih zona wektu</string>
+    <string name="label_total_price">Total harga</string>
+    <string name="label_quantity">Jumlah/Bobot</string>
+    <string name="label_distance">Jarak (km)</string>
+    <string name="label_fuel_consumed">Bahan bakar entek (L)</string>
+    <string name="label_fuel_unit_price">Harga BBM (per L)</string>
+    <string name="label_decimal_input">Angka desimal</string>
+    <string name="label_original_price">Harga asli</string>
+    <string name="label_discount_percent">Persen diskon (%)</string>
+    <string name="label_loan_amount">Jumlah silihan</string>
+    <string name="label_interest_rate">Bunga (%)</string>
+    <string name="label_loan_term">Jangka (sasi)</string>
+    <string name="label_bill_amount">Jumlah tagihan</string>
+    <string name="label_tip_percent">Persen tip (%)</string>
+    <string name="label_split_count">Jumlah wong</string>
+    <string name="label_result_special">Hasil</string>
+    <string name="waiting_input">Ngenteni input...</string>
+    <string name="bmi_underweight">Kuru banget</string>
+    <string name="bmi_normal">Normal</string>
+    <string name="bmi_overweight">Lemu</string>
+    <string name="bmi_obese">Lemu banget</string>
+    <string name="bmr_status_format">BMR: %1$d kcal/dina | Status BMI: %2$s</string>
+    <string name="timezone_format">Zona wektu: %1$s</string>
+    <string name="unit_price_detail">Harga saben unit</string>
+    <string name="fuel_detail_format">Total biaya: %1$d | Biaya saben km: %2$s</string>
+    <string name="loan_detail_format">Cicilan sasi | Total: %1$d</string>
+    <string name="tip_detail_format">Saben wong | Total: %1$d</string>
+    <string name="discount_saved_format">Ngirit: %1$s</string>
+</resources>

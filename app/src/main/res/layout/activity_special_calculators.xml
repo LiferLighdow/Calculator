@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SpecialCalculatorsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBack"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:icon="@android:drawable/ic_menu_revert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="特殊計算機"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            app:layout_constraintBottom_toBottomOf="@id/btnBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+        <HorizontalScrollView
+            android:id="@+id/svChips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupSpecial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:selectionRequired="true">
+
+                <com.google.android.material.chip.Chip android:id="@+id/chipBMIBMR" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="健康" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipWorldClock" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="世界時鐘" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipUnitPrice" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="單價" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipFuel" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="燃油" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipBaseConverter" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="進制轉換" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipDiscount" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="折扣" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipLoan" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="貸款" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipTip" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="小費" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipSigma" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/chip_sigma" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipPermComb" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/chip_perm_comb" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipNumInfo" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/chip_num_info" />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@id/cardResult"
+            app:layout_constraintTop_toBottomOf="@id/svChips">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- BMI / BMR Inputs -->
+                <LinearLayout android:id="@+id/llBMI" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="visible">
+                    <RadioGroup android:id="@+id/rgGender" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="8dp">
+                        <RadioButton android:id="@+id/rbMale" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="男性" android:checked="true" />
+                        <RadioButton android:id="@+id/rbFemale" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="女性" android:layout_marginStart="16dp" />
+                    </RadioGroup>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="年齡" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etAge" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="身高 (cm)" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etHeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="體重 (kg)"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etWeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- World Clock Inputs -->
+                <LinearLayout android:id="@+id/llWorldClock" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="選擇目標時區 (從本地時間)" android:textAppearance="@style/TextAppearance.Material3.LabelMedium" android:layout_marginBottom="8dp" />
+                    <Spinner android:id="@+id/spinnerTimeZone" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="16dp" />
+                </LinearLayout>
+
+                <!-- Unit Price Inputs -->
+                <LinearLayout android:id="@+id/llUnitPrice" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="總價" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etTotalCost" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="數量/重量"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etTotalQuantity" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Fuel Inputs -->
+                <LinearLayout android:id="@+id/llFuel" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="行駛距離 (km)" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etDistance" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="消耗燃油 (L)" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etFuelConsumed" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="油價 (每公升)"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etFuelUnitPrice" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Base Converter (Binary/Hex) Inputs -->
+                <LinearLayout android:id="@+id/llBaseConverter" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="十進制數字"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etDecimalInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Discount Inputs -->
+                <LinearLayout android:id="@+id/llDiscount" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="原價" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etOriginalPrice" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="折扣 (%)"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etDiscountPercent" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Loan Inputs -->
+                <LinearLayout android:id="@+id/llLoan" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="貸款金額" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etLoanAmount" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="年利率 (%)" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etInterestRate" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="期限 (月)"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etLoanTerm" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Tip Inputs -->
+                <LinearLayout android:id="@+id/llTip" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="帳單總額" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etBillAmount" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="小費比例 (%)" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etTipPercent" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="分攤人數"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etSplitCount" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Sigma Inputs -->
+                <LinearLayout android:id="@+id/llSigma" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/label_sigma_expression" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etSigmaExpr" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/label_sigma_start" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etSigmaStart" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/label_sigma_end"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etSigmaEnd" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Perm/Comb Inputs -->
+                <LinearLayout android:id="@+id/llPermComb" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <RadioGroup android:id="@+id/rgPermCombType" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="8dp">
+                        <RadioButton android:id="@+id/rbPermutation" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/type_permutation" android:checked="true" />
+                        <RadioButton android:id="@+id/rbCombination" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/type_combination" android:layout_marginStart="8dp" />
+                        <RadioButton android:id="@+id/rbMultisetCombination" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/type_multiset_combination" android:layout_marginStart="8dp" />
+                    </RadioGroup>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/label_n_input" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etPermN" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" /></com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/label_r_input"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etPermR" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Num Info Inputs -->
+                <LinearLayout android:id="@+id/llNumInfo" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/label_num_info_input"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etInfoInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="?attr/colorSurfaceVariant"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/tvResultLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="計算結果"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+                <TextView
+                    android:id="@+id/tvSpecialResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="等待輸入..."
+                    android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSpecialDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                    android:textColor="?attr/colorPrimary" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">Kalkuleta</string>
+
+    <!-- MainActivity -->
+    <string name="open_converter">Bude mai canza raka\'a</string>
+    <string name="open_special">Bude kalkuletoci na musamman</string>
+    <string name="open_geometry">Bude kalkuleta ta siffofi</string>
+    <string name="advanced_math">Ayyukan lissafi na gaba</string>
+    <string name="group_trig">Bincike / Trig / Hyperbolic</string>
+    <string name="group_const">Constants / Ka\'idar lamba</string>
+
+    <!-- ConverterActivity -->
+    <string name="title_converter">Mai canza raka\'a</string>
+    <string name="cat_length">Tsayi</string>
+    <string name="cat_currency">Kudi</string>
+    <string name="cat_area">Fadin waje</string>
+    <string name="cat_angle">Kwanar kusurwa</string>
+    <string name="cat_weight">Nauyi</string>
+    <string name="cat_temp">Zafin jiki</string>
+    <string name="cat_pressure">Matsi</string>
+    <string name="cat_volume">Girma</string>
+    <string name="cat_speed">Gudu</string>
+    <string name="cat_time">Lokaci</string>
+    <string name="cat_storage">Wurin ajiya</string>
+    <string name="cat_electric">Lantarki</string>
+    <string name="cat_force">Karfi</string>
+    <string name="cat_optics">Haske</string>
+    <string name="cat_energy">Makamashi</string>
+    <string name="hint_input_value">Shigar da daraja</string>
+    <string name="label_from">Daga</string>
+    <string name="label_to">Zuwa</string>
+    <string name="label_result_converter">Sakamakon canji</string>
+    <string name="update_info_connecting">Ana haɗawa...</string>
+    <string name="update_info_format">An sabunta farashin: %1$s (USD)</string>
+    <string name="update_info_failed">Kuskure: %1$s</string>
+
+    <!-- Geometry Calculator -->
+    <string name="title_geometry">Kalkuleta ta siffofi</string>
+    <string name="shape_circle">Da’ira</string>
+    <string name="shape_square">Murabba\'i</string>
+    <string name="shape_triangle">Alwatika</string>
+    <string name="shape_rectangle">Murabba\'i mai tsayi</string>
+    <string name="shape_sphere">Dunkule</string>
+    <string name="shape_cylinder">Silinda</string>
+    <string name="label_radius">Rediyas</string>
+    <string name="label_side">Gefen</string>
+    <string name="label_width">Fadi</string>
+    <string name="label_height">Tsayi</string>
+    <string name="label_base">Gindin</string>
+    <string name="label_area">Fadin waje</string>
+    <string name="label_perimeter">Kewaye</string>
+    <string name="label_volume">Girma</string>
+    <string name="label_surface_area">Fadin farfajiya</string>
+
+    <!-- SpecialCalculatorsActivity -->
+    <string name="title_special">Kalkuletoci na musamman</string>
+    <string name="chip_health">Lafiya</string>
+    <string name="chip_world_clock">Agogon duniya</string>
+    <string name="chip_unit_price">Farashin guda</string>
+    <string name="chip_fuel">Man fetur</string>
+    <string name="chip_base_converter">Mai canza tushe</string>
+    <string name="chip_discount">Ragi</string>
+    <string name="chip_loan">Rance</string>
+    <string name="chip_tip">Kyauta (Tip)</string>
+    <string name="gender_male">Namiji</string>
+    <string name="gender_female">Mace</string>
+    <string name="label_age">Shekaru</string>
+    <string name="label_height_input">Tsayi (cm)</string>
+    <string name="label_weight">Nauyi (kg)</string>
+    <string name="label_weight_input">Nauyi (kg)</string>
+    <string name="label_select_timezone">Zabi yankin lokaci</string>
+    <string name="label_total_price">Jimlar farashi</string>
+    <string name="label_quantity">Yawa/Nauyi</string>
+    <string name="label_distance">Nisa (km)</string>
+    <string name="label_fuel_consumed">Man da aka yi amfani da shi (L)</string>
+    <string name="label_fuel_unit_price">Farashin mai (kowace L)</string>
+    <string name="label_decimal_input">Lambar decimal</string>
+    <string name="label_original_price">Farashin asali</string>
+    <string name="label_discount_percent">Kashin ragi (%)</string>
+    <string name="label_loan_amount">Adadin rance</string>
+    <string name="label_interest_rate">Kudin ruwa (%)</string>
+    <string name="label_loan_term">Wa\'adi (watanni)</string>
+    <string name="label_bill_amount">Adadin kudi</string>
+    <string name="label_tip_percent">Kashin kyauta (%)</string>
+    <string name="label_split_count">Adadin mutane</string>
+    <string name="label_result_special">Sakamako</string>
+    <string name="waiting_input">Ana jiran bayani...</string>
+    <string name="bmi_underweight">Rashin nauyi</string>
+    <string name="bmi_normal">Daidai</string>
+    <string name="bmi_overweight">Kiba kadan</string>
+    <string name="bmi_obese">Kiba sosai</string>
+    <string name="bmr_status_format">BMR: %1$d kcal/rana | Yanayin BMI: %2$s</string>
+    <string name="timezone_format">Yankin lokaci: %1$s</string>
+    <string name="unit_price_detail">Farashi kowace guda</string>
+    <string name="fuel_detail_format">Jimlar kudin mai: %1$d | Kudin kowace km: %2$s</string>
+    <string name="loan_detail_format">Biyan kowane wata | Jimla: %1$d</string>
+    <string name="tip_detail_format">Kowane mutum | Jimla: %1$d</string>
+    <string name="discount_saved_format">An adana: %1$s</string>
+</resources>

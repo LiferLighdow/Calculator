@@ -1,0 +1,128 @@
+<resources>
+    <string name="app_name">計算機</string>
+
+    <!-- MainActivity -->
+    <string name="open_converter">開啟單位換算器</string>
+    <string name="open_special">開啟特殊計算機</string>
+    <string name="open_geometry">開啟幾何計算機</string>
+    <string name="open_math_notepad">開啟數學記事本</string>
+    <string name="advanced_math">高級數學函數</string>
+    <string name="group_trig">分析 / 三角 / 雙曲</string>
+    <string name="group_const">常數 / 數論</string>
+
+    <!-- ConverterActivity -->
+    <string name="title_converter">單位換算</string>
+    <string name="cat_length">長度</string>
+    <string name="cat_currency">匯率</string>
+    <string name="cat_area">面積</string>
+    <string name="cat_angle">角度</string>
+    <string name="cat_weight">重量</string>
+    <string name="cat_temp">溫度</string>
+    <string name="cat_pressure">壓力</string>
+    <string name="cat_volume">體積</string>
+    <string name="cat_speed">速度</string>
+    <string name="cat_time">時間</string>
+    <string name="cat_storage">儲存</string>
+    <string name="cat_electric">電學</string>
+    <string name="cat_force">重力學</string>
+    <string name="cat_optics">光學</string>
+    <string name="cat_energy">能量</string>
+    <string name="hint_input_value">輸入數值</string>
+    <string name="label_from">從</string>
+    <string name="label_to">到</string>
+    <string name="label_result_converter">換算結果</string>
+    <string name="update_info_connecting">連線中...</string>
+    <string name="update_info_format">匯率更新於: %1$s (USD基準)</string>
+    <string name="update_info_failed">獲取失敗: %1$s</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">攝氏 (°C)</string>
+    <string name="unit_fahrenheit">華氏 (°F)</string>
+    <string name="unit_kelvin">克耳文 (°K)</string>
+
+    <!-- Geometry Calculator -->
+    <string name="title_geometry">幾何計算機</string>
+    <string name="shape_circle">圓形</string>
+    <string name="shape_square">正方形</string>
+    <string name="shape_triangle">三角形</string>
+    <string name="shape_rectangle">長方形</string>
+    <string name="shape_sphere">球體</string>
+    <string name="shape_cylinder">圓柱體</string>
+    <string name="shape_sector">扇形</string>
+    <string name="shape_pyramid">角錐</string>
+    <string name="shape_prism">角柱</string>
+    <string name="shape_cone">圓錐</string>
+    <string name="shape_polygon">正多邊形</string>
+    <string name="label_radius">半徑</string>
+    <string name="label_side">邊長</string>
+    <string name="label_sides_count">邊數</string>
+    <string name="label_width">寬度</string>
+    <string name="label_height">高度</string>
+    <string name="label_base">底</string>
+    <string name="label_angle">角度 (°)</string>
+    <string name="label_arc_length">弧長</string>
+    <string name="label_area">面積</string>
+    <string name="label_perimeter">周長</string>
+    <string name="label_volume">體積</string>
+    <string name="label_surface_area">表面積</string>
+
+    <!-- SpecialCalculatorsActivity -->
+    <string name="title_special">特殊計算機</string>
+    <string name="chip_health">健康</string>
+    <string name="chip_world_clock">世界時鐘</string>
+    <string name="chip_unit_price">單價</string>
+    <string name="chip_fuel">燃油</string>
+    <string name="chip_base_converter">進制轉換</string>
+    <string name="chip_discount">折扣</string>
+    <string name="chip_loan">貸款</string>
+    <string name="chip_tip">小費</string>
+    <string name="chip_sigma">Σ 級數和</string>
+    <string name="chip_perm_comb">排列組合 (P/C)</string>
+    <string name="chip_num_info">數字個資</string>
+    <string name="gender_male">男性</string>
+    <string name="gender_female">女性</string>
+    <string name="label_age">年齡</string>
+    <string name="label_height_input">身高 (cm)</string>
+    <string name="label_weight">體重 (kg)</string>
+    <string name="label_weight_input">體重 (kg)</string>
+    <string name="label_select_timezone">選擇目標時區 (從本地時間)</string>
+    <string name="label_total_price">總價</string>
+    <string name="label_quantity">數量/重量</string>
+    <string name="label_distance">行駛距離 (km)</string>
+    <string name="label_fuel_consumed">消耗燃油 (L)</string>
+    <string name="label_fuel_unit_price">油價 (每公升)</string>
+    <string name="label_decimal_input">十進制數字</string>
+    <string name="label_original_price">原價</string>
+    <string name="label_discount_percent">折扣 (%)</string>
+    <string name="label_loan_amount">貸款金額</string>
+    <string name="label_interest_rate">年利率 (%)</string>
+    <string name="label_loan_term">期限 (月)</string>
+    <string name="label_bill_amount">帳單總額</string>
+    <string name="label_tip_percent">小費比例 (%)</string>
+    <string name="label_split_count">分攤人數</string>
+    <string name="label_sigma_expression">表達式 (使用 x)</string>
+    <string name="label_sigma_start">起始值 (n)</string>
+    <string name="label_sigma_end">結束值 (m)</string>
+    <string name="label_sigma_detail_format">Σ 從 %1$d 到 %2$d</string>
+    <string name="label_n_input">n (總數)</string>
+    <string name="label_r_input">r (選擇數)</string>
+    <string name="type_permutation">排列 (P)</string>
+    <string name="type_combination">組合 (C)</string>
+    <string name="type_multiset_combination">重複組合 (H)</string>
+    <string name="label_num_info_input">輸入一個數字</string>
+    <string name="label_result_special">計算結果</string>
+    <string name="label_hex_prefix">十六進制: %1$s</string>
+    <string name="label_bin_prefix">二進制: %1$s</string>
+    <string name="waiting_input">等待輸入...</string>
+    <string name="bmi_underweight">體重過輕</string>
+    <string name="bmi_normal">正常範圍</string>
+    <string name="bmi_overweight">過重</string>
+    <string name="bmi_obese">肥胖</string>
+    <string name="bmr_status_format">BMR: %1$d kcal/day | BMI狀態: %2$s</string>
+    <string name="timezone_format">時區: %1$s</string>
+    <string name="unit_price_detail">每單位價格</string>
+    <string name="fuel_detail_format">總油資: %1$d 元 | 每公里成本: %2$s 元</string>
+    <string name="loan_detail_format">月付額 | 總還款: %1$d</string>
+    <string name="tip_detail_format">每人應付 | 總額: %1$d</string>
+    <string name="discount_saved_format">省下: %1$s</string>
+</resources>

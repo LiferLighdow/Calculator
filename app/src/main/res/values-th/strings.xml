@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">เครื่องคิดเลข</string>
+
+    <!-- MainActivity -->
+    <string name="open_converter">เปิดตัวแปลงหน่วย</string>
+    <string name="open_special">เปิดเครื่องคิดเลขพิเศษ</string>
+    <string name="open_geometry">เปิดเครื่องคิดเลขเรขาคณิต</string>
+    <string name="advanced_math">ฟังก์ชันคณิตศาสตร์ขั้นสูง</string>
+    <string name="group_trig">การวิเคราะห์ / ตรีโกณมิติ / ไฮเพอร์โบลิก</string>
+    <string name="group_const">ค่าคงที่ / ทฤษฎีจำนวน</string>
+
+    <!-- ConverterActivity -->
+    <string name="title_converter">ตัวแปลงหน่วย</string>
+    <string name="cat_length">ความยาว</string>
+    <string name="cat_currency">อัตราแลกเปลี่ยน</string>
+    <string name="cat_area">พื้นที่</string>
+    <string name="cat_angle">มุม</string>
+    <string name="cat_weight">น้ำหนัก</string>
+    <string name="cat_temp">อุณหภูมิ</string>
+    <string name="cat_pressure">ความดัน</string>
+    <string name="cat_volume">ปริมาตร</string>
+    <string name="cat_speed">ความเร็ว</string>
+    <string name="cat_time">เวลา</string>
+    <string name="cat_storage">พื้นที่จัดเก็บ</string>
+    <string name="cat_electric">ไฟฟ้า</string>
+    <string name="cat_force">แรง</string>
+    <string name="cat_optics">ทัศนศาสตร์</string>
+    <string name="cat_energy">พลังงาน</string>
+    <string name="hint_input_value">กรอกค่า</string>
+    <string name="label_from">จาก</string>
+    <string name="label_to">ถึง</string>
+    <string name="label_result_converter">ผลลัพธ์การแปลง</string>
+    <string name="update_info_connecting">กำลังเชื่อมต่อ...</string>
+    <string name="update_info_format">อัปเดตอัตราแลกเปลี่ยน: %1$s (ฐาน USD)</string>
+    <string name="update_info_failed">ข้อผิดพลาด: %1$s</string>
+
+    <!-- Geometry Calculator -->
+    <string name="title_geometry">เครื่องคิดเลขเรขาคณิต</string>
+    <string name="shape_circle">วงกลม</string>
+    <string name="shape_square">สี่เหลี่ยมจัตุรัส</string>
+    <string name="shape_triangle">สามเหลี่ยม</string>
+    <string name="shape_rectangle">สี่เหลี่ยมผืนผ้า</string>
+    <string name="shape_sphere">ทรงกลม</string>
+    <string name="shape_cylinder">ทรงกระบอก</string>
+    <string name="label_radius">รัศมี</string>
+    <string name="label_side">ด้าน</string>
+    <string name="label_width">ความกว้าง</string>
+    <string name="label_height">ความสูง</string>
+    <string name="label_base">ฐาน</string>
+    <string name="label_area">พื้นที่</string>
+    <string name="label_perimeter">เส้นรอบรูป</string>
+    <string name="label_volume">ปริมาตร</string>
+    <string name="label_surface_area">พื้นที่ผิว</string>
+
+    <!-- SpecialCalculatorsActivity -->
+    <string name="title_special">เครื่องคิดเลขพิเศษ</string>
+    <string name="chip_health">สุขภาพ</string>
+    <string name="chip_world_clock">เวลาโลก</string>
+    <string name="chip_unit_price">ราคาต่อหน่วย</string>
+    <string name="chip_fuel">เชื้อเพลิง</string>
+    <string name="chip_base_converter">ตัวแปลงฐานเลข</string>
+    <string name="chip_discount">ส่วนลด</string>
+    <string name="chip_loan">เงินกู้</string>
+    <string name="chip_tip">ทิป</string>
+    <string name="gender_male">ชาย</string>
+    <string name="gender_female">หญิง</string>
+    <string name="label_age">อายุ</string>
+    <string name="label_height_input">ส่วนสูง (ซม.)</string>
+    <string name="label_weight">น้ำหนัก (กก.)</string>
+    <string name="label_weight_input">น้ำหนัก (กก.)</string>
+    <string name="label_select_timezone">เลือกเขตเวลา</string>
+    <string name="label_total_price">ราคารวม</string>
+    <string name="label_quantity">จำนวน/น้ำหนัก</string>
+    <string name="label_distance">ระยะทาง (กม.)</string>
+    <string name="label_fuel_consumed">เชื้อเพลิงที่ใช้ (ลิตร)</string>
+    <string name="label_fuel_unit_price">ราคาเชื้อเพลิง (ต่อลิตร)</string>
+    <string name="label_decimal_input">เลขฐานสิบ</string>
+    <string name="label_original_price">ราคาเดิม</string>
+    <string name="label_discount_percent">เปอร์เซ็นต์ส่วนลด (%)</string>
+    <string name="label_loan_amount">ยอดเงินกู้</string>
+    <string name="label_interest_rate">อัตราดอกเบี้ย (%)</string>
+    <string name="label_loan_term">ระยะเวลา (เดือน)</string>
+    <string name="label_bill_amount">ยอดบิล</string>
+    <string name="label_tip_percent">เปอร์เซ็นต์ทิป (%)</string>
+    <string name="label_split_count">จำนวนคนหาร</string>
+    <string name="label_result_special">ผลลัพธ์</string>
+    <string name="waiting_input">รอการกรอกข้อมูล...</string>
+    <string name="bmi_underweight">น้ำหนักน้อยเกินไป</string>
+    <string name="bmi_normal">ปกติ</string>
+    <string name="bmi_overweight">น้ำหนักเกิน</string>
+    <string name="bmi_obese">โรคอ้วน</string>
+    <string name="bmr_status_format">BMR: %1$d kcal/วัน | สถานะ BMI: %2$s</string>
+    <string name="timezone_format">เขตเวลา: %1$s</string>
+    <string name="unit_price_detail">ราคาต่อหน่วย</string>
+    <string name="fuel_detail_format">ค่าเชื้อเพลิงรวม: %1$d | ต้นทุนต่อกม.: %2$s</string>
+    <string name="loan_detail_format">ผ่อนชำระรายเดือน | รวมทั้งหมด: %1$d</string>
+    <string name="tip_detail_format">ต่อคน | รวมทั้งหมด: %1$d</string>
+    <string name="discount_saved_format">ประหยัดได้: %1$s</string>
+</resources>

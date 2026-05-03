@@ -1,0 +1,127 @@
+<resources>
+    <string name="app_name">電卓</string>
+
+    <!-- MainActivity -->
+    <string name="open_converter">単位換算器を開く</string>
+    <string name="open_special">特殊電卓を開く</string>
+    <string name="open_geometry">幾何学電卓を開く</string>
+    <string name="advanced_math">高度な数学関数</string>
+    <string name="group_trig">解析 / 三角関数 / 双曲線関数</string>
+    <string name="group_const">定数 / 数論</string>
+
+    <!-- ConverterActivity -->
+    <string name="title_converter">単位換算</string>
+    <string name="cat_length">長さ</string>
+    <string name="cat_currency">為替レート</string>
+    <string name="cat_area">面積</string>
+    <string name="cat_angle">角度</string>
+    <string name="cat_weight">重量</string>
+    <string name="cat_temp">温度</string>
+    <string name="cat_pressure">圧力</string>
+    <string name="cat_volume">体積</string>
+    <string name="cat_speed">速度</string>
+    <string name="cat_time">時間</string>
+    <string name="cat_storage">ストレージ</string>
+    <string name="cat_electric">電気学</string>
+    <string name="cat_force">重力学</string>
+    <string name="cat_optics">光学</string>
+    <string name="cat_energy">エネルギー</string>
+    <string name="hint_input_value">数値を入力</string>
+    <string name="label_from">変換元</string>
+    <string name="label_to">変換先</string>
+    <string name="label_result_converter">換算結果</string>
+    <string name="update_info_connecting">接続中...</string>
+    <string name="update_info_format">更新日時: %1$s (USD基準)</string>
+    <string name="update_info_failed">取得失敗: %1$s</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">摂氏 (°C)</string>
+    <string name="unit_fahrenheit">華氏 (°F)</string>
+    <string name="unit_kelvin">ケルビン (°K)</string>
+
+    <!-- Geometry Calculator -->
+    <string name="title_geometry">幾何学電卓</string>
+    <string name="shape_circle">円</string>
+    <string name="shape_square">正方形</string>
+    <string name="shape_triangle">三角形</string>
+    <string name="shape_rectangle">長方形</string>
+    <string name="shape_sphere">球体</string>
+    <string name="shape_cylinder">円柱</string>
+    <string name="shape_sector">扇形</string>
+    <string name="shape_pyramid">角錐</string>
+    <string name="shape_prism">角柱</string>
+    <string name="shape_cone">円錐</string>
+    <string name="shape_polygon">正多角形</string>
+    <string name="label_radius">半径</string>
+    <string name="label_side">辺</string>
+    <string name="label_sides_count">辺の数</string>
+    <string name="label_width">幅</string>
+    <string name="label_height">高さ</string>
+    <string name="label_base">底辺</string>
+    <string name="label_angle">角度 (°)</string>
+    <string name="label_arc_length">弧の長さ</string>
+    <string name="label_area">面積</string>
+    <string name="label_perimeter">周囲の長さ</string>
+    <string name="label_volume">体積</string>
+    <string name="label_surface_area">表面積</string>
+
+    <!-- SpecialCalculatorsActivity -->
+    <string name="title_special">特殊電卓</string>
+    <string name="chip_health">健康</string>
+    <string name="chip_world_clock">世界時計</string>
+    <string name="chip_unit_price">単価</string>
+    <string name="chip_fuel">燃料</string>
+    <string name="chip_base_converter">進数変換</string>
+    <string name="chip_discount">割引</string>
+    <string name="chip_loan">ローン</string>
+    <string name="chip_tip">チップ</string>
+    <string name="chip_sigma">シグマ (Σ)</string>
+    <string name="chip_perm_comb">P / C</string>
+    <string name="chip_num_info">数値情報</string>
+    <string name="gender_male">男性</string>
+    <string name="gender_female">女性</string>
+    <string name="label_age">年齢</string>
+    <string name="label_height_input">身長 (cm)</string>
+    <string name="label_weight">体重 (kg)</string>
+    <string name="label_weight_input">体重 (kg)</string>
+    <string name="label_select_timezone">対象のタイムゾーンを選択 (ローカル時間から)</string>
+    <string name="label_total_price">合計金額</string>
+    <string name="label_quantity">数量/重量</string>
+    <string name="label_distance">走行距離 (km)</string>
+    <string name="label_fuel_consumed">消費燃料 (L)</string>
+    <string name="label_fuel_unit_price">燃料価格 (1Lあたり)</string>
+    <string name="label_decimal_input">10進数</string>
+    <string name="label_original_price">元の価格</string>
+    <string name="label_discount_percent">割引率 (%)</string>
+    <string name="label_loan_amount">融資額</string>
+    <string name="label_interest_rate">年利 (%)</string>
+    <string name="label_loan_term">期間 (月)</string>
+    <string name="label_bill_amount">お会計合計</string>
+    <string name="label_tip_percent">チップ率 (%)</string>
+    <string name="label_split_count">人数</string>
+    <string name="label_sigma_expression">式 (xを使用)</string>
+    <string name="label_sigma_start">開始値 (n)</string>
+    <string name="label_sigma_end">終了値 (m)</string>
+    <string name="label_sigma_detail_format">%1$d から %2$d までの Σ</string>
+    <string name="label_n_input">n (総数)</string>
+    <string name="label_r_input">r (選択数)</string>
+    <string name="type_permutation">順列 (P)</string>
+    <string name="type_combination">組合せ (C)</string>
+    <string name="type_multiset_combination">重複組合せ (H)</string>
+    <string name="label_num_info_input">数値を入力</string>
+    <string name="label_result_special">計算結果</string>
+    <string name="label_hex_prefix">16進数: %1$s</string>
+    <string name="label_bin_prefix">2進数: %1$s</string>
+    <string name="waiting_input">入力を待機中...</string>
+    <string name="bmi_underweight">低体重</string>
+    <string name="bmi_normal">標準</string>
+    <string name="bmi_overweight">肥満(1度)</string>
+    <string name="bmi_obese">肥満</string>
+    <string name="bmr_status_format">BMR: %1$d kcal/day | BMI状態: %2$s</string>
+    <string name="timezone_format">タイムゾーン: %1$s</string>
+    <string name="unit_price_detail">単位あたりの価格</string>
+    <string name="fuel_detail_format">合計燃料費: %1$d | 1kmあたりのコスト: %2$s</string>
+    <string name="loan_detail_format">月々の支払い | 返済総額: %1$d</string>
+    <string name="tip_detail_format">1人あたりの支払い | 合計金額: %1$d</string>
+    <string name="discount_saved_format">節約額: %1$s</string>
+</resources>
