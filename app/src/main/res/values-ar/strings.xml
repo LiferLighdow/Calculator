@@ -119,4 +119,9 @@
     <string name="loan_detail_format">القسط الشهري | الإجمالي: %1$d</string>
     <string name="tip_detail_format">لكل شخص | الإجمالي: %1$d</string>
     <string name="discount_saved_format">التوفير: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">دفاتر الرياضيات</string>
+    <string name="empty_notebooks">لم يتم العثور على دفاتر</string>
+    <string name="add_notebook">دفتر جديد</string>
 </resources>

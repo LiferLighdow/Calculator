@@ -42,11 +42,19 @@
     <string name="shape_rectangle">Persegi dawa</string>
     <string name="shape_sphere">Bal</string>
     <string name="shape_cylinder">Silinder</string>
+    <string name="shape_sector">Sektor</string>
+    <string name="shape_pyramid">Piramida</string>
+    <string name="shape_prism">Prisma</string>
+    <string name="shape_cone">Kereweng</string>
+    <string name="shape_polygon">Poligon Reguler</string>
     <string name="label_radius">Jari-jari</string>
     <string name="label_side">Sisi</string>
+    <string name="label_sides_count">Jumlah sisi</string>
     <string name="label_width">Amba</string>
     <string name="label_height">Dhuwur</string>
     <string name="label_base">Alas</string>
+    <string name="label_angle">Sudut (°)</string>
+    <string name="label_arc_length">Dawa busur</string>
     <string name="label_area">Jembar</string>
     <string name="label_perimeter">Keliling</string>
     <string name="label_volume">Volume</string>
@@ -62,6 +70,9 @@
     <string name="chip_discount">Diskon</string>
     <string name="chip_loan">Pinjaman</string>
     <string name="chip_tip">Tip</string>
+    <string name="chip_sigma">Sigma (Σ)</string>
+    <string name="chip_perm_comb">P / C</string>
+    <string name="chip_num_info">Info Angka</string>
     <string name="gender_male">Lanang</string>
     <string name="gender_female">Wadon</string>
     <string name="label_age">Umur</string>
@@ -83,7 +94,19 @@
     <string name="label_bill_amount">Jumlah tagihan</string>
     <string name="label_tip_percent">Persen tip (%)</string>
     <string name="label_split_count">Jumlah wong</string>
+    <string name="label_sigma_expression">Ekspresi (nganggo x)</string>
+    <string name="label_sigma_start">Nilai awal (n)</string>
+    <string name="label_sigma_end">Nilai akhir (m)</string>
+    <string name="label_sigma_detail_format">Σ saka %1$d menyang %2$d</string>
+    <string name="label_n_input">n (Total item)</string>
+    <string name="label_r_input">r (Item sing dipilih)</string>
+    <string name="type_permutation">Permutasi (P)</string>
+    <string name="type_combination">Kombinasi (C)</string>
+    <string name="type_multiset_combination">Kombinasi kanthi pengulangan (H)</string>
+    <string name="label_num_info_input">Lebokake angka</string>
     <string name="label_result_special">Hasil</string>
+    <string name="label_hex_prefix">HEX: %1$s</string>
+    <string name="label_bin_prefix">BIN: %1$s</string>
     <string name="waiting_input">Ngenteni input...</string>
     <string name="bmi_underweight">Kuru banget</string>
     <string name="bmi_normal">Normal</string>
@@ -96,4 +119,9 @@
     <string name="loan_detail_format">Cicilan sasi | Total: %1$d</string>
     <string name="tip_detail_format">Saben wong | Total: %1$d</string>
     <string name="discount_saved_format">Ngirit: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">Buku Cathetan Matematika</string>
+    <string name="empty_notebooks">Ora ana buku cathetan sing ditemokake</string>
+    <string name="add_notebook">Buku Cathetan Anyar</string>
 </resources>

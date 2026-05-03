@@ -42,11 +42,19 @@
     <string name="shape_rectangle">สี่เหลี่ยมผืนผ้า</string>
     <string name="shape_sphere">ทรงกลม</string>
     <string name="shape_cylinder">ทรงกระบอก</string>
+    <string name="shape_sector">รูปพัด</string>
+    <string name="shape_pyramid">พีระมิด</string>
+    <string name="shape_prism">ปริซึม</string>
+    <string name="shape_cone">กรวย</string>
+    <string name="shape_polygon">รูปหลายเหลี่ยมปกติ</string>
     <string name="label_radius">รัศมี</string>
     <string name="label_side">ด้าน</string>
+    <string name="label_sides_count">จำนวนด้าน</string>
     <string name="label_width">ความกว้าง</string>
     <string name="label_height">ความสูง</string>
     <string name="label_base">ฐาน</string>
+    <string name="label_angle">มุม (°)</string>
+    <string name="label_arc_length">ความยาวส่วนโค้ง</string>
     <string name="label_area">พื้นที่</string>
     <string name="label_perimeter">เส้นรอบรูป</string>
     <string name="label_volume">ปริมาตร</string>
@@ -62,6 +70,9 @@
     <string name="chip_discount">ส่วนลด</string>
     <string name="chip_loan">เงินกู้</string>
     <string name="chip_tip">ทิป</string>
+    <string name="chip_sigma">ซิกมา (Σ)</string>
+    <string name="chip_perm_comb">P / C</string>
+    <string name="chip_num_info">ข้อมูลตัวเลข</string>
     <string name="gender_male">ชาย</string>
     <string name="gender_female">หญิง</string>
     <string name="label_age">อายุ</string>
@@ -83,7 +94,19 @@
     <string name="label_bill_amount">ยอดบิล</string>
     <string name="label_tip_percent">เปอร์เซ็นต์ทิป (%)</string>
     <string name="label_split_count">จำนวนคนหาร</string>
+    <string name="label_sigma_expression">นิพจน์ (ใช้ x)</string>
+    <string name="label_sigma_start">ค่าเริ่มต้น (n)</string>
+    <string name="label_sigma_end">ค่าสิ้นสุด (m)</string>
+    <string name="label_sigma_detail_format">Σ จาก %1$d ถึง %2$d</string>
+    <string name="label_n_input">n (จำนวนทั้งหมด)</string>
+    <string name="label_r_input">r (จำนวนที่เลือก)</string>
+    <string name="type_permutation">การเรียงสับเปลี่ยน (P)</string>
+    <string name="type_combination">การจัดหมู่ (C)</string>
+    <string name="type_multiset_combination">การจัดหมู่แบบซ้ำ (H)</string>
+    <string name="label_num_info_input">กรอกตัวเลข</string>
     <string name="label_result_special">ผลลัพธ์</string>
+    <string name="label_hex_prefix">HEX: %1$s</string>
+    <string name="label_bin_prefix">BIN: %1$s</string>
     <string name="waiting_input">รอการกรอกข้อมูล...</string>
     <string name="bmi_underweight">น้ำหนักน้อยเกินไป</string>
     <string name="bmi_normal">ปกติ</string>
@@ -96,4 +119,9 @@
     <string name="loan_detail_format">ผ่อนชำระรายเดือน | รวมทั้งหมด: %1$d</string>
     <string name="tip_detail_format">ต่อคน | รวมทั้งหมด: %1$d</string>
     <string name="discount_saved_format">ประหยัดได้: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">สมุดจดคณิตศาสตร์</string>
+    <string name="empty_notebooks">ไม่พบสมุดจด</string>
+    <string name="add_notebook">สมุดจดเล่มใหม่</string>
 </resources>

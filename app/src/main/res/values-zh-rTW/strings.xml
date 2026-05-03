@@ -125,4 +125,9 @@
     <string name="loan_detail_format">月付額 | 總還款: %1$d</string>
     <string name="tip_detail_format">每人應付 | 總額: %1$d</string>
     <string name="discount_saved_format">省下: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">數學筆記本</string>
+    <string name="empty_notebooks">未發現筆記本</string>
+    <string name="add_notebook">新增筆記本</string>
 </resources>

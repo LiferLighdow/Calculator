@@ -36,11 +36,13 @@ class MathNotepadActivity : AppCompatActivity() {
         llEmptyState = findViewById(R.id.llEmptyState)
         rvNotebooks = findViewById(R.id.rvNotebooks)
         rvNotebooks.layoutManager = LinearLayoutManager(this)
-        adapter = NotebookAdapter(notebooks) { file ->
+        adapter = NotebookAdapter(notebooks, { file ->
             val intent = Intent(this, MathNotepadEditorActivity::class.java)
             intent.putExtra("FILE_PATH", file.absolutePath)
             startActivity(intent)
-        }
+        }, { file ->
+            showOptionsDialog(file)
+        })
         rvNotebooks.adapter = adapter
 
         findViewById<ExtendedFloatingActionButton>(R.id.fabAdd).setOnClickListener {
@@ -51,9 +53,20 @@ class MathNotepadActivity : AppCompatActivity() {
     }
 
     private fun checkPermissionsAndLoad() {
+        val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Android 13+ doesn't need READ/WRITE_EXTERNAL_STORAGE for app-specific or some public docs
+            // But if the user wants to be asked anyway for the "feel" of permission or if using legacy paths:
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        } else {
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE), 100)
+            val needsPermission = permissions.any {
+                ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
+            }
+            if (needsPermission) {
+                ActivityCompat.requestPermissions(this, permissions, 100)
             } else {
                 loadNotebooks()
             }
@@ -69,6 +82,57 @@ class MathNotepadActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun showOptionsDialog(file: File) {
+        val options = arrayOf("Rename", "Delete")
+        MaterialAlertDialogBuilder(this)
+            .setTitle(file.nameWithoutExtension)
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> showRenameDialog(file)
+                    1 -> showDeleteConfirmDialog(file)
+                }
+            }
+            .show()
+    }
+
+    private fun showRenameDialog(file: File) {
+        val view = layoutInflater.inflate(R.layout.dialog_new_notebook, null)
+        val input = view.findViewById<TextInputEditText>(R.id.etNotebookName)
+        input.setText(file.nameWithoutExtension)
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Rename Notebook")
+            .setView(view)
+            .setPositiveButton("Rename") { _, _ ->
+                val newName = input.text.toString().trim()
+                if (newName.isNotEmpty() && newName != file.nameWithoutExtension) {
+                    val newFile = File(file.parentFile, "$newName.txt")
+                    if (file.renameTo(newFile)) {
+                        loadNotebooks()
+                    } else {
+                        Toast.makeText(this, "Rename failed", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun showDeleteConfirmDialog(file: File) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Delete Notebook")
+            .setMessage("Are you sure you want to delete '${file.nameWithoutExtension}'?")
+            .setPositiveButton("Delete") { _, _ ->
+                if (file.delete()) {
+                    loadNotebooks()
+                } else {
+                    Toast.makeText(this, "Delete failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     private fun loadNotebooks() {

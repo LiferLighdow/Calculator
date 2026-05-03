@@ -119,4 +119,9 @@
     <string name="loan_detail_format">Trả hàng tháng | Tổng: %1$d</string>
     <string name="tip_detail_format">Mỗi người | Tổng: %1$d</string>
     <string name="discount_saved_format">Tiết kiệm: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">Sổ tay Toán học</string>
+    <string name="empty_notebooks">Không tìm thấy sổ tay</string>
+    <string name="add_notebook">Sổ tay mới</string>
 </resources>

@@ -42,11 +42,19 @@
     <string name="shape_rectangle">செவ்வகம்</string>
     <string name="shape_sphere">கோளம்</string>
     <string name="shape_cylinder">உருளை</string>
+    <string name="shape_sector">வட்டக்கோணப்பகுதி</string>
+    <string name="shape_pyramid">கூம்புக்கூரை</string>
+    <string name="shape_prism">பட்டைக்கூம்பு</string>
+    <string name="shape_cone">கூம்பு</string>
+    <string name="shape_polygon">ஒழுங்கு பலகோணம்</string>
     <string name="label_radius">ஆரம்</string>
     <string name="label_side">பக்கம்</string>
+    <string name="label_sides_count">பக்கங்களின் எண்ணிக்கை</string>
     <string name="label_width">அகலம்</string>
     <string name="label_height">உயரம்</string>
     <string name="label_base">அடிப்பகுதி</string>
+    <string name="label_angle">கோணம் (°)</string>
+    <string name="label_arc_length">வில்லின் நீளம்</string>
     <string name="label_area">பரப்பளவு</string>
     <string name="label_perimeter">சுற்றளவு</string>
     <string name="label_volume">கன அளவு</string>
@@ -62,6 +70,9 @@
     <string name="chip_discount">தள்ளுபடி</string>
     <string name="chip_loan">கடன்</string>
     <string name="chip_tip">டிப்</string>
+    <string name="chip_sigma">சிக்மா (Σ)</string>
+    <string name="chip_perm_comb">P / C</string>
+    <string name="chip_num_info">எண் தகவல்</string>
     <string name="gender_male">ஆண்</string>
     <string name="gender_female">பெண்</string>
     <string name="label_age">வயது</string>
@@ -83,7 +94,19 @@
     <string name="label_bill_amount">பில் தொகை</string>
     <string name="label_tip_percent">டிப் சதவீதம் (%)</string>
     <string name="label_split_count">பிரிப்பு எண்ணிக்கை</string>
+    <string name="label_sigma_expression">கோவை (x ஐப் பயன்படுத்துக)</string>
+    <string name="label_sigma_start">தொடக்க மதிப்பு (n)</string>
+    <string name="label_sigma_end">முடிவு மதிப்பு (m)</string>
+    <string name="label_sigma_detail_format">%1$d முதல் %2$d வரை Σ</string>
+    <string name="label_n_input">n (மொத்த உருப்படிகள்)</string>
+    <string name="label_r_input">r (தேர்ந்தெடுக்கப்பட்ட உருப்படிகள்)</string>
+    <string name="type_permutation">வரிசைமாற்றம் (P)</string>
+    <string name="type_combination">சேர்மானம் (C)</string>
+    <string name="type_multiset_combination">திரும்பத் திரும்ப வரும் சேர்மானம் (H)</string>
+    <string name="label_num_info_input">ஒரு எண்ணை உள்ளிடவும்</string>
     <string name="label_result_special">முடிவு</string>
+    <string name="label_hex_prefix">HEX: %1$s</string>
+    <string name="label_bin_prefix">BIN: %1$s</string>
     <string name="waiting_input">உள்ளீட்டிற்காகக் காத்திருக்கிறது...</string>
     <string name="bmi_underweight">குறைந்த எடை</string>
     <string name="bmi_normal">சாதாரணமானது</string>
@@ -96,4 +119,9 @@
     <string name="loan_detail_format">மாதாந்திர கட்டணம் | மொத்தம்: %1$d</string>
     <string name="tip_detail_format">ஒருவருக்கு | மொத்தம்: %1$d</string>
     <string name="discount_saved_format">சேமிப்பு: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">கணித நோட்டுப்புத்தகம்</string>
+    <string name="empty_notebooks">நோட்டுப்புத்தகங்கள் எதுவும் கிடைக்கவில்லை</string>
+    <string name="add_notebook">புதிய நோட்டுப்புத்தகம்</string>
 </resources>

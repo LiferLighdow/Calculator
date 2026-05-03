@@ -119,4 +119,9 @@
     <string name="loan_detail_format">Monatliche Rate | Gesamt: %1$d</string>
     <string name="tip_detail_format">Pro Person | Gesamt: %1$d</string>
     <string name="discount_saved_format">Gespart: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">Mathe-Notizbücher</string>
+    <string name="empty_notebooks">Keine Notizbücher gefunden</string>
+    <string name="add_notebook">Neues Notizbuch</string>
 </resources>

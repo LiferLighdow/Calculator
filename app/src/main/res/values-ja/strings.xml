@@ -124,4 +124,9 @@
     <string name="loan_detail_format">月々の支払い | 返済総額: %1$d</string>
     <string name="tip_detail_format">1人あたりの支払い | 合計金額: %1$d</string>
     <string name="discount_saved_format">節約額: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">数学ノート</string>
+    <string name="empty_notebooks">ノートが見つかりません</string>
+    <string name="add_notebook">新しいノート</string>
 </resources>

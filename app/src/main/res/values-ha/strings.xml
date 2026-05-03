@@ -42,11 +42,19 @@
     <string name="shape_rectangle">Murabba\'i mai tsayi</string>
     <string name="shape_sphere">Dunkule</string>
     <string name="shape_cylinder">Silinda</string>
+    <string name="shape_sector">Bangaren da\'ira</string>
+    <string name="shape_pyramid">Piramid</string>
+    <string name="shape_prism">Prism</string>
+    <string name="shape_cone">Cone</string>
+    <string name="shape_polygon">Polygon na yau da kullun</string>
     <string name="label_radius">Rediyas</string>
     <string name="label_side">Gefen</string>
+    <string name="label_sides_count">Yawan bangarorin</string>
     <string name="label_width">Fadi</string>
     <string name="label_height">Tsayi</string>
     <string name="label_base">Gindin</string>
+    <string name="label_angle">Kusurwa (°)</string>
+    <string name="label_arc_length">Tsayin baka</string>
     <string name="label_area">Fadin waje</string>
     <string name="label_perimeter">Kewaye</string>
     <string name="label_volume">Girma</string>
@@ -62,6 +70,9 @@
     <string name="chip_discount">Ragi</string>
     <string name="chip_loan">Rance</string>
     <string name="chip_tip">Kyauta (Tip)</string>
+    <string name="chip_sigma">Sigma (Σ)</string>
+    <string name="chip_perm_comb">P / C</string>
+    <string name="chip_num_info">Bayanin lamba</string>
     <string name="gender_male">Namiji</string>
     <string name="gender_female">Mace</string>
     <string name="label_age">Shekaru</string>
@@ -83,7 +94,19 @@
     <string name="label_bill_amount">Adadin kudi</string>
     <string name="label_tip_percent">Kashin kyauta (%)</string>
     <string name="label_split_count">Adadin mutane</string>
+    <string name="label_sigma_expression">Expression (yi amfani da x)</string>
+    <string name="label_sigma_start">Farawa (n)</string>
+    <string name="label_sigma_end">Karshe (m)</string>
+    <string name="label_sigma_detail_format">Σ daga %1$d zuwa %2$d</string>
+    <string name="label_n_input">n (Jimlar abubuwa)</string>
+    <string name="label_r_input">r (Abubuwan da aka zaba)</string>
+    <string name="type_permutation">Permutation (P)</string>
+    <string name="type_combination">Combination (C)</string>
+    <string name="type_multiset_combination">Combination tare da maimaitawa (H)</string>
+    <string name="label_num_info_input">Shigar da lamba</string>
     <string name="label_result_special">Sakamako</string>
+    <string name="label_hex_prefix">HEX: %1$s</string>
+    <string name="label_bin_prefix">BIN: %1$s</string>
     <string name="waiting_input">Ana jiran bayani...</string>
     <string name="bmi_underweight">Rashin nauyi</string>
     <string name="bmi_normal">Daidai</string>
@@ -96,4 +119,9 @@
     <string name="loan_detail_format">Biyan kowane wata | Jimla: %1$d</string>
     <string name="tip_detail_format">Kowane mutum | Jimla: %1$d</string>
     <string name="discount_saved_format">An adana: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">Littafin lissafi</string>
+    <string name="empty_notebooks">Ba a sami littafin rubutu ba</string>
+    <string name="add_notebook">Sabuwar littafin rubutu</string>
 </resources>

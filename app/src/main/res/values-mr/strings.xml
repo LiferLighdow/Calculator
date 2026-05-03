@@ -42,11 +42,19 @@
     <string name="shape_rectangle">आयत</string>
     <string name="shape_sphere">गोल</string>
     <string name="shape_cylinder">दंडगोल</string>
+    <string name="shape_sector">वर्तुळपाकळी</string>
+    <string name="shape_pyramid">पिरॅमिड</string>
+    <string name="shape_prism">प्रिझम</string>
+    <string name="shape_cone">शंकू</string>
+    <string name="shape_polygon">नियमित बहुभुज</string>
     <string name="label_radius">त्रिज्या</string>
     <string name="label_side">बाजू</string>
+    <string name="label_sides_count">बाजूंची संख्या</string>
     <string name="label_width">रुंदी</string>
     <string name="label_height">उंची</string>
     <string name="label_base">पाया</string>
+    <string name="label_angle">कोन (°)</string>
+    <string name="label_arc_length">कंसाची लांबी</string>
     <string name="label_area">क्षेत्रफळ</string>
     <string name="label_perimeter">परिमिती</string>
     <string name="label_volume">आकारमान</string>
@@ -62,6 +70,9 @@
     <string name="chip_discount">सवलत</string>
     <string name="chip_loan">कर्ज</string>
     <string name="chip_tip">टीप</string>
+    <string name="chip_sigma">सिग्मा (Σ)</string>
+    <string name="chip_perm_comb">P / C</string>
+    <string name="chip_num_info">क्रमांक माहिती</string>
     <string name="gender_male">पुरुष</string>
     <string name="gender_female">स्त्री</string>
     <string name="label_age">वय</string>
@@ -83,7 +94,19 @@
     <string name="label_bill_amount">बिलाची रक्कम</string>
     <string name="label_tip_percent">टीप टक्केवारी (%)</string>
     <string name="label_split_count">विभाजन संख्या</string>
+    <string name="label_sigma_expression">अभिव्यक्ती (x वापरा)</string>
+    <string name="label_sigma_start">प्रारंभ मूल्य (n)</string>
+    <string name="label_sigma_end">अंतिम मूल्य (m)</string>
+    <string name="label_sigma_detail_format">%1$d पासून %2$d पर्यंत Σ</string>
+    <string name="label_n_input">n (एकूण आयटम)</string>
+    <string name="label_r_input">r (निवडलेले आयटम)</string>
+    <string name="type_permutation">क्रमचय (P)</string>
+    <string name="type_combination">निवड (C)</string>
+    <string name="type_multiset_combination">पुनरावृत्तीसह निवड (H)</string>
+    <string name="label_num_info_input">एक संख्या प्रविष्ट करा</string>
     <string name="label_result_special">निकाल</string>
+    <string name="label_hex_prefix">HEX: %1$s</string>
+    <string name="label_bin_prefix">BIN: %1$s</string>
     <string name="waiting_input">इनपुटची वाट पाहत आहे...</string>
     <string name="bmi_underweight">कमी वजन</string>
     <string name="bmi_normal">सामान्य</string>
@@ -96,4 +119,9 @@
     <string name="loan_detail_format">मासिक हप्ता | एकूण: %1$d</string>
     <string name="tip_detail_format">प्रति व्यक्ती | एकूण: %1$d</string>
     <string name="discount_saved_format">बचत: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">गणित नोटबुक</string>
+    <string name="empty_notebooks">एकही नोटबुक सापडली नाही</string>
+    <string name="add_notebook">नवीन नोटबुक</string>
 </resources>

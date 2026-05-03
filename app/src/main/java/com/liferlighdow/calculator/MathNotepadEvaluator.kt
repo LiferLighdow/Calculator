@@ -5,6 +5,7 @@ import kotlin.math.*
 
 class MathNotepadEvaluator {
     private val variables = mutableMapOf<String, Double>()
+    private val assignedVariables = mutableSetOf<String>()
     private val equations = mutableListOf<Pair<String, String>>()
 
     data class EvaluationResult(
@@ -26,33 +27,41 @@ class MathNotepadEvaluator {
 
     fun clearVariables() {
         variables.clear()
+        assignedVariables.clear()
         equations.clear()
         resetConstants()
     }
 
-    // New: Add equation to the system without solving immediately
     fun addEquation(left: String, right: String) {
+        // If left is a pure variable name, it's an assignment
+        if (isValidVariableName(left)) {
+            try {
+                val value = evaluateExpression(right)
+                variables[left] = value
+                assignedVariables.add(left)
+                return
+            } catch (e: Exception) {}
+        }
         equations.add(left to right)
     }
 
-    // Solve all collected equations as a system
     fun solveSystem() {
-        val allVars = mutableSetOf<String>()
+        val unknownVars = mutableSetOf<String>()
         equations.forEach { (l, r) ->
-            allVars.addAll(extractVariables(l))
-            allVars.addAll(extractVariables(r))
+            unknownVars.addAll(extractVariables(l))
+            unknownVars.addAll(extractVariables(r))
         }
-        // Exclude constants
-        allVars.remove("pi")
-        allVars.remove("e")
-        allVars.remove("π")
         
-        val varList = allVars.toList()
+        // Remove constants and assigned variables
+        unknownVars.remove("pi")
+        unknownVars.remove("e")
+        unknownVars.remove("π")
+        assignedVariables.forEach { unknownVars.remove(it) }
+        
+        val varList = unknownVars.toList()
         if (varList.isEmpty()) return
 
-        // Cost function: sum of squared differences
         fun computeCost(p: DoubleArray): Double {
-            val originalVals = varList.map { variables[it] }
             varList.forEachIndexed { i, name -> variables[name] = p[i] }
             var totalError = 0.0
             for ((l, r) in equations) {
@@ -61,69 +70,82 @@ class MathNotepadEvaluator {
                     totalError += diff * diff
                 } catch (e: Exception) {}
             }
-            // Restore (though we usually want to keep the best p)
             return totalError
         }
 
-        // Numerical solver (Simple Gradient Descent with Momentum)
-        var p = DoubleArray(varList.size) { variables[varList[it]] ?: 1.0 }
-        var rate = 0.1
-        var bestP = p.copyOf()
-        var minCost = computeCost(p)
+        // Numerical solver: Try multiple starting points to avoid local minima
+        val startPoints = listOf(
+            DoubleArray(varList.size) { 1.0 },
+            DoubleArray(varList.size) { 0.0 },
+            DoubleArray(varList.size) { -1.0 }
+        )
 
-        for (iter in 0 until 200) {
-            val currentCost = computeCost(p)
-            if (currentCost < 1e-10) break
-            
-            val gradient = DoubleArray(p.size)
-            val h = 1e-6
-            for (i in p.indices) {
-                val oldVal = p[i]
-                p[i] += h
-                val cPlus = computeCost(p)
-                gradient[i] = (cPlus - currentCost) / h
-                p[i] = oldVal
-            }
+        var bestP = DoubleArray(varList.size) { 1.0 }
+        var minGlobalCost = Double.MAX_VALUE
 
-            for (i in p.indices) {
-                p[i] -= rate * gradient[i]
+        for (startP in startPoints) {
+            var p = startP.copyOf()
+            var rate = 0.1
+            var bestLocalP = p.copyOf()
+            var minLocalCost = computeCost(p)
+
+            for (iter in 0 until 100) {
+                if (minLocalCost < 1e-12) break
+                
+                val gradient = DoubleArray(p.size)
+                val h = 1e-7
+                for (i in p.indices) {
+                    val oldVal = p[i]
+                    p[i] += h
+                    val cPlus = computeCost(p)
+                    gradient[i] = (cPlus - minLocalCost) / h
+                    p[i] = oldVal
+                }
+
+                val nextP = DoubleArray(p.size) { i -> p[i] - rate * gradient[i] }
+                val nextCost = computeCost(nextP)
+                
+                if (nextCost < minLocalCost) {
+                    minLocalCost = nextCost
+                    bestLocalP = nextP.copyOf()
+                    p = nextP
+                    rate *= 1.2
+                } else {
+                    rate *= 0.3
+                }
             }
             
-            val newCost = computeCost(p)
-            if (newCost < minCost) {
-                minCost = newCost
-                bestP = p.copyOf()
-                rate *= 1.1 // Accelerate
-            } else {
-                rate *= 0.5 // Slow down and backtrack
-                p = bestP.copyOf()
+            if (minLocalCost < minGlobalCost) {
+                minGlobalCost = minLocalCost
+                bestP = bestLocalP
+            }
+        }
+
+        // Polishing: Try rounding to nearest integer if cost is very low
+        if (minGlobalCost < 0.1) {
+            val roundedP = DoubleArray(bestP.size) { i -> round(bestP[i]) }
+            if (computeCost(roundedP) < minGlobalCost + 1e-9) {
+                bestP = roundedP
             }
         }
         
-        // Final values
         varList.forEachIndexed { i, name -> variables[name] = bestP[i] }
     }
 
     fun evaluate(expression: String): EvaluationResult {
         val cleanExpr = expression.replace("×", "*").replace("÷", "/")
-        
         if (cleanExpr.contains("=")) {
             val parts = cleanExpr.split("=")
-            if (parts.size == 2) {
-                val left = parts[0].trim()
-                val right = parts[1].trim()
-                
-                if (isValidVariableName(left) && !extractVariables(right).contains(left)) {
-                    val value = evaluateExpression(right)
-                    variables[left] = value
-                    return EvaluationResult(value, left)
-                }
-                
-                // If it looks like an equation, it should have been solved by solveSystem()
-                // But for a single line evaluation, we provide the current variable state
-                val varName = extractVariables(left).firstOrNull() ?: extractVariables(right).firstOrNull() ?: "x"
-                return EvaluationResult(variables[varName] ?: 0.0, varName, true)
+            val left = parts[0].trim()
+            val right = parts[1].trim()
+            
+            if (assignedVariables.contains(left)) {
+                return EvaluationResult(variables[left] ?: 0.0, left)
             }
+            
+            val vars = extractVariables(left) + extractVariables(right)
+            val varName = vars.firstOrNull { !assignedVariables.contains(it) && it != "pi" && it != "e" && it != "π" } ?: "x"
+            return EvaluationResult(variables[varName] ?: 0.0, varName, true)
         }
         return EvaluationResult(evaluateExpression(cleanExpr))
     }
@@ -131,7 +153,8 @@ class MathNotepadEvaluator {
     private fun extractVariables(expr: String): List<String> {
         val tokens = tokenize(expr)
         val functions = setOf("sin", "cos", "tan", "log", "ln", "sqrt", "nCr", "nPr")
-        return tokens.filter { it[0].isLetter() && !functions.contains(it) }.distinct()
+        val constants = setOf("pi", "e", "π")
+        return tokens.filter { it[0].isLetter() && !functions.contains(it) && !constants.contains(it) }.distinct()
     }
 
     private fun isValidVariableName(name: String): Boolean {

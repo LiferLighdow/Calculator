@@ -7,8 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.io.File
 
-class NotebookAdapter(private val notebooks: List<File>, private val onItemClick: (File) -> Unit) :
-    RecyclerView.Adapter<NotebookAdapter.ViewHolder>() {
+class NotebookAdapter(
+    private val notebooks: List<File>,
+    private val onItemClick: (File) -> Unit,
+    private val onItemLongClick: (File) -> Unit
+) : RecyclerView.Adapter<NotebookAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvName: TextView = view.findViewById(R.id.tvNotebookName)
@@ -27,6 +30,10 @@ class NotebookAdapter(private val notebooks: List<File>, private val onItemClick
         val lastModified = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(file.lastModified())
         holder.tvInfo.text = "Last modified: $lastModified"
         holder.itemView.setOnClickListener { onItemClick(file) }
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick(file)
+            true
+        }
     }
 
     override fun getItemCount() = notebooks.size

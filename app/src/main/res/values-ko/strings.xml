@@ -119,4 +119,9 @@
     <string name="loan_detail_format">월 납입금 | 총 상환액: %1$d</string>
     <string name="tip_detail_format">1인당 금액 | 총액: %1$d</string>
     <string name="discount_saved_format">절약된 금액: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">수학 노트</string>
+    <string name="empty_notebooks">노트를 찾을 수 없습니다</string>
+    <string name="add_notebook">새 노트</string>
 </resources>

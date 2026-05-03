@@ -119,4 +119,9 @@
     <string name="loan_detail_format">Pago mensual | Total: %1$d</string>
     <string name="tip_detail_format">Por persona | Total: %1$d</string>
     <string name="discount_saved_format">Ahorro: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">Cuadernos de Matemáticas</string>
+    <string name="empty_notebooks">No se encontraron cuadernos</string>
+    <string name="add_notebook">Nuevo Cuaderno</string>
 </resources>

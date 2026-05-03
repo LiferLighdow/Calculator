@@ -119,4 +119,9 @@
     <string name="loan_detail_format">मासिक भुगतान | कुल: %1$d</string>
     <string name="tip_detail_format">प्रति व्यक्ति | कुल: %1$d</string>
     <string name="discount_saved_format">बचत: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">गणित नोटबुक</string>
+    <string name="empty_notebooks">कोई नोटबुक नहीं मिली</string>
+    <string name="add_notebook">नई नोटबुक</string>
 </resources>

@@ -22,6 +22,8 @@ class MathNotepadEditorActivity : AppCompatActivity() {
     private val lines = mutableListOf<MathLine>()
     private var filePath: String? = null
     private val evaluator = MathNotepadEvaluator()
+    private val mainHandler = android.os.Handler(android.os.Looper.getMainLooper())
+    private var recalculateRunnable: Runnable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,9 +46,16 @@ class MathNotepadEditorActivity : AppCompatActivity() {
         }
 
         adapter = MathLineAdapter(lines) {
-            recalculateAll()
+            debounceRecalculate()
         }
         rvLines.adapter = adapter
+    }
+
+    private fun debounceRecalculate() {
+        recalculateRunnable?.let { mainHandler.removeCallbacks(it) }
+        val runnable = Runnable { recalculateAll() }
+        recalculateRunnable = runnable
+        mainHandler.postDelayed(runnable, 300)
     }
 
     private fun loadLines() {

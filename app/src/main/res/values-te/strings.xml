@@ -42,11 +42,19 @@
     <string name="shape_rectangle">దీర్ఘచతురస్రం</string>
     <string name="shape_sphere">గోళం</string>
     <string name="shape_cylinder">సిలిండర్</string>
+    <string name="shape_sector">సెక్టార్</string>
+    <string name="shape_pyramid">పిరమిడ్</string>
+    <string name="shape_prism">ప్రిజం</string>
+    <string name="shape_cone">శంకువు</string>
+    <string name="shape_polygon">క్రమ బహుభుజి</string>
     <string name="label_radius">వ్యాసార్థం</string>
     <string name="label_side">భుజం</string>
+    <string name="label_sides_count">భుజాల సంఖ్య</string>
     <string name="label_width">వెడల్పు</string>
     <string name="label_height">ఎత్తు</string>
     <string name="label_base">ఆధారం</string>
+    <string name="label_angle">కోణం (°)</string>
+    <string name="label_arc_length">చాపం పొడవు</string>
     <string name="label_area">వైశాల్యం</string>
     <string name="label_perimeter">చుట్టుకొలత</string>
     <string name="label_volume">పరిమాణం</string>
@@ -62,6 +70,9 @@
     <string name="chip_discount">డిస్కౌంట్</string>
     <string name="chip_loan">లోన్</string>
     <string name="chip_tip">చిట్కా</string>
+    <string name="chip_sigma">సిగ్మా (Σ)</string>
+    <string name="chip_perm_comb">P / C</string>
+    <string name="chip_num_info">సంఖ్య సమాచారం</string>
     <string name="gender_male">పురుషుడు</string>
     <string name="gender_female">స్త్రీ</string>
     <string name="label_age">వయస్సు</string>
@@ -83,7 +94,19 @@
     <string name="label_bill_amount">బిల్లు మొత్తం</string>
     <string name="label_tip_percent">చిట్కా శాతం (%)</string>
     <string name="label_split_count">విభజన సంఖ్య</string>
+    <string name="label_sigma_expression">సమీకరణం (x ఉపయోగించండి)</string>
+    <string name="label_sigma_start">ప్రారంభ విలువ (n)</string>
+    <string name="label_sigma_end">ముగింపు విలువ (m)</string>
+    <string name="label_sigma_detail_format">%1$d నుండి %2$d వరకు Σ</string>
+    <string name="label_n_input">n (మొత్తం అంశాలు)</string>
+    <string name="label_r_input">r (ఎంచుకున్న అంశాలు)</string>
+    <string name="type_permutation">క్రమయం (P)</string>
+    <string name="type_combination">సంయోగం (C)</string>
+    <string name="type_multiset_combination">పునరావృత సంయోగం (H)</string>
+    <string name="label_num_info_input">సంఖ్యను నమోదు చేయండి</string>
     <string name="label_result_special">ఫలితం</string>
+    <string name="label_hex_prefix">HEX: %1$s</string>
+    <string name="label_bin_prefix">BIN: %1$s</string>
     <string name="waiting_input">ఇన్‌పుట్ కోసం వేచి ఉంది...</string>
     <string name="bmi_underweight">తక్కువ బరువు</string>
     <string name="bmi_normal">సాధారణం</string>
@@ -96,4 +119,9 @@
     <string name="loan_detail_format">నెలవారీ చెల్లింపు | మొత్తం: %1$d</string>
     <string name="tip_detail_format">ఒకరికి | మొత్తం: %1$d</string>
     <string name="discount_saved_format">పొదుపు: %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">గణిత నోట్‌బుక్</string>
+    <string name="empty_notebooks">నోట్‌బుక్‌లు ఏవీ కనుగొనబడలేదు</string>
+    <string name="add_notebook">కొత్త నోట్‌బుక్</string>
 </resources>

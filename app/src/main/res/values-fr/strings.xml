@@ -119,4 +119,9 @@
     <string name="loan_detail_format">Mensualité | Total : %1$d</string>
     <string name="tip_detail_format">Par personne | Total : %1$d</string>
     <string name="discount_saved_format">Économie : %1$s</string>
+
+    <!-- Math Notepad -->
+    <string name="title_math_notepad">Cahiers de Mathématiques</string>
+    <string name="empty_notebooks">Aucun cahier trouvé</string>
+    <string name="add_notebook">Nouveau Cahier</string>
 </resources>
