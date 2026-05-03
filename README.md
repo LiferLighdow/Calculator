@@ -1,5 +1,5 @@
 # Calculator
-
+[⬇️ Download Latest APK](https://github.com/LiferLighdow/Calculator/releases/latest)
 A comprehensive, all-in-one Android calculator application built with Kotlin. This app goes beyond simple arithmetic, providing a suite of specialized tools for geometry, unit conversion, health, finance, and more.
 
 ## 🚀 Features
@@ -61,4 +61,4 @@ A comprehensive, all-in-one Android calculator application built with Kotlin. Th
 *   Android SDK 36 (Compile SDK).
 
 ---
-Developed by liferlighdow
+Developed by Lifer_Lighdow
