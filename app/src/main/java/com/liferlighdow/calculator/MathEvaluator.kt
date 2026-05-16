@@ -47,6 +47,7 @@ object MathEvaluator {
             }
 
             fun parseFactor(): Double {
+                while (ch == ' '.code) nextChar()
                 if (eat('+'.code)) return parseFactor()
                 if (eat('-'.code)) return -parseFactor()
                 var x: Double
@@ -60,8 +61,8 @@ object MathEvaluator {
                 } else if (ch == 'x'.code) {
                     nextChar()
                     x = xValue
-                } else if (ch >= 'a'.code && ch <= 'z'.code || ch == '√'.code || ch == '∛'.code) {
-                    while (ch >= 'a'.code && ch <= 'z'.code || ch == '√'.code || ch == '∛'.code || (ch >= '0'.code && ch <= '9'.code && pos > startPos)) nextChar()
+                } else if (ch.toChar().isLetter() || ch == '√'.code || ch == '∛'.code) {
+                    while (ch.toChar().isLetter() || ch == '√'.code || ch == '∛'.code || (ch >= '0'.code && ch <= '9'.code && pos > startPos)) nextChar()
                     val func = expression.substring(startPos, pos)
                     val args = mutableListOf<Double>()
                     if (eat('('.code)) {
@@ -84,44 +85,66 @@ object MathEvaluator {
                         "log" -> log10(args[0])
                         "ln" -> ln(args[0])
                         "log2" -> log2(args[0])
-                        "sqrt" -> sqrt(args[0])
-                        "cbrt" -> args[0].pow(1.0 / 3.0)
+                        "sqrt", "√" -> sqrt(args[0])
+                        "cbrt", "∛" -> args[0].pow(1.0 / 3.0)
                         "abs" -> abs(args[0])
                         "ceil" -> ceil(args[0])
                         "floor" -> floor(args[0])
                         "gcd" -> {
-                            if (args.size < 2) 0.0 else {
-                                var a = abs(args[0].toLong())
-                                var b = abs(args[1].toLong())
-                                while (b != 0L) {
-                                    val t = b
-                                    b = a % b
-                                    a = t
+                            if (args.isEmpty()) 0.0 else {
+                                var res = abs(args[0].toLong())
+                                for (i in 1 until args.size) {
+                                    var b = abs(args[i].toLong())
+                                    while (b != 0L) {
+                                        val t = b
+                                        b = res % b
+                                        res = t
+                                    }
                                 }
-                                a.toDouble()
+                                res.toDouble()
                             }
                         }
-                        "nCr" -> {
-                            if (args.size < 2) 0.0 else {
-                                val n = args[0].toInt()
-                                var r = args[1].toInt()
-                                if (r < 0 || r > n) 0.0 else {
-                                    if (r > n / 2) r = n - r
-                                    var res = 1.0
-                                    for (i in 1..r) res = res * (n - r + i) / i
-                                    res
+                        "lcm" -> {
+                            if (args.isEmpty()) 0.0 else {
+                                var res = abs(args[0].toLong())
+                                for (i in 1 until args.size) {
+                                    val b = abs(args[i].toLong())
+                                    if (res == 0L || b == 0L) {
+                                        res = 0L
+                                        break
+                                    }
+                                    var x = res
+                                    var y = b
+                                    while (y != 0L) {
+                                        val t = y
+                                        y = x % y
+                                        x = t
+                                    }
+                                    res = (res / x) * b
                                 }
+                                res.toDouble()
                             }
                         }
-                        "nPr" -> {
+                        "nCr", "C" -> {
                             if (args.size < 2) 0.0 else {
                                 val n = args[0].toInt()
                                 val r = args[1].toInt()
-                                if (r < 0 || r > n) 0.0 else {
-                                    var res = 1.0
-                                    for (i in 0 until r) res *= (n - i)
-                                    res
-                                }
+                                nCr(n.toDouble(), r.toDouble())
+                            }
+                        }
+                        "nPr", "P" -> {
+                            if (args.size < 2) 0.0 else {
+                                val n = args[0].toInt()
+                                val r = args[1].toInt()
+                                nPr(n.toDouble(), r.toDouble())
+                            }
+                        }
+                        "nHr", "H" -> {
+                            if (args.size < 2) 0.0 else {
+                                val n = args[0].toInt()
+                                val r = args[1].toInt()
+                                // H(n, r) = C(n+r-1, r)
+                                nCr((n + r - 1).toDouble(), r.toDouble())
                             }
                         }
                         else -> args[0]
@@ -136,6 +159,22 @@ object MathEvaluator {
                 return x
             }
         }.parse()
+    }
+
+    private fun nCr(n: Double, r: Double): Double {
+        if (r < 0 || r > n) return 0.0
+        var rVal = r
+        if (rVal > n / 2) rVal = n - rVal
+        var res = 1.0
+        for (i in 1..rVal.toInt()) res = res * (n - rVal + i) / i
+        return res
+    }
+
+    private fun nPr(n: Double, r: Double): Double {
+        if (r < 0 || r > n) return 0.0
+        var res = 1.0
+        for (i in 0 until r.toInt()) res *= (n - i)
+        return res
     }
 
     private fun gamma(z: Double): Double {

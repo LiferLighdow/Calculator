@@ -77,8 +77,7 @@
     <string name="chip_loan">貸款</string>
     <string name="chip_tip">小費</string>
     <string name="chip_sigma">Σ 級數和</string>
-    <string name="chip_perm_comb">排列組合 (P/C)</string>
-    <string name="chip_num_info">數字個資</string>
+    <string name="chip_num_info">數字屬性</string>
     <string name="gender_male">男性</string>
     <string name="gender_female">女性</string>
     <string name="label_age">年齡</string>
@@ -104,11 +103,6 @@
     <string name="label_sigma_start">起始值 (n)</string>
     <string name="label_sigma_end">結束值 (m)</string>
     <string name="label_sigma_detail_format">Σ 從 %1$d 到 %2$d</string>
-    <string name="label_n_input">n (總數)</string>
-    <string name="label_r_input">r (選擇數)</string>
-    <string name="type_permutation">排列 (P)</string>
-    <string name="type_combination">組合 (C)</string>
-    <string name="type_multiset_combination">重複組合 (H)</string>
     <string name="label_num_info_input">輸入一個數字</string>
     <string name="label_result_special">計算結果</string>
     <string name="label_hex_prefix">十六進制: %1$s</string>
@@ -125,6 +119,23 @@
     <string name="loan_detail_format">月付額 | 總還款: %1$d</string>
     <string name="tip_detail_format">每人應付 | 總額: %1$d</string>
     <string name="discount_saved_format">省下: %1$s</string>
+    <string name="num_info_imaginary">虛數 (Imaginary)</string>
+    <string name="num_info_imaginary_detail">複數系中不屬於實數的部分</string>
+    <string name="num_info_invalid">無效輸入</string>
+    <string name="num_info_real">實數 (Real Number)</string>
+    <string name="num_info_positive">正數</string>
+    <string name="num_info_negative">負數</string>
+    <string name="num_info_zero">零 (0)</string>
+    <string name="num_info_integer">整數</string>
+    <string name="num_info_even">偶數</string>
+    <string name="num_info_odd">奇數</string>
+    <string name="num_info_unit">單位數 (1)</string>
+    <string name="num_info_prime">質數 (Prime)</string>
+    <string name="num_info_composite">合數 (Composite)</string>
+    <string name="num_info_prime_factors">質因數分解: </string>
+    <string name="num_info_all_factors">所有因數: </string>
+    <string name="num_info_rational">有理數 (%1$s)</string>
+    <string name="num_info_irrational">可能是無理數</string>
 
     <!-- Math Notepad -->
     <string name="title_math_notepad">數學筆記本</string>

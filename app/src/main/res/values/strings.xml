@@ -77,8 +77,8 @@
     <string name="chip_loan">Loan</string>
     <string name="chip_tip">Tip</string>
     <string name="chip_sigma">Sigma (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">Num Info</string>
+    <string name="chip_perm_comb">P / C</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
     <string name="label_age">Age</string>
@@ -104,12 +104,12 @@
     <string name="label_sigma_start">Start value (n)</string>
     <string name="label_sigma_end">End value (m)</string>
     <string name="label_sigma_detail_format">Σ from %1$d to %2$d</string>
+    <string name="label_num_info_input">Enter a number</string>
     <string name="label_n_input">n (Total items)</string>
     <string name="label_r_input">r (Selected items)</string>
     <string name="type_permutation">Permutation (P)</string>
     <string name="type_combination">Combination (C)</string>
-    <string name="type_multiset_combination">Repetition Combination (H)</string>
-    <string name="label_num_info_input">Enter a number</string>
+    <string name="type_multiset_combination">Multiset Combination (H)</string>
     <string name="label_result_special">Result</string>
     <string name="label_hex_prefix">HEX: %1$s</string>
     <string name="label_bin_prefix">BIN: %1$s</string>
@@ -125,6 +125,23 @@
     <string name="loan_detail_format">Monthly payment | Total: %1$d</string>
     <string name="tip_detail_format">Per person | Total: %1$d</string>
     <string name="discount_saved_format">Saved: %1$s</string>
+    <string name="num_info_imaginary">Imaginary Number</string>
+    <string name="num_info_imaginary_detail">The part of a complex number that is not a real number</string>
+    <string name="num_info_invalid">Invalid Input</string>
+    <string name="num_info_real">Real Number</string>
+    <string name="num_info_positive">Positive</string>
+    <string name="num_info_negative">Negative</string>
+    <string name="num_info_zero">Zero (0)</string>
+    <string name="num_info_integer">Integer</string>
+    <string name="num_info_even">Even</string>
+    <string name="num_info_odd">Odd</string>
+    <string name="num_info_unit">Unit (1)</string>
+    <string name="num_info_prime">Prime</string>
+    <string name="num_info_composite">Composite</string>
+    <string name="num_info_prime_factors">Prime Factorization: </string>
+    <string name="num_info_all_factors">All Factors: </string>
+    <string name="num_info_rational">Rational (%1$s)</string>
+    <string name="num_info_irrational">Probably Irrational</string>
 
     <!-- Math Notepad -->
     <string name="title_math_notepad">Math Notebooks</string>

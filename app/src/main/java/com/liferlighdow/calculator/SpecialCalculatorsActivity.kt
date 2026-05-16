@@ -62,14 +62,6 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
     private lateinit var etSigmaStart: EditText
     private lateinit var etSigmaEnd: EditText
 
-    private lateinit var llPermComb: LinearLayout
-    private lateinit var rgPermCombType: RadioGroup
-    private lateinit var rbPermutation: RadioButton
-    private lateinit var rbCombination: RadioButton
-    private lateinit var rbMultisetCombination: RadioButton
-    private lateinit var etPermN: EditText
-    private lateinit var etPermR: EditText
-
     private lateinit var llNumInfo: LinearLayout
     private lateinit var etInfoInput: EditText
 
@@ -135,14 +127,6 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
         etSigmaStart = findViewById(R.id.etSigmaStart)
         etSigmaEnd = findViewById(R.id.etSigmaEnd)
 
-        llPermComb = findViewById(R.id.llPermComb)
-        rgPermCombType = findViewById(R.id.rgPermCombType)
-        rbPermutation = findViewById(R.id.rbPermutation)
-        rbCombination = findViewById(R.id.rbCombination)
-        rbMultisetCombination = findViewById(R.id.rbMultisetCombination)
-        etPermN = findViewById(R.id.etPermN)
-        etPermR = findViewById(R.id.etPermR)
-
         llNumInfo = findViewById(R.id.llNumInfo)
         etInfoInput = findViewById(R.id.etInfoInput)
 
@@ -161,7 +145,7 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
     private fun setupListeners() {
         chipGroupSpecial.setOnCheckedStateChangeListener { _, checkedIds ->
             val id = checkedIds.firstOrNull() ?: R.id.chipBMIBMR
-            val sections = listOf(llBMI, llWorldClock, llUnitPrice, llFuel, llBaseConverter, llDiscount, llLoan, llTip, llSigma, llPermComb, llNumInfo)
+            val sections = listOf(llBMI, llWorldClock, llUnitPrice, llFuel, llBaseConverter, llDiscount, llLoan, llTip, llSigma, llNumInfo)
             sections.forEach { it.visibility = View.GONE }
 
             when (id) {
@@ -174,7 +158,6 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
                 R.id.chipLoan -> llLoan.visibility = View.VISIBLE
                 R.id.chipTip -> llTip.visibility = View.VISIBLE
                 R.id.chipSigma -> llSigma.visibility = View.VISIBLE
-                R.id.chipPermComb -> llPermComb.visibility = View.VISIBLE
                 R.id.chipNumInfo -> llNumInfo.visibility = View.VISIBLE
             }
             performCalculation()
@@ -191,12 +174,10 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
             etDistance, etFuelConsumed, etFuelUnitPrice, etDecimalInput,
             etOriginalPrice, etDiscountPercent, etLoanAmount, etInterestRate,
             etLoanTerm, etBillAmount, etTipPercent, etSplitCount,
-            etSigmaExpr, etSigmaStart, etSigmaEnd, etPermN, etPermR,
-            etInfoInput
+            etSigmaExpr, etSigmaStart, etSigmaEnd, etInfoInput
         )
         inputs.forEach { it.addTextChangedListener(watcher) }
         rgGender.setOnCheckedChangeListener { _, _ -> performCalculation() }
-        rgPermCombType.setOnCheckedChangeListener { _, _ -> performCalculation() }
         spinnerTimeZone.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) { performCalculation() }
             override fun onNothingSelected(p0: AdapterView<*>?) {}
@@ -214,7 +195,6 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
             R.id.chipLoan -> calculateLoan()
             R.id.chipTip -> calculateTip()
             R.id.chipSigma -> calculateSigma()
-            R.id.chipPermComb -> calculatePermComb()
             R.id.chipNumInfo -> calculateNumInfo()
         }
     }
@@ -388,63 +368,6 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
         }
     }
 
-    private fun calculatePermComb() {
-        val n = etPermN.text.toString().toIntOrNull() ?: 0
-        val r = etPermR.text.toString().toIntOrNull() ?: 0
-        
-        if (n >= 0 && r >= 0) {
-            val res: Double
-            val detail: String
-
-            when {
-                rbPermutation.isChecked -> {
-                    if (r > n) {
-                        tvSpecialResult.text = "Error"
-                        tvSpecialDetail.text = "r > n"
-                        return
-                    }
-                    var p = 1.0
-                    for (i in 0 until r) p *= (n - i)
-                    res = p
-                    detail = "P($n, $r)"
-                }
-                rbCombination.isChecked -> {
-                    if (r > n) {
-                        tvSpecialResult.text = "Error"
-                        tvSpecialDetail.text = "r > n"
-                        return
-                    }
-                    res = combination(n, r)
-                    detail = "C($n, $r)"
-                }
-                rbMultisetCombination.isChecked -> {
-                    if (n == 0 && r > 0) {
-                        tvSpecialResult.text = "Error"
-                        tvSpecialDetail.text = "n=0, r>0"
-                        return
-                    }
-                    val hn = n + r - 1
-                    res = if (hn < 0) 0.0 else combination(hn, r)
-                    detail = "H($n, $r)"
-                }
-                else -> { res = 0.0; detail = "" }
-            }
-            tvSpecialResult.text = String.format(Locale.US, "%.0f", res)
-            tvSpecialDetail.text = detail
-        } else {
-            tvSpecialResult.text = getString(R.string.waiting_input)
-            tvSpecialDetail.text = ""
-        }
-    }
-
-    private fun combination(n: Int, r: Int): Double {
-        if (r < 0 || r > n) return 0.0
-        var c = 1.0
-        val minR = min(r, n - r)
-        for (i in 1..minR) c = c * (n - minR + i) / i
-        return c
-    }
-
     private fun calculateNumInfo() {
         val inputStr = etInfoInput.text.toString().trim()
         if (inputStr.isEmpty()) {
@@ -453,10 +376,9 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
             return
         }
 
-        // Try to handle imaginary numbers if input ends with 'i'
         if (inputStr.endsWith("i")) {
-            tvSpecialResult.text = "虛數 (Imaginary)"
-            tvSpecialDetail.text = "複數系中不屬於實數的部分"
+            tvSpecialResult.text = getString(R.string.num_info_imaginary)
+            tvSpecialDetail.text = getString(R.string.num_info_imaginary_detail)
             return
         }
 
@@ -472,32 +394,29 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
         }
 
         if (num == null) {
-            tvSpecialResult.text = "無效輸入"
+            tvSpecialResult.text = getString(R.string.num_info_invalid)
             tvSpecialDetail.text = ""
             return
         }
 
         val sb = StringBuilder()
-        tvSpecialResult.text = "實數 (Real Number)"
+        tvSpecialResult.text = getString(R.string.num_info_real)
 
-        // 1. Positive/Negative/0
         sb.append(when {
-            num > 0 -> "正數"
-            num < 0 -> "負數"
-            else -> "零 (0)"
+            num > 0 -> getString(R.string.num_info_positive)
+            num < 0 -> getString(R.string.num_info_negative)
+            else -> getString(R.string.num_info_zero)
         }).append(" | ")
 
-        // 2. Integer/Rational/Irrational check
         val isInteger = abs(num - round(num)) < 1e-10
         if (isInteger) {
             val longNum = num.toLong()
-            sb.append("整數").append(" | ")
-            sb.append(if (longNum % 2 == 0L) "偶數" else "奇數").append("\n")
+            sb.append(getString(R.string.num_info_integer)).append(" | ")
+            sb.append(if (longNum % 2 == 0L) getString(R.string.num_info_even) else getString(R.string.num_info_odd)).append("\n")
 
-            // 3. Primality and Factors for integers > 0
             if (longNum > 0) {
                 if (longNum == 1L) {
-                    sb.append("單位數 (1)")
+                    sb.append(getString(R.string.num_info_unit))
                 } else {
                     val factors = mutableListOf<Long>()
                     for (i in 1..sqrt(longNum.toDouble()).toLong()) {
@@ -509,23 +428,20 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
                     factors.sort()
 
                     if (factors.size == 2) {
-                        sb.append("質數 (Prime)")
+                        sb.append(getString(R.string.num_info_prime))
                     } else {
-                        sb.append("合數 (Composite)\n")
-                        sb.append("質因數分解: ").append(primeFactorization(longNum))
+                        sb.append(getString(R.string.num_info_composite)).append("\n")
+                        sb.append(getString(R.string.num_info_prime_factors)).append(primeFactorization(longNum))
                     }
-                    sb.append("\n所有因數: ").append(factors.joinToString(", "))
+                    sb.append("\n").append(getString(R.string.num_info_all_factors)).append(factors.joinToString(", "))
                 }
             }
         } else {
-            // Check for rational vs irrational
-            // Since double precision is limited, we can only guess.
-            // But we can check if it has a short repeating pattern or can be a simple fraction
             val fraction = toSimpleFraction(num)
             if (fraction != null) {
-                sb.append("有理小數 ($fraction)")
+                sb.append(getString(R.string.num_info_rational, fraction))
             } else {
-                sb.append("可能是無理小數")
+                sb.append(getString(R.string.num_info_irrational))
             }
         }
 

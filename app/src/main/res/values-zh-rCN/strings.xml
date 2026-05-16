@@ -71,8 +71,7 @@
     <string name="chip_loan">贷款</string>
     <string name="chip_tip">小费</string>
     <string name="chip_sigma">Σ 级数和</string>
-    <string name="chip_perm_comb">排列组合 (P/C)</string>
-    <string name="chip_num_info">数字个资</string>
+    <string name="chip_num_info">数字属性</string>
     <string name="gender_male">男性</string>
     <string name="gender_female">女性</string>
     <string name="label_age">年龄</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">起始值 (n)</string>
     <string name="label_sigma_end">结束值 (m)</string>
     <string name="label_sigma_detail_format">Σ 从 %1$d 到 %2$d</string>
-    <string name="label_n_input">n (总数)</string>
-    <string name="label_r_input">r (选择数)</string>
-    <string name="type_permutation">排列 (P)</string>
-    <string name="type_combination">组合 (C)</string>
-    <string name="type_multiset_combination">重复组合 (H)</string>
     <string name="label_num_info_input">输入一个数字</string>
     <string name="label_result_special">计算结果</string>
     <string name="label_hex_prefix">十六进制: %1$s</string>
@@ -119,6 +113,23 @@
     <string name="loan_detail_format">月付额 | 总还款: %1$d</string>
     <string name="tip_detail_format">每人应付 | 总额: %1$d</string>
     <string name="discount_saved_format">省下: %1$s</string>
+    <string name="num_info_imaginary">虚数 (Imaginary)</string>
+    <string name="num_info_imaginary_detail">复数系中不属于实数的部分</string>
+    <string name="num_info_invalid">无效输入</string>
+    <string name="num_info_real">实数 (Real Number)</string>
+    <string name="num_info_positive">正数</string>
+    <string name="num_info_negative">负数</string>
+    <string name="num_info_zero">零 (0)</string>
+    <string name="num_info_integer">整数</string>
+    <string name="num_info_even">偶数</string>
+    <string name="num_info_odd">奇数</string>
+    <string name="num_info_unit">单位数 (1)</string>
+    <string name="num_info_prime">质数 (Prime)</string>
+    <string name="num_info_composite">合数 (Composite)</string>
+    <string name="num_info_prime_factors">质因数分解: </string>
+    <string name="num_info_all_factors">所有因数: </string>
+    <string name="num_info_rational">有理数 (%1$s)</string>
+    <string name="num_info_irrational">可能是无理数</string>
 
     <!-- Math Notepad -->
     <string name="title_math_notepad">数学笔记本</string>
