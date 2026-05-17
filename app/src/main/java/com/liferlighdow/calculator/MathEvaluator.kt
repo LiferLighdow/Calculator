@@ -24,6 +24,7 @@ object MathEvaluator {
             fun parse(): Double {
                 nextChar()
                 val x = parseExpression()
+                while (ch == ' '.code) nextChar()
                 if (pos < expression.length) throw RuntimeException("Unexpected: " + ch.toChar())
                 return x
             }
@@ -62,92 +63,102 @@ object MathEvaluator {
                     nextChar()
                     x = xValue
                 } else if (ch.toChar().isLetter() || ch == '√'.code || ch == '∛'.code) {
-                    while (ch.toChar().isLetter() || ch == '√'.code || ch == '∛'.code || (ch >= '0'.code && ch <= '9'.code && pos > startPos)) nextChar()
-                    val func = expression.substring(startPos, pos)
-                    val args = mutableListOf<Double>()
-                    if (eat('('.code)) {
-                        args.add(parseExpression())
-                        while (eat(','.code)) args.add(parseExpression())
-                        eat(')'.code)
+                    while (ch.toChar().isLetter() || ch == '√'.code || ch == '∛'.code || (ch in '0'.code..'9'.code && pos > startPos)) nextChar()
+                    val name = expression.substring(startPos, pos).lowercase()
+                    
+                    if (name == "pi" || name == "π") {
+                        x = PI
+                    } else if (name == "e") {
+                        x = E
+                    } else if (name == "phi" || name == "φ") {
+                        x = 1.618033988749895
+                    } else if (name == "gamma" || name == "γ") {
+                        x = 0.577215664901532
+                    } else if (name == "i") {
+                        x = Double.NaN
                     } else {
-                        args.add(parseFactor())
-                    }
-                    x = when (func) {
-                        "sin" -> sin(args[0])
-                        "cos" -> cos(args[0])
-                        "tan" -> tan(args[0])
-                        "asin" -> asin(args[0])
-                        "acos" -> acos(args[0])
-                        "atan" -> atan(args[0])
-                        "sinh" -> sinh(args[0])
-                        "cosh" -> cosh(args[0])
-                        "tanh" -> tanh(args[0])
-                        "log" -> log10(args[0])
-                        "ln" -> ln(args[0])
-                        "log2" -> log2(args[0])
-                        "sqrt", "√" -> sqrt(args[0])
-                        "cbrt", "∛" -> args[0].pow(1.0 / 3.0)
-                        "abs" -> abs(args[0])
-                        "ceil" -> ceil(args[0])
-                        "floor" -> floor(args[0])
-                        "gcd" -> {
-                            if (args.isEmpty()) 0.0 else {
-                                var res = abs(args[0].toLong())
-                                for (i in 1 until args.size) {
-                                    var b = abs(args[i].toLong())
-                                    while (b != 0L) {
-                                        val t = b
-                                        b = res % b
-                                        res = t
+                        val args = mutableListOf<Double>()
+                        if (eat('('.code)) {
+                            args.add(parseExpression())
+                            while (eat(','.code)) args.add(parseExpression())
+                            eat(')'.code)
+                        } else {
+                            args.add(parseFactor())
+                        }
+                        
+                        val a = if (args.isNotEmpty()) args[0] else 0.0
+                        val b = if (args.size > 1) args[1] else 0.0
+                        
+                        x = when (name) {
+                            "sin" -> sin(a * PI / 180.0)
+                            "cos" -> cos(a * PI / 180.0)
+                            "tan" -> tan(a * PI / 180.0)
+                            "sec" -> 1.0 / cos(a * PI / 180.0)
+                            "csc" -> 1.0 / sin(a * PI / 180.0)
+                            "cot" -> 1.0 / tan(a * PI / 180.0)
+                            "asin" -> {
+                                // 如果真的大於 1.0 太多（例如 1.001），才視為 NaN
+                                if (abs(a) > 1.00000001) Double.NaN
+                                else asin(a.coerceIn(-1.0, 1.0)) * 180.0 / PI
+                            }
+                            "acos" -> {
+                                if (abs(a) > 1.00000001) Double.NaN
+                                else acos(a.coerceIn(-1.0, 1.0)) * 180.0 / PI
+                            }
+                            "atan" -> atan(a) * 180.0 / PI
+                            "sinh" -> sinh(a)
+                            "cosh" -> cosh(a)
+                            "tanh" -> tanh(a)
+                            "asinh" -> ln(a + sqrt(a * a + 1.0))
+                            "acosh" -> {
+                                if (a < 1.0) Double.NaN
+                                else ln(a + sqrt(a * a - 1.0))
+                            }
+                            "atanh" -> {
+                                if (abs(a) >= 1.0) Double.NaN
+                                else 0.5 * ln((1.0 + a) / (1.0 - a))
+                            }
+                            "log" -> log10(a)
+                            "ln" -> ln(a)
+                            "log2" -> log2(a)
+                            "sqrt", "√" -> if (a < 0.0) Double.NaN else sqrt(a)
+                            "cbrt", "∛" -> if (a < 0.0) -java.lang.Math.cbrt(-a) else java.lang.Math.cbrt(a)
+                            "abs" -> abs(a)
+                            "ceil" -> ceil(a)
+                            "floor" -> floor(a)
+                            "gcd" -> {
+                                if (args.isEmpty()) 0.0 else {
+                                    var resVal = abs(args[0].toLong())
+                                    for (i in 1 until args.size) {
+                                        var v = abs(args[i].toLong())
+                                        while (v != 0L) {
+                                            val t = v
+                                            v = resVal % v
+                                            resVal = t
+                                        }
                                     }
+                                    resVal.toDouble()
                                 }
-                                res.toDouble()
                             }
-                        }
-                        "lcm" -> {
-                            if (args.isEmpty()) 0.0 else {
-                                var res = abs(args[0].toLong())
-                                for (i in 1 until args.size) {
-                                    val b = abs(args[i].toLong())
-                                    if (res == 0L || b == 0L) {
-                                        res = 0L
-                                        break
+                            "lcm" -> {
+                                if (args.isEmpty()) 0.0 else {
+                                    var resVal = abs(args[0].toLong())
+                                    for (i in 1 until args.size) {
+                                        val v = abs(args[i].toLong())
+                                        if (resVal == 0L || v == 0L) { resVal = 0L; break }
+                                        var x1 = resVal
+                                        var y1 = v
+                                        while (y1 != 0L) { val t = y1; y1 = x1 % y1; x1 = t }
+                                        resVal = (resVal / x1) * v
                                     }
-                                    var x = res
-                                    var y = b
-                                    while (y != 0L) {
-                                        val t = y
-                                        y = x % y
-                                        x = t
-                                    }
-                                    res = (res / x) * b
+                                    resVal.toDouble()
                                 }
-                                res.toDouble()
                             }
+                            "ncr", "c" -> if (args.size < 2) 0.0 else nCr(a, b)
+                            "npr", "p" -> if (args.size < 2) 0.0 else nPr(a, b)
+                            "nhr", "h" -> if (args.size < 2) 0.0 else nCr(a + b - 1, b)
+                            else -> if (args.isNotEmpty()) args[0] else 0.0
                         }
-                        "nCr", "C" -> {
-                            if (args.size < 2) 0.0 else {
-                                val n = args[0].toInt()
-                                val r = args[1].toInt()
-                                nCr(n.toDouble(), r.toDouble())
-                            }
-                        }
-                        "nPr", "P" -> {
-                            if (args.size < 2) 0.0 else {
-                                val n = args[0].toInt()
-                                val r = args[1].toInt()
-                                nPr(n.toDouble(), r.toDouble())
-                            }
-                        }
-                        "nHr", "H" -> {
-                            if (args.size < 2) 0.0 else {
-                                val n = args[0].toInt()
-                                val r = args[1].toInt()
-                                // H(n, r) = C(n+r-1, r)
-                                nCr((n + r - 1).toDouble(), r.toDouble())
-                            }
-                        }
-                        else -> args[0]
                     }
                 } else {
                     throw RuntimeException("Unexpected character: " + ch.toChar())
@@ -155,6 +166,7 @@ object MathEvaluator {
                 if (eat('!'.code)) {
                     x = gamma(x + 1.0)
                 }
+                while (eat('°'.code)) { /* degree symbol ignored as we are in degree mode */ }
                 if (eat('^'.code)) x = x.pow(parseFactor())
                 return x
             }

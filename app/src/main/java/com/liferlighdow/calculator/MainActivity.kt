@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         }
         numericIds.forEach { findViewById<MaterialButton>(it)?.setOnClickListener(numListener) }
 
-        val ops = mapOf(R.id.btnAdd to "+", R.id.btnSub to "-", R.id.btnMul to "×", R.id.btnDiv to "÷", R.id.btnPercent to "%", R.id.btnPow to "^", R.id.btnSqrt to "√", R.id.btnFact to "!", R.id.btnComma to ",")
+        val ops = mapOf(R.id.btnAdd to "+", R.id.btnSub to "-", R.id.btnMul to "×", R.id.btnDiv to "÷", R.id.btnPercent to "%", R.id.btnPow to "^", R.id.btnSqrt to "√(", R.id.btnFact to "!", R.id.btnComma to ",")
         val opListener = View.OnClickListener { v ->
             v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
             insertText(ops[v.id] ?: "")
@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
             val text = tvExpression.text.toString(); val cursor = tvExpression.selectionStart
             if (cursor > 0) {
                 val before = text.substring(0, cursor); val after = text.substring(cursor)
-                val funcs = listOf("asinh(", "acosh(", "atanh(", "asin(", "acos(", "atan(", "sinh(", "cosh(", "tanh(", "log2(", "sqrt(", "cbrt(", "ceil(", "floor(", "abs(", "exp(", "sin(", "cos(", "tan(", "sec(", "csc(", "cot(", "log(", "ln(", "nCr(", "nPr(", "gcd(", "lcm(")
+                val funcs = listOf("asinh(", "acosh(", "atanh(", "asin(", "acos(", "atan(", "sinh(", "cosh(", "tanh(", "log2(", "sqrt(", "cbrt(", "ceil(", "floor(", "abs(", "exp(", "sin(", "cos(", "tan(", "sec(", "csc(", "cot(", "log(", "ln(", "P(", "C(", "H(", "gcd(", "lcm(", "√(", "∛(")
                 var found = false
                 for (f in funcs) { if (before.endsWith(f)) { tvExpression.setText(before.dropLast(f.length) + after); tvExpression.setSelection(cursor - f.length); found = true; break } }
                 if (!found) { tvExpression.setText(before.dropLast(1) + after); tvExpression.setSelection(cursor - 1) }
@@ -155,7 +155,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupScientificButtons() {
-        val sci = mapOf(R.id.btnSin to "sin(", R.id.btnCos to "cos(", R.id.btnTan to "tan(", R.id.btnSec to "sec(", R.id.btnCsc to "csc(", R.id.btnCot to "cot(", R.id.btnAsin to "asin(", R.id.btnAcos to "acos(", R.id.btnAtan to "atan(", R.id.btnSinh to "sinh(", R.id.btnCosh to "cosh(", R.id.btnTanh to "tanh(", R.id.btnAsinh to "asinh(", R.id.btnAcosh to "acosh(", R.id.btnAtanh to "atanh(", R.id.btnLog to "log(", R.id.btnLn to "ln(", R.id.btnLog2 to "log2(", R.id.btnCbrt to "∛", R.id.btnAbs to "abs(", R.id.btnCeil to "ceil(", R.id.btnFloor to "floor(", R.id.btnPi to "π", R.id.btnE to "e", R.id.btnPhi to "φ", R.id.btnGamma to "γ", R.id.btnImaginary to "√(-1)", R.id.btnGCD to "gcd(", R.id.btnLCM to "lcm(", R.id.btnNcr to "C(", R.id.btnNpr to "P(", R.id.btnNhr to "H(", R.id.btnDegree to "°")
+        val sci = mapOf(R.id.btnSin to "sin(", R.id.btnCos to "cos(", R.id.btnTan to "tan(", R.id.btnSec to "sec(", R.id.btnCsc to "csc(", R.id.btnCot to "cot(", R.id.btnAsin to "asin(", R.id.btnAcos to "acos(", R.id.btnAtan to "atan(", R.id.btnSinh to "sinh(", R.id.btnCosh to "cosh(", R.id.btnTanh to "tanh(", R.id.btnAsinh to "asinh(", R.id.btnAcosh to "acosh(", R.id.btnAtanh to "atanh(", R.id.btnLog to "log(", R.id.btnLn to "ln(", R.id.btnLog2 to "log2(", R.id.btnCbrt to "∛(", R.id.btnAbs to "abs(", R.id.btnCeil to "ceil(", R.id.btnFloor to "floor(", R.id.btnPi to "π", R.id.btnE to "e", R.id.btnPhi to "φ", R.id.btnGamma to "γ", R.id.btnImaginary to "√(-1)", R.id.btnGCD to "gcd(", R.id.btnLCM to "lcm(", R.id.btnNcr to "C(", R.id.btnNpr to "P(", R.id.btnNhr to "H(", R.id.btnDegree to "°")
         val sciListener = View.OnClickListener { v ->
             v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
             insertText(sci[v.id] ?: "")
@@ -172,13 +172,13 @@ class MainActivity : AppCompatActivity() {
         val expr = tvExpression.text.toString()
         if (expr.isEmpty()) { tvResult.setText("0"); tvResult.tag = 0.0; return }
         try {
-            var p = expr.replace("×", "*").replace("÷", "/").replace("π", PI.toString()).replace("e", E.toString()).replace("φ", "1.6180339887").replace("γ", "0.5772156649").replace("i", "(sqrt(-1))").replace("%", "/100")
-            p = p.replace("°", "*(${PI / 180.0})")
+            val p = expr.replace("×", "*").replace("÷", "/").replace("%", "/100")
             
             // For live calculation, don't try to parse incomplete expressions
             if (!isFinal) {
                 val lastChar = expr.last().toString()
-                if ("+-×÷*/^ ( ,".contains(lastChar) || expr.endsWith("sin") || expr.endsWith("cos") || expr.endsWith("tan") || expr.endsWith("log") || expr.endsWith("ln") || expr.endsWith("gcd") || expr.endsWith("lcm") || expr.endsWith("nCr") || expr.endsWith("nPr") || expr.endsWith("P") || expr.endsWith("C") || expr.endsWith("H")) return
+                val incompleteFuncs = listOf("sin", "cos", "tan", "sec", "csc", "cot", "asin", "acos", "atan", "sinh", "cosh", "tanh", "asinh", "acosh", "atanh", "log", "ln", "gcd", "lcm", "P", "C", "H", "abs", "sqrt", "cbrt", "ceil", "floor", "√", "∛")
+                if ("+-×÷*/^ ( ,".contains(lastChar) || incompleteFuncs.any { expr.endsWith(it) }) return
             }
 
             val res = MathEvaluator.evaluate(p)
@@ -190,11 +190,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun formatResult(d: Double): String {
         if (d.isNaN() || d.isInfinite()) return "Error"
-        val absD = abs(d)
+        var value = d
+        if (abs(value) < 1e-12) value = 0.0
+        val absD = abs(value)
         return if (absD >= 1e12 || (absD < 1e-7 && absD > 0)) {
-            DecimalFormat("0.######E0").format(d).lowercase()
+            DecimalFormat("0.######E0").format(value).lowercase()
         } else {
-            val formatted = DecimalFormat("#.##########").format(d)
+            val formatted = DecimalFormat("#.##########").format(value)
             if (formatted == "-0") "0" else formatted
         }
     }
