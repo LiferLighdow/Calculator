@@ -1,10 +1,13 @@
 package com.liferlighdow.calculator
 
+import java.math.BigDecimal
+import java.math.MathContext
 import java.util.*
 import kotlin.math.*
 
 class MathNotepadEvaluator {
-    private val variables = mutableMapOf<String, Double>()
+    private val mc = MathContext.DECIMAL128
+    private val variables = mutableMapOf<String, BigDecimal>()
     private val assignedVariables = mutableSetOf<String>()
     private val equations = mutableListOf<Pair<String, String>>()
 
@@ -20,9 +23,9 @@ class MathNotepadEvaluator {
     }
 
     private fun resetConstants() {
-        variables["pi"] = PI
-        variables["e"] = E
-        variables["π"] = PI
+        variables["pi"] = BigDecimal(PI.toString())
+        variables["e"] = BigDecimal(E.toString())
+        variables["π"] = BigDecimal(PI.toString())
     }
 
     fun clearVariables() {
@@ -33,7 +36,6 @@ class MathNotepadEvaluator {
     }
 
     fun addEquation(left: String, right: String) {
-        // If left is a pure variable name, it's an assignment
         if (isValidVariableName(left)) {
             try {
                 val value = evaluateExpression(right)
@@ -52,7 +54,6 @@ class MathNotepadEvaluator {
             unknownVars.addAll(extractVariables(r))
         }
         
-        // Remove constants and assigned variables
         unknownVars.remove("pi")
         unknownVars.remove("e")
         unknownVars.remove("π")
@@ -62,18 +63,17 @@ class MathNotepadEvaluator {
         if (varList.isEmpty()) return
 
         fun computeCost(p: DoubleArray): Double {
-            varList.forEachIndexed { i, name -> variables[name] = p[i] }
+            varList.forEachIndexed { i, name -> variables[name] = BigDecimal(p[i].toString()) }
             var totalError = 0.0
             for ((l, r) in equations) {
                 try {
-                    val diff = evaluateExpression(l) - evaluateExpression(r)
+                    val diff = (evaluateExpression(l).subtract(evaluateExpression(r), mc)).toDouble()
                     totalError += diff * diff
                 } catch (e: Exception) {}
             }
             return totalError
         }
 
-        // Numerical solver: Try multiple starting points to avoid local minima
         val startPoints = listOf(
             DoubleArray(varList.size) { 1.0 },
             DoubleArray(varList.size) { 0.0 },
@@ -121,7 +121,6 @@ class MathNotepadEvaluator {
             }
         }
 
-        // Polishing: Try rounding to nearest integer if cost is very low
         if (minGlobalCost < 0.1) {
             val roundedP = DoubleArray(bestP.size) { i -> round(bestP[i]) }
             if (computeCost(roundedP) < minGlobalCost + 1e-9) {
@@ -129,7 +128,7 @@ class MathNotepadEvaluator {
             }
         }
         
-        varList.forEachIndexed { i, name -> variables[name] = bestP[i] }
+        varList.forEachIndexed { i, name -> variables[name] = BigDecimal(bestP[i].toString()) }
     }
 
     fun evaluate(expression: String): EvaluationResult {
@@ -140,19 +139,19 @@ class MathNotepadEvaluator {
             val right = parts[1].trim()
             
             if (assignedVariables.contains(left)) {
-                return EvaluationResult(variables[left] ?: 0.0, left)
+                return EvaluationResult((variables[left] ?: BigDecimal.ZERO).toDouble(), left)
             }
             
             val vars = extractVariables(left) + extractVariables(right)
             val varName = vars.firstOrNull { !assignedVariables.contains(it) && it != "pi" && it != "e" && it != "π" } ?: "x"
-            return EvaluationResult(variables[varName] ?: 0.0, varName, true)
+            return EvaluationResult((variables[varName] ?: BigDecimal.ZERO).toDouble(), varName, true)
         }
-        return EvaluationResult(evaluateExpression(cleanExpr))
+        return EvaluationResult(evaluateExpression(cleanExpr).toDouble())
     }
 
     private fun extractVariables(expr: String): List<String> {
         val tokens = tokenize(expr)
-        val functions = setOf("sin", "cos", "tan", "log", "ln", "sqrt", "nCr", "nPr")
+        val functions = setOf("sin", "cos", "tan", "log", "ln", "sqrt", "nCr", "nPr", "P", "C", "H", "gcd", "lcm")
         val constants = setOf("pi", "e", "π")
         return tokens.filter { it[0].isLetter() && !functions.contains(it) && !constants.contains(it) }.distinct()
     }
@@ -161,7 +160,7 @@ class MathNotepadEvaluator {
         return name.isNotEmpty() && name.all { it.isLetter() || it == '_' }
     }
 
-    private fun evaluateExpression(expr: String): Double {
+    private fun evaluateExpression(expr: String): BigDecimal {
         val tokens = tokenize(expr)
         val rpn = shuntingYard(tokens)
         return evaluateRPN(rpn)
@@ -217,7 +216,7 @@ class MathNotepadEvaluator {
         val output = mutableListOf<String>()
         val stack = Stack<String>()
         val precedence = mapOf("+" to 1, "-" to 1, "*" to 2, "/" to 2, "^" to 3, "!" to 4)
-        val functions = setOf("sin", "cos", "tan", "log", "ln", "sqrt", "nCr", "nPr")
+        val functions = setOf("sin", "cos", "tan", "log", "ln", "sqrt", "nCr", "nPr", "P", "C", "H", "gcd", "lcm")
 
         for (token in tokens) {
             when {
@@ -248,28 +247,36 @@ class MathNotepadEvaluator {
         return output
     }
 
-    private fun evaluateRPN(rpn: List<String>): Double {
-        val stack = Stack<Double>()
+    private fun evaluateRPN(rpn: List<String>): BigDecimal {
+        val stack = Stack<BigDecimal>()
         for (token in rpn) {
             when {
-                token[0].isDigit() -> stack.push(token.toDouble())
-                token == "+" -> { if(stack.size < 2) return 0.0; val b = stack.pop(); val a = stack.pop(); stack.push(a + b) }
-                token == "-" -> { if(stack.size < 2) return 0.0; val b = stack.pop(); val a = stack.pop(); stack.push(a - b) }
-                token == "*" -> { if(stack.size < 2) return 0.0; val b = stack.pop(); val a = stack.pop(); stack.push(a * b) }
-                token == "/" -> { if(stack.size < 2) return 0.0; val b = stack.pop(); val a = stack.pop(); stack.push(if (b != 0.0) a / b else 0.0) }
-                token == "^" -> { if(stack.size < 2) return 0.0; val b = stack.pop(); val a = stack.pop(); stack.push(a.pow(b)) }
-                token == "!" -> { if(stack.isEmpty()) return 0.0; stack.push(factorial(stack.pop())) }
-                token == "sin" -> { if(stack.isEmpty()) return 0.0; stack.push(sin(stack.pop())) }
-                token == "cos" -> { if(stack.isEmpty()) return 0.0; stack.push(cos(stack.pop())) }
-                token == "tan" -> { if(stack.isEmpty()) return 0.0; stack.push(tan(stack.pop())) }
-                token == "sqrt" -> { if(stack.isEmpty()) return 0.0; stack.push(sqrt(stack.pop())) }
-                token == "nCr" -> { if(stack.size < 2) return 0.0; val r = stack.pop(); val n = stack.pop(); stack.push(nCr(n, r)) }
-                token == "nPr" -> { if(stack.size < 2) return 0.0; val r = stack.pop(); val n = stack.pop(); stack.push(nPr(n, r)) }
+                token[0].isDigit() -> stack.push(BigDecimal(token))
+                token == "+" -> { if(stack.size < 2) return BigDecimal.ZERO; val b = stack.pop(); val a = stack.pop(); stack.push(a.add(b, mc)) }
+                token == "-" -> { if(stack.size < 2) return BigDecimal.ZERO; val b = stack.pop(); val a = stack.pop(); stack.push(a.subtract(b, mc)) }
+                token == "*" -> { if(stack.size < 2) return BigDecimal.ZERO; val b = stack.pop(); val a = stack.pop(); stack.push(a.multiply(b, mc)) }
+                token == "/" -> { if(stack.size < 2) return BigDecimal.ZERO; val b = stack.pop(); val a = stack.pop(); stack.push(if (b.compareTo(BigDecimal.ZERO) != 0) a.divide(b, mc) else BigDecimal.ZERO) }
+                token == "^" -> { 
+                    if(stack.size < 2) return BigDecimal.ZERO
+                    val b = stack.pop()
+                    val a = stack.pop()
+                    stack.push(try { a.pow(b.toInt(), mc) } catch(e: Exception) { BigDecimal(a.toDouble().pow(b.toDouble()).toString()) }) 
+                }
+                token == "!" -> { if(stack.isEmpty()) return BigDecimal.ZERO; stack.push(BigDecimal(factorial(stack.pop().toDouble()).toString())) }
+                token == "sin" -> { if(stack.isEmpty()) return BigDecimal.ZERO; stack.push(BigDecimal(sin(stack.pop().toDouble()).toString())) }
+                token == "cos" -> { if(stack.isEmpty()) return BigDecimal.ZERO; stack.push(BigDecimal(cos(stack.pop().toDouble()).toString())) }
+                token == "tan" -> { if(stack.isEmpty()) return BigDecimal.ZERO; stack.push(BigDecimal(tan(stack.pop().toDouble()).toString())) }
+                token == "sqrt" -> { if(stack.isEmpty()) return BigDecimal.ZERO; stack.push(BigDecimal(sqrt(stack.pop().toDouble()).toString())) }
+                token == "gcd" -> { if(stack.size < 2) return BigDecimal.ZERO; val b = stack.pop(); val a = stack.pop(); stack.push(BigDecimal(gcd(a.toLong(), b.toLong()).toString())) }
+                token == "lcm" -> { if(stack.size < 2) return BigDecimal.ZERO; val b = stack.pop(); val a = stack.pop(); stack.push(BigDecimal(lcm(a.toLong(), b.toLong()).toString())) }
+                token == "nCr" || token == "C" -> { if(stack.size < 2) return BigDecimal.ZERO; val r = stack.pop(); val n = stack.pop(); stack.push(BigDecimal(nCr(n.toDouble(), r.toDouble()).toString())) }
+                token == "nPr" || token == "P" -> { if(stack.size < 2) return BigDecimal.ZERO; val r = stack.pop(); val n = stack.pop(); stack.push(BigDecimal(nPr(n.toDouble(), r.toDouble()).toString())) }
+                token == "H" -> { if(stack.size < 2) return BigDecimal.ZERO; val r = stack.pop(); val n = stack.pop(); stack.push(BigDecimal(nCr(n.toDouble() + r.toDouble() - 1, r.toDouble()).toString())) }
                 variables.containsKey(token) -> stack.push(variables[token]!!)
-                else -> stack.push(0.0)
+                else -> stack.push(BigDecimal.ZERO)
             }
         }
-        return if (stack.isNotEmpty()) stack.pop() else 0.0
+        return if (stack.isNotEmpty()) stack.pop() else BigDecimal.ZERO
     }
 
     private fun factorial(n: Double): Double {
@@ -282,11 +289,33 @@ class MathNotepadEvaluator {
 
     private fun nCr(n: Double, r: Double): Double {
         if (r < 0 || r > n) return 0.0
-        return factorial(n) / (factorial(r) * factorial(n - r))
+        var rVal = r
+        if (rVal > n / 2) rVal = n - rVal
+        var res = 1.0
+        for (i in 1..rVal.toInt()) res = res * (n - rVal + i) / i
+        return res
     }
 
     private fun nPr(n: Double, r: Double): Double {
         if (r < 0 || r > n) return 0.0
-        return factorial(n) / factorial(n - r)
+        var res = 1.0
+        for (i in 0 until r.toInt()) res *= (n - i)
+        return res
+    }
+    
+    private fun gcd(a: Long, b: Long): Long {
+        var x = abs(a)
+        var y = abs(b)
+        while (y != 0L) {
+            val t = y
+            y = x % y
+            x = t
+        }
+        return x
+    }
+    
+    private fun lcm(a: Long, b: Long): Long {
+        if (a == 0L || b == 0L) return 0L
+        return abs(a * b) / gcd(a, b)
     }
 }
