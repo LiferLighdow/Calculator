@@ -71,7 +71,6 @@
     <string name="chip_loan">कर्ज</string>
     <string name="chip_tip">टीप</string>
     <string name="chip_sigma">सिग्मा (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">क्रमांक माहिती</string>
     <string name="gender_male">पुरुष</string>
     <string name="gender_female">स्त्री</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">प्रारंभ मूल्य (n)</string>
     <string name="label_sigma_end">अंतिम मूल्य (m)</string>
     <string name="label_sigma_detail_format">%1$d पासून %2$d पर्यंत Σ</string>
-    <string name="label_n_input">n (एकूण आयटम)</string>
-    <string name="label_r_input">r (निवडलेले आयटम)</string>
-    <string name="type_permutation">क्रमचय (P)</string>
-    <string name="type_combination">निवड (C)</string>
-    <string name="type_multiset_combination">पुनरावृत्तीसह निवड (H)</string>
     <string name="label_num_info_input">एक संख्या प्रविष्ट करा</string>
     <string name="label_result_special">निकाल</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

@@ -71,7 +71,6 @@
     <string name="chip_loan">Kredi</string>
     <string name="chip_tip">Bahşiş</string>
     <string name="chip_sigma">Sigma (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">Sayı Bilgisi</string>
     <string name="gender_male">Erkek</string>
     <string name="gender_female">Kadın</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">Başlangıç (n)</string>
     <string name="label_sigma_end">Bitiş (m)</string>
     <string name="label_sigma_detail_format">%1$d\'den %2$d\'ye Σ</string>
-    <string name="label_n_input">n (Toplam eleman)</string>
-    <string name="label_r_input">r (Seçilen eleman)</string>
-    <string name="type_permutation">Permütasyon (P)</string>
-    <string name="type_combination">Kombinasyon (C)</string>
-    <string name="type_multiset_combination">Tekrarlı Kombinasyon (H)</string>
     <string name="label_num_info_input">Bir sayı girin</string>
     <string name="label_result_special">Sonuç</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

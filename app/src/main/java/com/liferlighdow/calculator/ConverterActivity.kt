@@ -4,7 +4,6 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -60,7 +59,7 @@ class ConverterActivity : AppCompatActivity() {
         "坪" to 3.305785, "甲" to 9699.17, "分" to 969.917, "才" to 0.091827, "英畝 (acre)" to 4046.856, "平方英呎 (ft²)" to 0.092903,
         "度 (°)" to 1.0, "弧度 (rad)" to 180.0 / PI, "毫弧度 (mrad)" to 0.18 / PI, "梯度 (grad)" to 0.9, "圓周 (rev)" to 360.0, "密位 (mil)" to 0.05625, "點 (pt)" to 11.25, "分點 (bin)" to 1.40625, "分 (')" to 1.0/60.0, "秒 (\")" to 1.0/3600.0,
         "公斤 (kg)" to 1.0, "公克 (g)" to 0.001, "毫克 (mg)" to 1e-6, "微克 (µg)" to 1e-9, "公噸 (t)" to 1000.0, "磅 (lb)" to 0.453592, "盎司 (oz)" to 0.0283495, "台斤" to 0.6, "台兩" to 0.0375, "克拉 (ct)" to 0.0002,
-        "帕斯卡 (Pa)" to 1.0, "百帕 (hPa)" to 100.0, "仟帕 (kPa)" to 1000.0, "百萬帕 (MPa)" to 1000000.0, "巴 (bar)" to 100000.0, "毫巴 (mbar)" to 100.0, "標準大氣壓 (atm)" to 101325.0, "托 (Torr)" to 133.322, "毫米汞柱 (mmHg)" to 133.322, "英吋汞柱 (inHg)" to 3386.39, "磅每平方英吋 (psi)" to 6894.76, "公斤重每平方公分 (kgf/cm²)" to 98066.5, "水柱公尺 (mH2O)" to 9806.65, "達因每平方公分 (dyn/cm²) " to 0.1,
+        "帕斯卡 (Pa)" to 1.0, "百帕 (hPa)" to 100.0, "仟帕 (kPa)" to 1000.0, "百萬帕 (MPa)" to 1000000.0, "巴 (bar)" to 100000.0, "毫巴 (mbar)" to 100.0, "標準大氣壓 (atm)" to 101325.0, "托 (Torr)" to 133.322, "毫米汞柱 (mmHg)" to 133.322, "英吋汞柱 (inHg)" to 3386.39, "磅每平方英吋 (psi)" to 6894.76, "公斤重每平方公分 (kgf/cm²)" to 98066.5, "水柱公尺 (mH2O)" to 9806.65, "達因每平方公分 (dyn/cm²)" to 0.1,
         "立方公分 (cm³)" to 0.001, "立方公尺 (m³)" to 1000.0, "立方公里 (km³)" to 1e12,
         "公升 (L)" to 1.0, "毫升 (mL)" to 0.001, "公秉 (kL)" to 1000.0, "加侖 (gal)" to 3.78541, "品脫 (pt)" to 0.473176,
         "公尺/秒 (m/s)" to 1.0, "公里/小時 (km/h)" to 1.0/3.6, "英哩/小時 (mph)" to 0.44704, "節 (kn)" to 0.514444, "馬赫 (Mach)" to 340.3, "英尺每秒 (ft/s)" to 0.3048, "英吋每秒 (ips)" to 0.0254, "公分每秒 (cm/s)" to 0.01, "公里每秒 (km/s)" to 1000.0, "光速 (c)" to 299792458.0,
@@ -71,7 +70,7 @@ class ConverterActivity : AppCompatActivity() {
         "安培 (A)" to 1.0, "毫安培 (mA)" to 0.001, "伏特 (V)" to 1.0, "歐姆 (Ω)" to 1.0, "瓦特 (W)" to 1.0,
         "牛頓 (N)" to 1.0, "公斤重 (kgf)" to 9.80665, "磅力 (lbf)" to 4.44822, "公克重 (gf)" to 0.00980665, "達因 (dyn)" to 1e-5, "磅達 (pdl)" to 0.138255, "噸重 (tf)" to 9806.65, "千牛頓 (kN)" to 1000.0,
         "勒克斯 (lx)" to 1.0, "呎燭光 (fc)" to 10.7639,
-        "焦耳 (J)" to 1.0, "兆焦耳 (MJ)" to 1e6, "拍焦耳 (PJ)" to 1e15, "卡 (cal)" to 4.184, "大卡 (kcal)" to 4184.0, "瓦特小時 (Wh)" to 3600.0, "千瓦小時 (kWh)" to 3.6e6, "電子伏트 (eV)" to 1.602176634e-19, "爾格 (erg)" to 1e-7, "英國熱量單位 (BTU)" to 1055.056, "德熱姆 (th)" to 1.055056e8, "桶油當量 (boe)" to 6.1178632e9, "噸煤當量 (tce)" to 2.93076e10, "英尺磅 (ft·lb)" to 1.355818
+        "焦耳 (J)" to 1.0, "兆焦耳 (MJ)" to 1e6, "拍焦耳 (PJ)" to 1e15, "卡 (cal)" to 4.184, "大卡 (kcal)" to 4184.0, "瓦特小時 (Wh)" to 3600.0, "千瓦小時 (kWh)" to 3.6e6, "電子伏特 (eV)" to 1.602176634e-19, "爾格 (erg)" to 1e-7, "英國熱量單位 (BTU)" to 1055.056, "德熱姆 (th)" to 1.055056e8, "桶油當量 (boe)" to 6.1178632e9, "噸煤當量 (tce)" to 2.93076e10, "英尺磅 (ft·lb)" to 1.355818
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

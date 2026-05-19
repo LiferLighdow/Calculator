@@ -71,7 +71,6 @@
     <string name="chip_loan">Préstamo</string>
     <string name="chip_tip">Propina</string>
     <string name="chip_sigma">Sigma (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">Info. de número</string>
     <string name="gender_male">Masculino</string>
     <string name="gender_female">Femenino</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">Valor inicial (n)</string>
     <string name="label_sigma_end">Valor final (m)</string>
     <string name="label_sigma_detail_format">Σ desde %1$d hasta %2$d</string>
-    <string name="label_n_input">n (Total de elementos)</string>
-    <string name="label_r_input">r (Elementos seleccionados)</string>
-    <string name="type_permutation">Permutación (P)</string>
-    <string name="type_combination">Combinación (C)</string>
-    <string name="type_multiset_combination">Combinación con repetición (H)</string>
     <string name="label_num_info_input">Ingrese un número</string>
     <string name="label_result_special">Resultado</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

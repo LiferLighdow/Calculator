@@ -71,7 +71,6 @@
     <string name="chip_loan">대출</string>
     <string name="chip_tip">팁</string>
     <string name="chip_sigma">시그마 (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">숫자 정보</string>
     <string name="gender_male">남성</string>
     <string name="gender_female">여성</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">시작 값 (n)</string>
     <string name="label_sigma_end">끝 값 (m)</string>
     <string name="label_sigma_detail_format">%1$d부터 %2$d까지의 Σ</string>
-    <string name="label_n_input">n (전체 개수)</string>
-    <string name="label_r_input">r (선택 개수)</string>
-    <string name="type_permutation">순열 (P)</string>
-    <string name="type_combination">조합 (C)</string>
-    <string name="type_multiset_combination">중복 조합 (H)</string>
     <string name="label_num_info_input">숫자 입력</string>
     <string name="label_result_special">결과</string>
     <string name="label_hex_prefix">16진수: %1$s</string>

@@ -71,7 +71,6 @@
     <string name="chip_loan">Darlehen</string>
     <string name="chip_tip">Trinkgeld</string>
     <string name="chip_sigma">Sigma (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">Zahlen-Info</string>
     <string name="gender_male">Männlich</string>
     <string name="gender_female">Weiblich</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">Startwert (n)</string>
     <string name="label_sigma_end">Endwert (m)</string>
     <string name="label_sigma_detail_format">Σ von %1$d bis %2$d</string>
-    <string name="label_n_input">n (Gesamtanzahl)</string>
-    <string name="label_r_input">r (Ausgewählt)</string>
-    <string name="type_permutation">Permutation (P)</string>
-    <string name="type_combination">Kombination (C)</string>
-    <string name="type_multiset_combination">Kombination mit Wiederholung (H)</string>
     <string name="label_num_info_input">Zahl eingeben</string>
     <string name="label_result_special">Ergebnis</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

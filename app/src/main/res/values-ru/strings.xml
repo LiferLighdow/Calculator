@@ -71,7 +71,6 @@
     <string name="chip_loan">Кредит</string>
     <string name="chip_tip">Чаевые</string>
     <string name="chip_sigma">Сигма (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">О числе</string>
     <string name="gender_male">Мужской</string>
     <string name="gender_female">Женский</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">Начало (n)</string>
     <string name="label_sigma_end">Конец (m)</string>
     <string name="label_sigma_detail_format">Σ от %1$d до %2$d</string>
-    <string name="label_n_input">n (Всего элементов)</string>
-    <string name="label_r_input">r (Выбрано элементов)</string>
-    <string name="type_permutation">Перестановка (P)</string>
-    <string name="type_combination">Сочетание (C)</string>
-    <string name="type_multiset_combination">Сочетание с повторениями (H)</string>
     <string name="label_num_info_input">Введите число</string>
     <string name="label_result_special">Результат</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

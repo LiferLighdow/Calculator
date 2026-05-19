@@ -71,7 +71,6 @@
     <string name="chip_loan">లోన్</string>
     <string name="chip_tip">చిట్కా</string>
     <string name="chip_sigma">సిగ్మా (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">సంఖ్య సమాచారం</string>
     <string name="gender_male">పురుషుడు</string>
     <string name="gender_female">స్త్రీ</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">ప్రారంభ విలువ (n)</string>
     <string name="label_sigma_end">ముగింపు విలువ (m)</string>
     <string name="label_sigma_detail_format">%1$d నుండి %2$d వరకు Σ</string>
-    <string name="label_n_input">n (మొత్తం అంశాలు)</string>
-    <string name="label_r_input">r (ఎంచుకున్న అంశాలు)</string>
-    <string name="type_permutation">క్రమయం (P)</string>
-    <string name="type_combination">సంయోగం (C)</string>
-    <string name="type_multiset_combination">పునరావృత సంయోగం (H)</string>
     <string name="label_num_info_input">సంఖ్యను నమోదు చేయండి</string>
     <string name="label_result_special">ఫలితం</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

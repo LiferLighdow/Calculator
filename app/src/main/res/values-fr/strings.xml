@@ -71,7 +71,6 @@
     <string name="chip_loan">Prêt</string>
     <string name="chip_tip">Pourboire</string>
     <string name="chip_sigma">Sigma (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">Info. nombre</string>
     <string name="gender_male">Masculin</string>
     <string name="gender_female">Féminin</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">Valeur de départ (n)</string>
     <string name="label_sigma_end">Valeur de fin (m)</string>
     <string name="label_sigma_detail_format">Σ de %1$d à %2$d</string>
-    <string name="label_n_input">n (Total d\'éléments)</string>
-    <string name="label_r_input">r (Éléments sélectionnés)</string>
-    <string name="type_permutation">Permutation (P)</string>
-    <string name="type_combination">Combinaison (C)</string>
-    <string name="type_multiset_combination">Combinaison avec répétition (H)</string>
     <string name="label_num_info_input">Entrer un nombre</string>
     <string name="label_result_special">Résultat</string>
     <string name="label_hex_prefix">HEX : %1$s</string>

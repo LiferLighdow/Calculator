@@ -76,7 +76,6 @@
     <string name="chip_loan">ローン</string>
     <string name="chip_tip">チップ</string>
     <string name="chip_sigma">シグマ (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">数値情報</string>
     <string name="gender_male">男性</string>
     <string name="gender_female">女性</string>
@@ -103,11 +102,6 @@
     <string name="label_sigma_start">開始値 (n)</string>
     <string name="label_sigma_end">終了値 (m)</string>
     <string name="label_sigma_detail_format">%1$d から %2$d までの Σ</string>
-    <string name="label_n_input">n (総数)</string>
-    <string name="label_r_input">r (選択数)</string>
-    <string name="type_permutation">順列 (P)</string>
-    <string name="type_combination">組合せ (C)</string>
-    <string name="type_multiset_combination">重複組合せ (H)</string>
     <string name="label_num_info_input">数値を入力</string>
     <string name="label_result_special">計算結果</string>
     <string name="label_hex_prefix">16進数: %1$s</string>

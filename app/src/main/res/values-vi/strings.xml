@@ -71,7 +71,6 @@
     <string name="chip_loan">Khoản vay</string>
     <string name="chip_tip">Tiền tip</string>
     <string name="chip_sigma">Sigma (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">Thông tin số</string>
     <string name="gender_male">Nam</string>
     <string name="gender_female">Nữ</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">Giá trị bắt đầu (n)</string>
     <string name="label_sigma_end">Giá trị kết thúc (m)</string>
     <string name="label_sigma_detail_format">Σ từ %1$d đến %2$d</string>
-    <string name="label_n_input">n (Tổng số phần tử)</string>
-    <string name="label_r_input">r (Số phần tử được chọn)</string>
-    <string name="type_permutation">Chỉnh hợp (P)</string>
-    <string name="type_combination">Tổ hợp (C)</string>
-    <string name="type_multiset_combination">Tổ hợp lặp (H)</string>
     <string name="label_num_info_input">Nhập một số</string>
     <string name="label_result_special">Kết quả</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

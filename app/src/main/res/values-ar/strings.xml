@@ -71,7 +71,6 @@
     <string name="chip_loan">القرض</string>
     <string name="chip_tip">البقشيش</string>
     <string name="chip_sigma">سيجما (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">معلومات الرقم</string>
     <string name="gender_male">ذكر</string>
     <string name="gender_female">أنثى</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">قيمة البداية (n)</string>
     <string name="label_sigma_end">قيمة النهاية (m)</string>
     <string name="label_sigma_detail_format">Σ من %1$d إلى %2$d</string>
-    <string name="label_n_input">n (إجمالي العناصر)</string>
-    <string name="label_r_input">r (العناصر المختارة)</string>
-    <string name="type_permutation">تبديل (P)</string>
-    <string name="type_combination">توافيق (C)</string>
-    <string name="type_multiset_combination">توافيق مع التكرار (H)</string>
     <string name="label_num_info_input">أدخل رقماً</string>
     <string name="label_result_special">النتيجة</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

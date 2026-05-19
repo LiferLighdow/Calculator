@@ -71,7 +71,6 @@
     <string name="chip_loan">เงินกู้</string>
     <string name="chip_tip">ทิป</string>
     <string name="chip_sigma">ซิกมา (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">ข้อมูลตัวเลข</string>
     <string name="gender_male">ชาย</string>
     <string name="gender_female">หญิง</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">ค่าเริ่มต้น (n)</string>
     <string name="label_sigma_end">ค่าสิ้นสุด (m)</string>
     <string name="label_sigma_detail_format">Σ จาก %1$d ถึง %2$d</string>
-    <string name="label_n_input">n (จำนวนทั้งหมด)</string>
-    <string name="label_r_input">r (จำนวนที่เลือก)</string>
-    <string name="type_permutation">การเรียงสับเปลี่ยน (P)</string>
-    <string name="type_combination">การจัดหมู่ (C)</string>
-    <string name="type_multiset_combination">การจัดหมู่แบบซ้ำ (H)</string>
     <string name="label_num_info_input">กรอกตัวเลข</string>
     <string name="label_result_special">ผลลัพธ์</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

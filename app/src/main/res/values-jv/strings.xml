@@ -71,7 +71,6 @@
     <string name="chip_loan">Pinjaman</string>
     <string name="chip_tip">Tip</string>
     <string name="chip_sigma">Sigma (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">Info Angka</string>
     <string name="gender_male">Lanang</string>
     <string name="gender_female">Wadon</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">Nilai awal (n)</string>
     <string name="label_sigma_end">Nilai akhir (m)</string>
     <string name="label_sigma_detail_format">Σ saka %1$d menyang %2$d</string>
-    <string name="label_n_input">n (Total item)</string>
-    <string name="label_r_input">r (Item sing dipilih)</string>
-    <string name="type_permutation">Permutasi (P)</string>
-    <string name="type_combination">Kombinasi (C)</string>
-    <string name="type_multiset_combination">Kombinasi kanthi pengulangan (H)</string>
     <string name="label_num_info_input">Lebokake angka</string>
     <string name="label_result_special">Hasil</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

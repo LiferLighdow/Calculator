@@ -65,6 +65,7 @@
     <string name="label_perimeter">Perimeter</string>
     <string name="label_volume">Volume</string>
     <string name="label_surface_area">Surface Area</string>
+    <string name="error_angle_limit">Angle cannot exceed 360°</string>
 
     <!-- SpecialCalculatorsActivity -->
     <string name="title_special">Special Calculators</string>
@@ -78,7 +79,6 @@
     <string name="chip_tip">Tip</string>
     <string name="chip_sigma">Sigma (Σ)</string>
     <string name="chip_num_info">Num Info</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
     <string name="label_age">Age</string>
@@ -105,11 +105,6 @@
     <string name="label_sigma_end">End value (m)</string>
     <string name="label_sigma_detail_format">Σ from %1$d to %2$d</string>
     <string name="label_num_info_input">Enter a number</string>
-    <string name="label_n_input">n (Total items)</string>
-    <string name="label_r_input">r (Selected items)</string>
-    <string name="type_permutation">Permutation (P)</string>
-    <string name="type_combination">Combination (C)</string>
-    <string name="type_multiset_combination">Multiset Combination (H)</string>
     <string name="label_result_special">Result</string>
     <string name="label_hex_prefix">HEX: %1$s</string>
     <string name="label_bin_prefix">BIN: %1$s</string>

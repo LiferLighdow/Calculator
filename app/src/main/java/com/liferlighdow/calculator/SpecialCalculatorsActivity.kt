@@ -19,6 +19,7 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
 
     private lateinit var tvSpecialResult: TextView
     private lateinit var tvSpecialDetail: TextView
+    private lateinit var nsvResult: androidx.core.widget.NestedScrollView
     private lateinit var chipGroupSpecial: ChipGroup
 
     private lateinit var llBMI: LinearLayout
@@ -84,6 +85,7 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
     private fun initViews() {
         tvSpecialResult = findViewById(R.id.tvSpecialResult)
         tvSpecialDetail = findViewById(R.id.tvSpecialDetail)
+        nsvResult = findViewById(R.id.nsvResult)
         chipGroupSpecial = findViewById(R.id.chipGroupSpecial)
 
         llBMI = findViewById(R.id.llBMI)
@@ -185,6 +187,7 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
     }
 
     private fun performCalculation() {
+        nsvResult.scrollTo(0, 0)
         when (chipGroupSpecial.checkedChipId) {
             R.id.chipBMIBMR -> calculateBMIBMR()
             R.id.chipWorldClock -> calculateWorldClock()

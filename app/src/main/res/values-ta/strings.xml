@@ -71,7 +71,6 @@
     <string name="chip_loan">கடன்</string>
     <string name="chip_tip">டிப்</string>
     <string name="chip_sigma">சிக்மா (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">எண் தகவல்</string>
     <string name="gender_male">ஆண்</string>
     <string name="gender_female">பெண்</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">தொடக்க மதிப்பு (n)</string>
     <string name="label_sigma_end">முடிவு மதிப்பு (m)</string>
     <string name="label_sigma_detail_format">%1$d முதல் %2$d வரை Σ</string>
-    <string name="label_n_input">n (மொத்த உருப்படிகள்)</string>
-    <string name="label_r_input">r (தேர்ந்தெடுக்கப்பட்ட உருப்படிகள்)</string>
-    <string name="type_permutation">வரிசைமாற்றம் (P)</string>
-    <string name="type_combination">சேர்மானம் (C)</string>
-    <string name="type_multiset_combination">திரும்பத் திரும்ப வரும் சேர்மானம் (H)</string>
     <string name="label_num_info_input">ஒரு எண்ணை உள்ளிடவும்</string>
     <string name="label_result_special">முடிவு</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

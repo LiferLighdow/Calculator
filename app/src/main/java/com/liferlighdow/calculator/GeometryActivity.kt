@@ -191,6 +191,16 @@ class GeometryActivity : AppCompatActivity() {
         val shape = getCurrentShape()
         val isTwoInputs = tilInput2.visibility == View.VISIBLE
         val isThreeInputs = tilInput3.visibility == View.VISIBLE
+
+        if (shape == "Sector") {
+            if (val2 > 360.0) {
+                tilInput2.error = getString(R.string.error_angle_limit)
+            } else {
+                tilInput2.error = null
+            }
+        } else {
+            tilInput2.error = null
+        }
         
         if (val1 <= 0 || (isTwoInputs && val2 <= 0) || (isThreeInputs && val3 <= 0)) {
             tvResult1.text = "---"
@@ -227,8 +237,9 @@ class GeometryActivity : AppCompatActivity() {
                 res2 = PI * val1 * val1 * val2
             }
             "Sector" -> {
-                res1 = PI * val1 * val1 * (val2 / 360.0)
-                res2 = 2 * PI * val1 * (val2 / 360.0)
+                val angle = min(val2, 360.0)
+                res1 = PI * val1 * val1 * (angle / 360.0)
+                res2 = 2 * PI * val1 * (angle / 360.0)
             }
             "Pyramid" -> {
                 // Regular n-gonal pyramid: val1=side, val2=height, val3=n

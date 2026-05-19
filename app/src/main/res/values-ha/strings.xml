@@ -71,7 +71,6 @@
     <string name="chip_loan">Rance</string>
     <string name="chip_tip">Kyauta (Tip)</string>
     <string name="chip_sigma">Sigma (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">Bayanin lamba</string>
     <string name="gender_male">Namiji</string>
     <string name="gender_female">Mace</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">Farawa (n)</string>
     <string name="label_sigma_end">Karshe (m)</string>
     <string name="label_sigma_detail_format">Σ daga %1$d zuwa %2$d</string>
-    <string name="label_n_input">n (Jimlar abubuwa)</string>
-    <string name="label_r_input">r (Abubuwan da aka zaba)</string>
-    <string name="type_permutation">Permutation (P)</string>
-    <string name="type_combination">Combination (C)</string>
-    <string name="type_multiset_combination">Combination tare da maimaitawa (H)</string>
     <string name="label_num_info_input">Shigar da lamba</string>
     <string name="label_result_special">Sakamako</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

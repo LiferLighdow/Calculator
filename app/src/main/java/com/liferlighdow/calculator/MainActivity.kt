@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvResult: EditText
     private lateinit var drawerLayout: DrawerLayout
     private var stateError: Boolean = false
+    private var lastResult: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -137,9 +138,8 @@ class MainActivity : AppCompatActivity() {
                 calculateResult(true)
                 if (!stateError && tvResult.text.toString() != "Error") {
                     val resVal = tvResult.tag as? Double ?: 0.0
+                    lastResult = resVal
                     val fraction = toFraction(resVal)
-                    // If fraction exists, show it in small box, decimal in large box
-                    // User said "變回自動按下等於後的解", let's ensure the decimal result is the focus
                     val formattedDecimal = formatResult(resVal)
                     tvExpression.setText(formattedDecimal)
                     tvExpression.setSelection(tvExpression.text.length)
@@ -155,10 +155,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupScientificButtons() {
-        val sci = mapOf(R.id.btnSin to "sin(", R.id.btnCos to "cos(", R.id.btnTan to "tan(", R.id.btnSec to "sec(", R.id.btnCsc to "csc(", R.id.btnCot to "cot(", R.id.btnAsin to "asin(", R.id.btnAcos to "acos(", R.id.btnAtan to "atan(", R.id.btnSinh to "sinh(", R.id.btnCosh to "cosh(", R.id.btnTanh to "tanh(", R.id.btnAsinh to "asinh(", R.id.btnAcosh to "acosh(", R.id.btnAtanh to "atanh(", R.id.btnLog to "log(", R.id.btnLn to "ln(", R.id.btnLog2 to "log2(", R.id.btnCbrt to "∛(", R.id.btnAbs to "abs(", R.id.btnCeil to "ceil(", R.id.btnFloor to "floor(", R.id.btnPi to "π", R.id.btnE to "e", R.id.btnPhi to "φ", R.id.btnGamma to "γ", R.id.btnImaginary to "√(-1)", R.id.btnGCD to "gcd(", R.id.btnLCM to "lcm(", R.id.btnNcr to "C(", R.id.btnNpr to "P(", R.id.btnNhr to "H(", R.id.btnDegree to "°")
+        val sci = mapOf(R.id.btnSin to "sin(", R.id.btnCos to "cos(", R.id.btnTan to "tan(", R.id.btnSec to "sec(", R.id.btnCsc to "csc(", R.id.btnCot to "cot(", R.id.btnAsin to "asin(", R.id.btnAcos to "acos(", R.id.btnAtan to "atan(", R.id.btnSinh to "sinh(", R.id.btnCosh to "cosh(", R.id.btnTanh to "tanh(", R.id.btnAsinh to "asinh(", R.id.btnAcosh to "acosh(", R.id.btnAtanh to "atanh(", R.id.btnLog to "log(", R.id.btnLn to "ln(", R.id.btnLog2 to "log2(", R.id.btnCbrt to "∛(", R.id.btnAbs to "abs(", R.id.btnCeil to "ceil(", R.id.btnFloor to "floor(", R.id.btnPi to "π", R.id.btnE to "e", R.id.btnPhi to "φ", R.id.btnGamma to "γ", R.id.btnAns to "Ans", R.id.btnGCD to "gcd(", R.id.btnLCM to "lcm(", R.id.btnNcr to "C(", R.id.btnNpr to "P(", R.id.btnNhr to "H(", R.id.btnDegree to "°")
         val sciListener = View.OnClickListener { v ->
             v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
-            insertText(sci[v.id] ?: "")
+            if (v.id == R.id.btnAns) {
+                insertText(formatResult(lastResult))
+            } else {
+                insertText(sci[v.id] ?: "")
+            }
             calculateResult(false)
             if (v.id != R.id.btnDegree) drawerLayout.closeDrawer(GravityCompat.START)
         }

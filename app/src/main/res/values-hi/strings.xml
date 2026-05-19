@@ -71,7 +71,6 @@
     <string name="chip_loan">ऋण</string>
     <string name="chip_tip">बख्शीश</string>
     <string name="chip_sigma">सिग्मा (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">संख्या जानकारी</string>
     <string name="gender_male">पुरुष</string>
     <string name="gender_female">महिला</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">प्रारंभिक मान (n)</string>
     <string name="label_sigma_end">अंतिम मान (m)</string>
     <string name="label_sigma_detail_format">%1$d से %2$d तक Σ</string>
-    <string name="label_n_input">n (कुल वस्तुएं)</string>
-    <string name="label_r_input">r (चयनित वस्तुएं)</string>
-    <string name="type_permutation">क्रमचय (P)</string>
-    <string name="type_combination">संचय (C)</string>
-    <string name="type_multiset_combination">पुनरावृत्ति के साथ संचय (H)</string>
     <string name="label_num_info_input">एक संख्या दर्ज करें</string>
     <string name="label_result_special">परिणाम</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

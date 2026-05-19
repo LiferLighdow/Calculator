@@ -71,7 +71,6 @@
     <string name="chip_loan">Prestito</string>
     <string name="chip_tip">Mancia</string>
     <string name="chip_sigma">Sigma (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">Info numero</string>
     <string name="gender_male">Maschio</string>
     <string name="gender_female">Femmina</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">Inizio (n)</string>
     <string name="label_sigma_end">Fine (m)</string>
     <string name="label_sigma_detail_format">Σ da %1$d a %2$d</string>
-    <string name="label_n_input">n (Totale elementi)</string>
-    <string name="label_r_input">r (Elementi selezionati)</string>
-    <string name="type_permutation">Permutazione (P)</string>
-    <string name="type_combination">Combinazione (C)</string>
-    <string name="type_multiset_combination">Combinazione con ripetizione (H)</string>
     <string name="label_num_info_input">Inserisci un numero</string>
     <string name="label_result_special">Risultato</string>
     <string name="label_hex_prefix">HEX: %1$s</string>

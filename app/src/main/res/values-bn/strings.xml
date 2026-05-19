@@ -71,7 +71,6 @@
     <string name="chip_loan">ঋণ</string>
     <string name="chip_tip">টিপ</string>
     <string name="chip_sigma">সিগমা (Σ)</string>
-    <string name="chip_perm_comb">P / C</string>
     <string name="chip_num_info">সংখ্যার তথ্য</string>
     <string name="gender_male">পুরুষ</string>
     <string name="gender_female">মহিলা</string>
@@ -98,11 +97,6 @@
     <string name="label_sigma_start">শুরুর মান (n)</string>
     <string name="label_sigma_end">শেষের মান (m)</string>
     <string name="label_sigma_detail_format">%1$d থেকে %2$d পর্যন্ত Σ</string>
-    <string name="label_n_input">n (মোট আইটেম)</string>
-    <string name="label_r_input">r (নির্বাচিত আইটেম)</string>
-    <string name="type_permutation">বিন্যাস (P)</string>
-    <string name="type_combination">সমাবেশ (C)</string>
-    <string name="type_multiset_combination">পুনরাবৃত্তি সমাবেশ (H)</string>
     <string name="label_num_info_input">একটি সংখ্যা লিখুন</string>
     <string name="label_result_special">ফলাফল</string>
     <string name="label_hex_prefix">HEX: %1$s</string>
