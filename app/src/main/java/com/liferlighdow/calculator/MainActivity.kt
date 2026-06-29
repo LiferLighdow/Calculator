@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.button.MaterialButtonToggleGroup
 import java.text.DecimalFormat
 import java.util.Locale
 import kotlin.math.*
@@ -24,8 +25,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvExpression: EditText
     private lateinit var tvResult: EditText
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var toggleAngleUnit: MaterialButtonToggleGroup
     private var stateError: Boolean = false
     private var lastResult: Double = 0.0
+    private var useDegrees: Boolean = true
+    private var is2ndActive: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +75,44 @@ class MainActivity : AppCompatActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
         }
 
+        toggleAngleUnit = findViewById(R.id.toggleAngleUnit)
+        toggleAngleUnit.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            if (isChecked) {
+                useDegrees = (checkedId == R.id.btnDeg)
+                calculateResult(false)
+            }
+        }
+
+        findViewById<MaterialButton>(R.id.btn2nd)?.setOnClickListener {
+            is2ndActive = !is2ndActive
+            update2ndUI()
+        }
+
         setupButtons()
+    }
+
+    private fun update2ndUI() {
+        val btn2nd = findViewById<MaterialButton>(R.id.btn2nd)
+        if (is2ndActive) {
+            btn2nd?.setBackgroundColor(androidx.core.content.ContextCompat.getColor(this, com.google.android.material.R.color.material_dynamic_neutral90))
+        } else {
+            btn2nd?.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+        }
+        
+        val trigButtons = mapOf(
+            R.id.btnSin to if (is2ndActive) "sin⁻¹" else "sin",
+            R.id.btnCos to if (is2ndActive) "cos⁻¹" else "cos",
+            R.id.btnTan to if (is2ndActive) "tan⁻¹" else "tan",
+            R.id.btnSinh to if (is2ndActive) "sinh⁻¹" else "sinh",
+            R.id.btnCosh to if (is2ndActive) "cosh⁻¹" else "cosh",
+            R.id.btnTanh to if (is2ndActive) "tanh⁻¹" else "tanh",
+            R.id.btnLog to if (is2ndActive) "10ˣ" else "log",
+            R.id.btnLn to if (is2ndActive) "eˣ" else "ln"
+        )
+        
+        trigButtons.forEach { (id, text) ->
+            findViewById<MaterialButton>(id)?.text = text
+        }
     }
 
     private fun setupImmersiveMode() {
@@ -124,7 +165,7 @@ class MainActivity : AppCompatActivity() {
             val text = tvExpression.text.toString(); val cursor = tvExpression.selectionStart
             if (cursor > 0) {
                 val before = text.substring(0, cursor); val after = text.substring(cursor)
-                val funcs = listOf("asinh(", "acosh(", "atanh(", "asin(", "acos(", "atan(", "sinh(", "cosh(", "tanh(", "log2(", "sqrt(", "cbrt(", "ceil(", "floor(", "abs(", "exp(", "sin(", "cos(", "tan(", "sec(", "csc(", "cot(", "log(", "ln(", "P(", "C(", "H(", "gcd(", "lcm(", "√(", "∛(")
+                val funcs = listOf("sin⁻¹(", "cos⁻¹(", "tan⁻¹(", "sinh⁻¹(", "cosh⁻¹(", "tanh⁻¹(", "asinh(", "acosh(", "atanh(", "asin(", "acos(", "atan(", "sinh(", "cosh(", "tanh(", "log2(", "sqrt(", "cbrt(", "ceil(", "floor(", "abs(", "exp(", "sin(", "cos(", "tan(", "sec(", "csc(", "cot(", "log(", "ln(", "P(", "C(", "H(", "gcd(", "lcm(", "√(", "∛(")
                 var found = false
                 for (f in funcs) { if (before.endsWith(f)) { tvExpression.setText(before.dropLast(f.length) + after); tvExpression.setSelection(cursor - f.length); found = true; break } }
                 if (!found) { tvExpression.setText(before.dropLast(1) + after); tvExpression.setSelection(cursor - 1) }
@@ -155,13 +196,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupScientificButtons() {
-        val sci = mapOf(R.id.btnSin to "sin(", R.id.btnCos to "cos(", R.id.btnTan to "tan(", R.id.btnSec to "sec(", R.id.btnCsc to "csc(", R.id.btnCot to "cot(", R.id.btnAsin to "asin(", R.id.btnAcos to "acos(", R.id.btnAtan to "atan(", R.id.btnSinh to "sinh(", R.id.btnCosh to "cosh(", R.id.btnTanh to "tanh(", R.id.btnAsinh to "asinh(", R.id.btnAcosh to "acosh(", R.id.btnAtanh to "atanh(", R.id.btnLog to "log(", R.id.btnLn to "ln(", R.id.btnLog2 to "log2(", R.id.btnCbrt to "∛(", R.id.btnAbs to "abs(", R.id.btnCeil to "ceil(", R.id.btnFloor to "floor(", R.id.btnPi to "π", R.id.btnE to "e", R.id.btnPhi to "φ", R.id.btnGamma to "γ", R.id.btnAns to "Ans", R.id.btnGCD to "gcd(", R.id.btnLCM to "lcm(", R.id.btnNcr to "C(", R.id.btnNpr to "P(", R.id.btnNhr to "H(", R.id.btnDegree to "°")
+        val sci = mapOf(R.id.btnSin to "sin(", R.id.btnCos to "cos(", R.id.btnTan to "tan(", R.id.btnSec to "sec(", R.id.btnCsc to "csc(", R.id.btnCot to "cot(", R.id.btnSinh to "sinh(", R.id.btnCosh to "cosh(", R.id.btnTanh to "tanh(", R.id.btnLog to "log(", R.id.btnLn to "ln(", R.id.btnLog2 to "log2(", R.id.btnCbrt to "∛(", R.id.btnAbs to "abs(", R.id.btnCeil to "ceil(", R.id.btnFloor to "floor(", R.id.btnPi to "π", R.id.btnE to "e", R.id.btnPhi to "φ", R.id.btnGamma to "γ", R.id.btnAns to "Ans", R.id.btnGCD to "gcd(", R.id.btnLCM to "lcm(", R.id.btnNcr to "C(", R.id.btnNpr to "P(", R.id.btnNhr to "H(", R.id.btnDegree to "°")
         val sciListener = View.OnClickListener { v ->
             v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
             if (v.id == R.id.btnAns) {
                 insertText(formatResult(lastResult))
             } else {
-                insertText(sci[v.id] ?: "")
+                val base = sci[v.id] ?: ""
+                val toInsert = if (is2ndActive) {
+                    when (v.id) {
+                        R.id.btnSin -> "sin⁻¹("
+                        R.id.btnCos -> "cos⁻¹("
+                        R.id.btnTan -> "tan⁻¹("
+                        R.id.btnSinh -> "sinh⁻¹("
+                        R.id.btnCosh -> "cosh⁻¹("
+                        R.id.btnTanh -> "tanh⁻¹("
+                        R.id.btnLog -> "10^("
+                        R.id.btnLn -> "e^("
+                        else -> base
+                    }
+                } else base
+                insertText(toInsert)
             }
             calculateResult(false)
             if (v.id != R.id.btnDegree) drawerLayout.closeDrawer(GravityCompat.START)
@@ -176,16 +231,25 @@ class MainActivity : AppCompatActivity() {
         val expr = tvExpression.text.toString()
         if (expr.isEmpty()) { tvResult.setText("0"); tvResult.tag = 0.0; return }
         try {
-            val p = expr.replace("×", "*").replace("÷", "/").replace("%", "/100")
+            val p = expr.replace("×", "*")
+                .replace("÷", "/")
+                .replace("%", "/100")
+                .replace("sin⁻¹", "asin")
+                .replace("cos⁻¹", "acos")
+                .replace("tan⁻¹", "atan")
+                .replace("sinh⁻¹", "asinh")
+                .replace("cosh⁻¹", "acosh")
+                .replace("tanh⁻¹", "atanh")
+                .replace("e^", "exp")
             
             // For live calculation, don't try to parse incomplete expressions
             if (!isFinal) {
                 val lastChar = expr.last().toString()
-                val incompleteFuncs = listOf("sin", "cos", "tan", "sec", "csc", "cot", "asin", "acos", "atan", "sinh", "cosh", "tanh", "asinh", "acosh", "atanh", "log", "ln", "gcd", "lcm", "P", "C", "H", "abs", "sqrt", "cbrt", "ceil", "floor", "√", "∛")
+                val incompleteFuncs = listOf("sin", "cos", "tan", "sec", "csc", "cot", "asin", "acos", "atan", "sinh", "cosh", "tanh", "asinh", "acosh", "atanh", "log", "ln", "gcd", "lcm", "P", "C", "H", "abs", "sqrt", "cbrt", "ceil", "floor", "√", "∛", "⁻¹", "^")
                 if ("+-×÷*/^ ( ,".contains(lastChar) || incompleteFuncs.any { expr.endsWith(it) }) return
             }
 
-            val res = MathEvaluator.evaluate(p)
+            val res = MathEvaluator.evaluate(p, useDegrees = useDegrees)
             tvResult.setText(formatResult(res))
             tvResult.tag = res
             stateError = false

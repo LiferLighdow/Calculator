@@ -113,7 +113,24 @@
     <string name="fuel_detail_format">Custo total: %1$d | Custo por km: %2$s</string>
     <string name="loan_detail_format">Mensalidade | Total: %1$d</string>
     <string name="tip_detail_format">Por pessoa | Total: %1$d</string>
-    <string name="discount_saved_format">Economia: %1$s</string>
+    <string name="num_info_imaginary">Número Imaginário</string>
+    <string name="num_info_imaginary_detail">A parte de um número complexo que não é um número real</string>
+    <string name="num_info_invalid">Entrada inválida</string>
+    <string name="num_info_real">Número Real</string>
+    <string name="num_info_positive">Positivo</string>
+    <string name="num_info_negative">Negativo</string>
+    <string name="num_info_zero">Zero (0)</string>
+    <string name="num_info_integer">Inteiro</string>
+    <string name="num_info_even">Par</string>
+    <string name="num_info_odd">Ímpar</string>
+    <string name="num_info_unit">Unidade (1)</string>
+    <string name="num_info_prime">Primo</string>
+    <string name="num_info_composite">Composto</string>
+    <string name="num_info_prime_factors">Fatoração prima: </string>
+    <string name="num_info_too_large_to_factor">(Muito grande para fatorar)</string>
+    <string name="num_info_all_factors">Todos os fatores: </string>
+    <string name="num_info_rational">Racional (%1$s)</string>
+    <string name="num_info_irrational">Provavelmente Irracional</string>
 
     <!-- Math Notepad -->
     <string name="title_math_notepad">Cadernos de Matemática</string>

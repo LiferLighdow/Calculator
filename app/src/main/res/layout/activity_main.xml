@@ -122,14 +122,39 @@
         <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent">
             <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
 
+                 <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/toggleAngleUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:checkedButton="@+id/btnDeg"
+                    app:singleSelection="true"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDeg"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DEG" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRad"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RAD" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
                  <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGoToConverter"
                     style="@style/Widget.Material3.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="@string/open_converter"
                     app:icon="@android:drawable/ic_menu_compass"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/toggleAngleUnit" />
 
                  <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGoToSpecialCalculators"
@@ -170,28 +195,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    app:constraint_referenced_ids="btnSin,btnCos,btnTan,btnSec,btnCsc,btnCot,btnAsin,btnAcos,btnAtan,btnSinh,btnCosh,btnTanh,btnAsinh,btnAcosh,btnAtanh,btnLog,btnLn,btnLog2,btnCbrt,btnAbs,btnCeil,btnFloor,btnDegree"
+                    app:constraint_referenced_ids="btn2nd,btnSin,btnCos,btnTan,btnSec,btnCsc,btnCot,btnSinh,btnCosh,btnTanh,btnLog,btnLn,btnLog2,btnCbrt,btnAbs,btnCeil,btnFloor,btnDegree"
                     app:flow_horizontalGap="8dp"
                     app:flow_maxElementsWrap="3"
                     app:flow_verticalGap="8dp"
                     app:flow_wrapMode="aligned"
                     app:layout_constraintTop_toBottomOf="@id/tvGroup1" />
 
+                 <com.google.android.material.button.MaterialButton android:id="@+id/btn2nd" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="2nd" android:textColor="?attr/colorPrimary" android:textStyle="bold" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnSin" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="sin" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnCos" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="cos" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnTan" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="tan" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnSec" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="sec" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnCsc" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="csc" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnCot" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="cot" />
-                 <com.google.android.material.button.MaterialButton android:id="@+id/btnAsin" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="asin" />
-                 <com.google.android.material.button.MaterialButton android:id="@+id/btnAcos" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="acos" />
-                 <com.google.android.material.button.MaterialButton android:id="@+id/btnAtan" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="atan" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnSinh" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="sinh" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnCosh" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="cosh" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnTanh" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="tanh" />
-                 <com.google.android.material.button.MaterialButton android:id="@+id/btnAsinh" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="asinh" />
-                 <com.google.android.material.button.MaterialButton android:id="@+id/btnAcosh" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="acosh" />
-                 <com.google.android.material.button.MaterialButton android:id="@+id/btnAtanh" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="atanh" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnLog" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="log" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnLn" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="ln" />
                  <com.google.android.material.button.MaterialButton android:id="@+id/btnLog2" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:text="log2" />

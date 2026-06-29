@@ -11,6 +11,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.ChipGroup
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.*
+import java.math.BigDecimal
+import java.math.BigInteger
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.*
@@ -371,6 +375,8 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
         }
     }
 
+    private var infoCalculationJob: Job? = null
+
     private fun calculateNumInfo() {
         val inputStr = etInfoInput.text.toString().trim()
         if (inputStr.isEmpty()) {
@@ -385,70 +391,85 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
             return
         }
 
-        val num: Double? = try {
-            val p = inputStr.lowercase()
-                .replace("π", PI.toString())
-                .replace("e", E.toString())
-                .replace("φ", "1.6180339887")
-                .replace("γ", "0.5772156649")
-            MathEvaluator.evaluate(p)
-        } catch (e: Exception) {
-            null
-        }
+        infoCalculationJob?.cancel()
+        infoCalculationJob = lifecycleScope.launch(Dispatchers.Default) {
+            val processedInput = inputStr.lowercase()
+                .replace("π", "pi")
+                .replace("φ", "phi")
+                .replace("γ", "gamma")
 
-        if (num == null) {
-            tvSpecialResult.text = getString(R.string.num_info_invalid)
-            tvSpecialDetail.text = ""
-            return
-        }
+            val bigNum: BigDecimal? = MathEvaluator.evaluateBigDecimal(processedInput)
 
-        val sb = StringBuilder()
-        tvSpecialResult.text = getString(R.string.num_info_real)
+            withContext(Dispatchers.Main) {
+                if (bigNum == null) {
+                    tvSpecialResult.text = getString(R.string.num_info_invalid)
+                    tvSpecialDetail.text = ""
+                    return@withContext
+                }
 
-        sb.append(when {
-            num > 0 -> getString(R.string.num_info_positive)
-            num < 0 -> getString(R.string.num_info_negative)
-            else -> getString(R.string.num_info_zero)
-        }).append(" | ")
+                val sb = StringBuilder()
+                tvSpecialResult.text = getString(R.string.num_info_real)
 
-        val isInteger = abs(num - round(num)) < 1e-10
-        if (isInteger) {
-            val longNum = num.toLong()
-            sb.append(getString(R.string.num_info_integer)).append(" | ")
-            sb.append(if (longNum % 2 == 0L) getString(R.string.num_info_even) else getString(R.string.num_info_odd)).append("\n")
+                sb.append(when {
+                    bigNum.signum() > 0 -> getString(R.string.num_info_positive)
+                    bigNum.signum() < 0 -> getString(R.string.num_info_negative)
+                    else -> getString(R.string.num_info_zero)
+                }).append(" | ")
 
-            if (longNum > 0) {
-                if (longNum == 1L) {
-                    sb.append(getString(R.string.num_info_unit))
-                } else {
-                    val factors = mutableListOf<Long>()
-                    for (i in 1..sqrt(longNum.toDouble()).toLong()) {
-                        if (longNum % i == 0L) {
-                            factors.add(i)
-                            if (i * i != longNum) factors.add(longNum / i)
+                val isInteger = try {
+                    bigNum.toBigIntegerExact()
+                    true
+                } catch (e: Exception) {
+                    bigNum.stripTrailingZeros().scale() <= 0
+                }
+
+                if (isInteger) {
+                    val bigInt = bigNum.toBigInteger()
+                    sb.append(getString(R.string.num_info_integer)).append(" | ")
+                    sb.append(if (bigInt.mod(BigInteger.valueOf(2)) == BigInteger.ZERO) getString(R.string.num_info_even) else getString(R.string.num_info_odd)).append("\n")
+
+                    if (bigInt.signum() > 0) {
+                        if (bigInt == BigInteger.ONE) {
+                            sb.append(getString(R.string.num_info_unit))
+                        } else {
+                            // Primality test
+                            if (bigInt.isProbablePrime(10)) {
+                                sb.append(getString(R.string.num_info_prime))
+                            } else {
+                                sb.append(getString(R.string.num_info_composite)).append("\n")
+                                if (bigInt < BigInteger.valueOf(10).pow(15)) {
+                                    sb.append(getString(R.string.num_info_prime_factors)).append(primeFactorization(bigInt.toLong()))
+                                } else {
+                                    sb.append(getString(R.string.num_info_too_large_to_factor))
+                                }
+                            }
+                            
+                            if (bigInt < BigInteger.valueOf(1000000)) {
+                                val factors = mutableListOf<Long>()
+                                val longNum = bigInt.toLong()
+                                for (i in 1..sqrt(longNum.toDouble()).toLong()) {
+                                    if (longNum % i == 0L) {
+                                        factors.add(i)
+                                        if (i * i != longNum) factors.add(longNum / i)
+                                    }
+                                }
+                                factors.sort()
+                                sb.append("\n").append(getString(R.string.num_info_all_factors)).append(factors.joinToString(", "))
+                            }
                         }
                     }
-                    factors.sort()
-
-                    if (factors.size == 2) {
-                        sb.append(getString(R.string.num_info_prime))
+                } else {
+                    val fraction = toSimpleFraction(bigNum.toDouble())
+                    if (fraction != null) {
+                        sb.append(getString(R.string.num_info_rational, fraction))
                     } else {
-                        sb.append(getString(R.string.num_info_composite)).append("\n")
-                        sb.append(getString(R.string.num_info_prime_factors)).append(primeFactorization(longNum))
+                        sb.append(getString(R.string.num_info_irrational))
                     }
-                    sb.append("\n").append(getString(R.string.num_info_all_factors)).append(factors.joinToString(", "))
                 }
-            }
-        } else {
-            val fraction = toSimpleFraction(num)
-            if (fraction != null) {
-                sb.append(getString(R.string.num_info_rational, fraction))
-            } else {
-                sb.append(getString(R.string.num_info_irrational))
+
+                tvSpecialDetail.text = sb.toString()
             }
         }
-
-        tvSpecialDetail.text = sb.toString()
     }
 
     private fun primeFactorization(n: Long): String {

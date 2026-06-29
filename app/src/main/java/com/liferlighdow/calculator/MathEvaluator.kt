@@ -8,9 +8,17 @@ import kotlin.math.*
 object MathEvaluator {
     private val mc = MathContext.DECIMAL128
 
-    fun evaluate(expression: String, xValue: Double = 0.0): Double {
+    fun evaluate(expression: String, xValue: Double = 0.0, useDegrees: Boolean = true): Double {
         return try {
-            val result = object : Any() {
+            evaluateBigDecimal(expression, BigDecimal(xValue.toString()), useDegrees)?.toDouble() ?: Double.NaN
+        } catch (e: Exception) {
+            Double.NaN
+        }
+    }
+
+    fun evaluateBigDecimal(expression: String, xValue: BigDecimal = BigDecimal.ZERO, useDegrees: Boolean = true): BigDecimal? {
+        return try {
+            object : Any() {
                 var pos = -1
                 var ch = 0
 
@@ -69,21 +77,21 @@ object MathEvaluator {
                         x = BigDecimal(expression.substring(startPos, pos))
                     } else if (ch == 'x'.code) {
                         nextChar()
-                        x = BigDecimal(xValue.toString())
+                        x = xValue
                     } else if (ch.toChar().isLetter() || ch == '√'.code || ch == '∛'.code) {
                         while (ch.toChar().isLetter() || ch == '√'.code || ch == '∛'.code || (ch in '0'.code..'9'.code && pos > startPos)) nextChar()
                         val name = expression.substring(startPos, pos).lowercase()
                         
                         if (name == "pi" || name == "π") {
-                            x = BigDecimal(PI.toString())
+                            x = BigDecimal("3.1415926535897932384626433832795028841971693993751")
                         } else if (name == "e") {
-                            x = BigDecimal(E.toString())
+                            x = BigDecimal("2.7182818284590452353602874713526624977572470936999")
                         } else if (name == "phi" || name == "φ") {
                             x = BigDecimal("1.618033988749895")
                         } else if (name == "gamma" || name == "γ") {
                             x = BigDecimal("0.577215664901532")
                         } else if (name == "i") {
-                            x = BigDecimal.ZERO // Placeholder for complex, currently handled as 0 or handled by √(-1)
+                            x = BigDecimal.ZERO 
                         } else {
                             val args = mutableListOf<BigDecimal>()
                             if (eat('('.code)) {
@@ -98,21 +106,48 @@ object MathEvaluator {
                             val b = if (args.size > 1) args[1] else BigDecimal.ZERO
                             
                             val resDouble = when (name) {
-                                "sin" -> sin(a.toDouble() * PI / 180.0)
-                                "cos" -> cos(a.toDouble() * PI / 180.0)
-                                "tan" -> tan(a.toDouble() * PI / 180.0)
-                                "sec" -> 1.0 / cos(a.toDouble() * PI / 180.0)
-                                "csc" -> 1.0 / sin(a.toDouble() * PI / 180.0)
-                                "cot" -> 1.0 / tan(a.toDouble() * PI / 180.0)
+                                "sin" -> {
+                                    val angle = if (useDegrees) a.toDouble() * PI / 180.0 else a.toDouble()
+                                    sin(angle)
+                                }
+                                "cos" -> {
+                                    val angle = if (useDegrees) a.toDouble() * PI / 180.0 else a.toDouble()
+                                    cos(angle)
+                                }
+                                "tan" -> {
+                                    val angle = if (useDegrees) a.toDouble() * PI / 180.0 else a.toDouble()
+                                    tan(angle)
+                                }
+                                "sec" -> {
+                                    val angle = if (useDegrees) a.toDouble() * PI / 180.0 else a.toDouble()
+                                    1.0 / cos(angle)
+                                }
+                                "csc" -> {
+                                    val angle = if (useDegrees) a.toDouble() * PI / 180.0 else a.toDouble()
+                                    1.0 / sin(angle)
+                                }
+                                "cot" -> {
+                                    val angle = if (useDegrees) a.toDouble() * PI / 180.0 else a.toDouble()
+                                    1.0 / tan(angle)
+                                }
                                 "asin" -> {
                                     val v = a.toDouble()
-                                    if (v < -1.0 || v > 1.0) Double.NaN else asin(v) * 180.0 / PI
+                                    if (v < -1.0 || v > 1.0) Double.NaN else {
+                                        val res = asin(v)
+                                        if (useDegrees) res * 180.0 / PI else res
+                                    }
                                 }
                                 "acos" -> {
                                     val v = a.toDouble()
-                                    if (v < -1.0 || v > 1.0) Double.NaN else acos(v) * 180.0 / PI
+                                    if (v < -1.0 || v > 1.0) Double.NaN else {
+                                        val res = acos(v)
+                                        if (useDegrees) res * 180.0 / PI else res
+                                    }
                                 }
-                                "atan" -> atan(a.toDouble()) * 180.0 / PI
+                                "atan" -> {
+                                    val res = atan(a.toDouble())
+                                    if (useDegrees) res * 180.0 / PI else res
+                                }
                                 "sinh" -> sinh(a.toDouble())
                                 "cosh" -> cosh(a.toDouble())
                                 "tanh" -> tanh(a.toDouble())
@@ -129,28 +164,23 @@ object MathEvaluator {
                                 "floor" -> floor(a.toDouble())
                                 "gcd" -> {
                                     if (args.isEmpty()) 0.0 else {
-                                        var resVal = abs(args[0].toLong())
+                                        var resVal = args[0].toBigInteger().abs()
                                         for (i in 1 until args.size) {
-                                            var v = abs(args[i].toLong())
-                                            while (v != 0L) {
-                                                val t = v
-                                                v = resVal % v
-                                                resVal = t
-                                            }
+                                            resVal = resVal.gcd(args[i].toBigInteger().abs())
                                         }
                                         resVal.toDouble()
                                     }
                                 }
                                 "lcm" -> {
                                     if (args.isEmpty()) 0.0 else {
-                                        var resVal = abs(args[0].toLong())
+                                        var resVal = args[0].toBigInteger().abs()
                                         for (i in 1 until args.size) {
-                                            val v = abs(args[i].toLong())
-                                            if (resVal == 0L || v == 0L) { resVal = 0L; break }
-                                            var x1 = resVal
-                                            var y1 = v
-                                            while (y1 != 0L) { val t = y1; y1 = x1 % y1; x1 = t }
-                                            resVal = (resVal / x1) * v
+                                            val v = args[i].toBigInteger().abs()
+                                            if (resVal == java.math.BigInteger.ZERO || v == java.math.BigInteger.ZERO) {
+                                                resVal = java.math.BigInteger.ZERO
+                                                break
+                                            }
+                                            resVal = (resVal.multiply(v)).divide(resVal.gcd(v))
                                         }
                                         resVal.toDouble()
                                     }
@@ -160,7 +190,7 @@ object MathEvaluator {
                                 "nhr", "h" -> if (args.size < 2) 0.0 else nCr(a.toDouble() + b.toDouble() - 1, b.toDouble())
                                 else -> a.toDouble()
                             }
-                            x = BigDecimal(resDouble.toString())
+                            x = if (resDouble.isNaN()) throw ArithmeticException("NaN") else BigDecimal(resDouble.toString())
                         }
                     } else {
                         throw RuntimeException("Unexpected character: " + ch.toChar())
@@ -168,21 +198,28 @@ object MathEvaluator {
                     if (eat('!'.code)) {
                         x = BigDecimal(gamma(x.toDouble() + 1.0).toString())
                     }
-                    while (eat('°'.code)) { }
+                    
+                    // Degree symbol support: if present, treat as degree regardless of global mode
+                    if (eat('°'.code)) {
+                        val rad = x.toDouble() * PI / 180.0
+                        x = BigDecimal(rad.toString())
+                        while (eat('°'.code)) { } 
+                    }
+
                     if (eat('^'.code)) {
                         val exponent = parseFactor()
                         x = try {
                             x.pow(exponent.toInt(), mc)
                         } catch (e: Exception) {
-                            BigDecimal(x.toDouble().pow(exponent.toDouble()).toString())
+                            val resPow = x.toDouble().pow(exponent.toDouble())
+                            if (resPow.isNaN()) throw ArithmeticException("NaN") else BigDecimal(resPow.toString())
                         }
                     }
                     return x
                 }
             }.parse()
-            result.toDouble()
         } catch (e: Exception) {
-            Double.NaN
+            null
         }
     }
 

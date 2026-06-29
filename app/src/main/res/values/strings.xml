@@ -134,6 +134,7 @@
     <string name="num_info_prime">Prime</string>
     <string name="num_info_composite">Composite</string>
     <string name="num_info_prime_factors">Prime Factorization: </string>
+    <string name="num_info_too_large_to_factor">(Too large to factorize)</string>
     <string name="num_info_all_factors">All Factors: </string>
     <string name="num_info_rational">Rational (%1$s)</string>
     <string name="num_info_irrational">Probably Irrational</string>
