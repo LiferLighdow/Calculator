@@ -57,6 +57,7 @@
                 <com.google.android.material.chip.Chip android:id="@+id/chipTip" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/chip_tip" />
                 <com.google.android.material.chip.Chip android:id="@+id/chipSigma" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/chip_sigma" />
                 <com.google.android.material.chip.Chip android:id="@+id/chipNumInfo" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/chip_num_info" />
+                <com.google.android.material.chip.Chip android:id="@+id/chipCompass" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/chip_compass" />
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
 
@@ -137,6 +138,11 @@
                 <!-- Num Info Inputs -->
                 <LinearLayout android:id="@+id/llNumInfo" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
                     <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/label_num_info_input"><com.google.android.material.textfield.TextInputEditText android:id="@+id/etInfoInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" /></com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Compass -->
+                <LinearLayout android:id="@+id/llCompass" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:visibility="gone" android:padding="16dp">
+                    <ImageView android:id="@+id/ivCompass" android:layout_width="200dp" android:layout_height="200dp" android:src="@drawable/ic_compass" android:contentDescription="@string/chip_compass" />
                 </LinearLayout>
 
             </LinearLayout>

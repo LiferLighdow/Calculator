@@ -79,6 +79,7 @@
     <string name="chip_tip">Tip</string>
     <string name="chip_sigma">Sigma (Σ)</string>
     <string name="chip_num_info">Num Info</string>
+    <string name="chip_compass">Compass</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
     <string name="label_age">Age</string>
@@ -108,6 +109,7 @@
     <string name="label_result_special">Result</string>
     <string name="label_hex_prefix">HEX: %1$s</string>
     <string name="label_bin_prefix">BIN: %1$s</string>
+    <string name="label_compass_heading">Heading</string>
     <string name="waiting_input">Waiting for input...</string>
     <string name="bmi_underweight">Underweight</string>
     <string name="bmi_normal">Normal</string>

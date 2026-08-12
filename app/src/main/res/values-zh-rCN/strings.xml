@@ -35,7 +35,7 @@
     <string name="update_info_failed">获取失败: %1$s</string>
 
     <!-- Geometry Calculator -->
-    <string name="title_geometry">几何计算器</string>
+    <string name="title_geometry">几何 计算器</string>
     <string name="shape_circle">圆形</string>
     <string name="shape_square">正方形</string>
     <string name="shape_triangle">三角形</string>
@@ -61,7 +61,7 @@
     <string name="label_surface_area">表面积</string>
 
     <!-- SpecialCalculatorsActivity -->
-    <string name="title_special">特殊计算器</string>
+    <string name="title_special">特殊 计算器</string>
     <string name="chip_health">健康</string>
     <string name="chip_world_clock">世界时钟</string>
     <string name="chip_unit_price">单价</string>
@@ -72,6 +72,7 @@
     <string name="chip_tip">小费</string>
     <string name="chip_sigma">Σ 级数和</string>
     <string name="chip_num_info">数字属性</string>
+    <string name="chip_compass">指南针</string>
     <string name="gender_male">男性</string>
     <string name="gender_female">女性</string>
     <string name="label_age">年龄</string>
@@ -101,6 +102,7 @@
     <string name="label_result_special">计算结果</string>
     <string name="label_hex_prefix">十六进制: %1$s</string>
     <string name="label_bin_prefix">二进制: %1$s</string>
+    <string name="label_compass_heading">方向</string>
     <string name="waiting_input">等待输入...</string>
     <string name="bmi_underweight">体重过轻</string>
     <string name="bmi_normal">正常范围</string>

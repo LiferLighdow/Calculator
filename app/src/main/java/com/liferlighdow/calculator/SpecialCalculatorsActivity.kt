@@ -1,9 +1,15 @@
 package com.liferlighdow.calculator
 
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.RotateAnimation
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.*
 
-class SpecialCalculatorsActivity : AppCompatActivity() {
+class SpecialCalculatorsActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var tvSpecialResult: TextView
     private lateinit var tvSpecialDetail: TextView
@@ -70,12 +76,27 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
     private lateinit var llNumInfo: LinearLayout
     private lateinit var etInfoInput: EditText
 
+    private lateinit var llCompass: LinearLayout
+    private lateinit var ivCompass: ImageView
+    private lateinit var sensorManager: SensorManager
+    private var accelerometer: Sensor? = null
+    private var magnetometer: Sensor? = null
+    private var lastAccelerometer = FloatArray(3)
+    private var lastMagnetometer = FloatArray(3)
+    private var lastAccelerometerSet = false
+    private var lastMagnetometerSet = false
+    private var currentDegree = 0f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_special_calculators)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drawerLayout)) { v, insets ->
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -136,8 +157,81 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
         llNumInfo = findViewById(R.id.llNumInfo)
         etInfoInput = findViewById(R.id.etInfoInput)
 
+        llCompass = findViewById(R.id.llCompass)
+        ivCompass = findViewById(R.id.ivCompass)
+
         findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
     }
+
+    override fun onResume() {
+        super.onResume()
+        if (chipGroupSpecial.checkedChipId == R.id.chipCompass) {
+            startCompass()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        stopCompass()
+    }
+
+    private fun startCompass() {
+        accelerometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_GAME) }
+        magnetometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_GAME) }
+    }
+
+    private fun stopCompass() {
+        sensorManager.unregisterListener(this)
+    }
+
+    override fun onSensorChanged(event: SensorEvent) {
+        if (event.sensor === accelerometer) {
+            System.arraycopy(event.values, 0, lastAccelerometer, 0, event.values.size)
+            lastAccelerometerSet = true
+        } else if (event.sensor === magnetometer) {
+            System.arraycopy(event.values, 0, lastMagnetometer, 0, event.values.size)
+            lastMagnetometerSet = true
+        }
+        if (lastAccelerometerSet && lastMagnetometerSet) {
+            val r = FloatArray(9)
+            val i = FloatArray(9)
+            if (SensorManager.getRotationMatrix(r, i, lastAccelerometer, lastMagnetometer)) {
+                val orientation = FloatArray(3)
+                SensorManager.getOrientation(r, orientation)
+                val azimuthInRadians = orientation[0]
+                val azimuthInDegrees = (Math.toDegrees(azimuthInRadians.toDouble()) + 360).toFloat() % 360
+                
+                val ra = RotateAnimation(
+                    currentDegree,
+                    -azimuthInDegrees,
+                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF, 0.5f
+                )
+                ra.duration = 250
+                ra.fillAfter = true
+                ivCompass.startAnimation(ra)
+                currentDegree = -azimuthInDegrees
+                
+                tvSpecialResult.text = String.format(Locale.US, "%.1f°", azimuthInDegrees)
+                tvSpecialDetail.text = getDirectionString(azimuthInDegrees)
+            }
+        }
+    }
+
+    private fun getDirectionString(degrees: Float): String {
+        return when {
+            degrees >= 337.5 || degrees < 22.5 -> "N"
+            degrees >= 22.5 && degrees < 67.5 -> "NE"
+            degrees >= 67.5 && degrees < 112.5 -> "E"
+            degrees >= 112.5 && degrees < 157.5 -> "SE"
+            degrees >= 157.5 && degrees < 202.5 -> "S"
+            degrees >= 202.5 && degrees < 247.5 -> "SW"
+            degrees >= 247.5 && degrees < 292.5 -> "W"
+            else -> "NW"
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 
     private fun setupTimeZoneSpinner() {
         val tzs = TimeZone.getAvailableIDs().sorted()
@@ -151,9 +245,10 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
     private fun setupListeners() {
         chipGroupSpecial.setOnCheckedStateChangeListener { _, checkedIds ->
             val id = checkedIds.firstOrNull() ?: R.id.chipBMIBMR
-            val sections = listOf(llBMI, llWorldClock, llUnitPrice, llFuel, llBaseConverter, llDiscount, llLoan, llTip, llSigma, llNumInfo)
+            val sections = listOf(llBMI, llWorldClock, llUnitPrice, llFuel, llBaseConverter, llDiscount, llLoan, llTip, llSigma, llNumInfo, llCompass)
             sections.forEach { it.visibility = View.GONE }
 
+            stopCompass()
             when (id) {
                 R.id.chipBMIBMR -> llBMI.visibility = View.VISIBLE
                 R.id.chipWorldClock -> llWorldClock.visibility = View.VISIBLE
@@ -165,6 +260,10 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
                 R.id.chipTip -> llTip.visibility = View.VISIBLE
                 R.id.chipSigma -> llSigma.visibility = View.VISIBLE
                 R.id.chipNumInfo -> llNumInfo.visibility = View.VISIBLE
+                R.id.chipCompass -> {
+                    llCompass.visibility = View.VISIBLE
+                    startCompass()
+                }
             }
             performCalculation()
         }
@@ -203,6 +302,7 @@ class SpecialCalculatorsActivity : AppCompatActivity() {
             R.id.chipTip -> calculateTip()
             R.id.chipSigma -> calculateSigma()
             R.id.chipNumInfo -> calculateNumInfo()
+            R.id.chipCompass -> { /* Logic handled by SensorListener */ }
         }
     }
 

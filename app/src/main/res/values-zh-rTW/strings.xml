@@ -41,7 +41,7 @@
     <string name="unit_kelvin">克耳文 (°K)</string>
 
     <!-- Geometry Calculator -->
-    <string name="title_geometry">幾何計算機</string>
+    <string name="title_geometry">幾何 計算機</string>
     <string name="shape_circle">圓形</string>
     <string name="shape_square">正方形</string>
     <string name="shape_triangle">三角形</string>
@@ -67,7 +67,7 @@
     <string name="label_surface_area">表面積</string>
 
     <!-- SpecialCalculatorsActivity -->
-    <string name="title_special">特殊計算機</string>
+    <string name="title_special">特殊 計算機</string>
     <string name="chip_health">健康</string>
     <string name="chip_world_clock">世界時鐘</string>
     <string name="chip_unit_price">單價</string>
@@ -78,6 +78,7 @@
     <string name="chip_tip">小費</string>
     <string name="chip_sigma">Σ 級數和</string>
     <string name="chip_num_info">數字屬性</string>
+    <string name="chip_compass">指南針</string>
     <string name="gender_male">男性</string>
     <string name="gender_female">女性</string>
     <string name="label_age">年齡</string>
@@ -107,6 +108,7 @@
     <string name="label_result_special">計算結果</string>
     <string name="label_hex_prefix">十六進制: %1$s</string>
     <string name="label_bin_prefix">二進制: %1$s</string>
+    <string name="label_compass_heading">方向</string>
     <string name="waiting_input">等待輸入...</string>
     <string name="bmi_underweight">體重過輕</string>
     <string name="bmi_normal">正常範圍</string>
