@@ -35,6 +35,10 @@ jobs:
         VERSION_NAME=$(grep "versionName" app/build.gradle.kts | head -n 1 | awk -F'["'\'']' '{print $2}')
         echo "version=$VERSION_NAME" >> $GITHUB_OUTPUT
 
+    - name: Setup Build Tools
+      run: |
+        echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;29.0.3"
+
     - name: Sign Release APK
       if: env.HAS_SIGNING_KEY == 'true'
       uses: r0adkll/sign-android-release@v1
@@ -45,7 +49,6 @@ jobs:
         alias: ${{ secrets.ALIAS }}
         keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
         keyPassword: ${{ secrets.KEY_PASSWORD }}
-        buildToolsVersion: "35.0.0"
 
 
     - name: Upload Release APK
