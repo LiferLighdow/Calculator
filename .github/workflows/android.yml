@@ -3,15 +3,12 @@ name: Android Release CI
 on:
   push:
     branches: [ "main", "master" ]
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      HAS_SIGNING_KEY: ${{ secrets.SIGNING_KEY != '' }}
 
     steps:
     - uses: actions/checkout@v4
@@ -23,6 +20,10 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    - name: Install Android Build Tools
+      run: |
+        $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;29.0.3"
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
@@ -32,22 +33,11 @@ jobs:
     - name: Get Version Name
       id: get_version
       run: |
-        VERSION_NAME=$(sed -n 's/.*versionName = "\(.*\)".*/\1/p' app/build.gradle.kts | head -n 1)
-        if [ -z "$VERSION_NAME" ]; then
-          VERSION_NAME=$(grep "versionName" app/build.gradle.kts | head -n 1 | awk -F'"' '{print $2}')
-        fi
-        if [ -z "$VERSION_NAME" ]; then
-          VERSION_NAME="1.0.0-b${{ github.run_number }}"
-        fi
+        VERSION_NAME=$(grep "versionName =" app/build.gradle.kts | sed -E 's/.*"([^"]+)".*/\1/')
         echo "version=$VERSION_NAME" >> $GITHUB_OUTPUT
-        echo "Detected Version: $VERSION_NAME"
-
-    - name: Setup Build Tools (Required for Signing)
-      run: |
-        echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;29.0.3"
 
     - name: Sign Release APK
-      if: env.HAS_SIGNING_KEY == 'true'
+      if: github.event_name == 'push' && env.SIGNING_KEY != null
       uses: r0adkll/sign-android-release@v1
       id: sign_app
       with:
@@ -56,12 +46,18 @@ jobs:
         alias: ${{ secrets.ALIAS }}
         keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
         keyPassword: ${{ secrets.KEY_PASSWORD }}
+      env:
+        SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
 
-    - name: Upload Artifacts
+    - name: Upload Release APK
       uses: actions/upload-artifact@v4
       with:
         name: app-release
-        path: app/build/outputs/apk/release/*.apk
+        # 如果簽署成功，上傳簽署後的檔案；否則上傳未簽署的檔案
+        path: |
+          ${{ steps.sign_app.outputs.signedReleaseFile }}
+          app/build/outputs/apk/release/*-unsigned.apk
+          app/build/outputs/apk/release/*.apk
 
     - name: Create or Update Release
       uses: softprops/action-gh-release@v2
@@ -69,13 +65,16 @@ jobs:
         tag_name: v${{ steps.get_version.outputs.version }}
         name: Release v${{ steps.get_version.outputs.version }}
         body: |
-          Automated build for version ${{ steps.get_version.outputs.version }}
-          Built from commit: ${{ github.sha }}
+          Automated release for version ${{ steps.get_version.outputs.version }}.
+          
+          **Commit Info:**
+          - Commit: ${{ github.sha }}
+          - Timestamp: ${{ github.event.head_commit.timestamp }}
         files: |
           app/build/outputs/apk/release/*-signed.apk
-          app/build/outputs/apk/release/*.apk
         prerelease: false
         generate_release_notes: true
         make_latest: true
+        fail_on_unmatched_files: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
