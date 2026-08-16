@@ -34,7 +34,7 @@ jobs:
     - name: Get Version Name
       id: get_version
       run: |
-        VERSION_NAME=$(grep "versionName " app/build.gradle | sed -E 's/.*"([^"]+)".*/\1/')
+        VERSION_NAME=$(grep "versionName =" app/build.gradle.kts | head -n 1 | cut -d '"' -f2)
         echo "version=$VERSION_NAME" >> $GITHUB_OUTPUT
 
     - name: Sign Release APK
