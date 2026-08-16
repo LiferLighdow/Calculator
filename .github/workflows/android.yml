@@ -32,8 +32,15 @@ jobs:
     - name: Get Version Name
       id: get_version
       run: |
-        VERSION_NAME=$(grep "versionName" app/build.gradle.kts | head -n 1 | awk -F'["'\'']' '{print $2}')
+        VERSION_NAME=$(grep "versionName =" app/build.gradle.kts | head -n 1 | awk -F'"' '{print $2}')
+        if [ -z "$VERSION_NAME" ]; then
+          VERSION_NAME=$(grep "versionName" app/build.gradle.kts | head -n 1 | awk -F'"' '{print $2}')
+        fi
+        if [ -z "$VERSION_NAME" ]; then
+          VERSION_NAME="1.0.0-build-${{ github.run_number }}"
+        fi
         echo "version=$VERSION_NAME" >> $GITHUB_OUTPUT
+        echo "Final Version: $VERSION_NAME"
 
     - name: Setup Build Tools
       run: |
@@ -50,8 +57,7 @@ jobs:
         keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
         keyPassword: ${{ secrets.KEY_PASSWORD }}
 
-
-    - name: Upload Release APK
+    - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: app-release
@@ -63,12 +69,12 @@ jobs:
         tag_name: v${{ steps.get_version.outputs.version }}
         name: Release v${{ steps.get_version.outputs.version }}
         body: |
-          This is an automated build.
-          Version: ${{ steps.get_version.outputs.version }}
-          Last updated: ${{ github.event.head_commit.timestamp }}
+          Automated release for version ${{ steps.get_version.outputs.version }}
           Commit: ${{ github.sha }}
+          Timestamp: ${{ github.event.head_commit.timestamp }}
         files: |
           app/build/outputs/apk/release/*.apk
         prerelease: false
+        generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
